@@ -1,5 +1,10 @@
 from Gazostheque.controllers.owner_controller import get_owner_by_user
 
+from django.db import connection
+from django.db.models import Count
+from django.db.models.functions import ExtractYear
+from django.contrib.auth import get_user_model
+
 def get_formatted_user(user):
     """
     This function takes a user object as input and returns a dictionary 
@@ -33,3 +38,19 @@ def get_formatted_user(user):
         user_details["owner_contact"] = owner.contact
     
     return user_details
+
+def get_user_stats():
+    """
+    Retrieves user statistics grouped by year of registration and role.
+    Returns a list of dictionaries containing year, role, and user count.
+    """
+    User = get_user_model()
+    
+    # Using Django ORM to avoid raw SQL
+    queryset = User.objects.exclude(email='admin@example.com').annotate(
+        year=ExtractYear('date_joined')
+    ).values('year', 'role').annotate(
+        user_count=Count('user_id')
+    ).order_by('year')
+    
+    return list(queryset)

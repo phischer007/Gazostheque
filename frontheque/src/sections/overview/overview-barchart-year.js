@@ -5,57 +5,48 @@ import {
   Card,
   CardContent,
   Stack,
-  Typography
+  Typography,
+  CircularProgress
 } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { Chart } from 'src/components/chart';
 import { useEffect, useState } from 'react';
 import config from 'src/utils/config';
 
-// ----------------------------------------------------------------- //
-
 export const OverviewBarChart = (props) => {
   const { sx } = props;
   const theme = useTheme();
-  const [chartData, setChartData] = useState({ 
-    series: [], 
-    years: [] 
+  const [chartData, setChartData] = useState({
+    series: [],
+    years: []
   });
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(`${config.apiUrl}/materials/bar-chart`);
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
-        console.log('Received data:', data);
-        setChartData(data);
-      } catch (error) {
-        console.error('Error fetching material data:', error);
-        setError(error.message)
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    fetchData();
-  }, []);
-
-  const handleRefresh = async () => {
+  const fetchMaterialData = async () => {
     setIsLoading(true);
+    setError(null);
     try {
-      const response = await fetch(`${config.apiUrl}/materials/bar-chart/`);
+      const response = await fetch(`${config.apiUrl}/materials/bar-chart`);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
       const data = await response.json();
-      setChartData(data);
-    } catch (error) {
-      console.error('Error refreshing data:', error);
+      setChartData({
+        series: data.series || [],
+        years: data.years || []
+      });
+    } catch (err) {
+      console.error('Failed to fetch material data:', err);
+      setError(err.message || 'Failed to load data');
     } finally {
       setIsLoading(false);
     }
-  };  
+  };
+
+  useEffect(() => {
+    fetchMaterialData();
+  }, []);
 
   const chartOptions = {
     chart: {
@@ -63,24 +54,40 @@ export const OverviewBarChart = (props) => {
       background: 'transparent',
       stacked: false,
       toolbar: { show: false },
-      zoom: { enabled: false }
+      zoom: { enabled: false },
+      animations: {
+        enabled: true,
+        easing: 'easeinout',
+        speed: 800
+      }
     },
     plotOptions: {
       bar: {
         horizontal: false,
         borderRadius: 4,
         columnWidth: '45%',
-      },
+        distributed: false,
+        dataLabels: {
+          position: 'top'
+        }
+      }
     },
-    dataLabels: { enabled: false },
+    dataLabels: {
+      enabled: false
+    },
     stroke: {
       show: true,
-      width: 2,
+      width: 1,
       colors: ['transparent']
     },
     xaxis: {
       categories: chartData.years,
-      title: { text: 'Année' },
+      title: {
+        text: 'Année',
+        style: {
+          color: theme.palette.text.secondary
+        }
+      },
       axisBorder: {
         show: true,
         color: theme.palette.divider
@@ -91,34 +98,56 @@ export const OverviewBarChart = (props) => {
       },
       labels: {
         style: {
-          colors: theme.palette.text.secondary
+          colors: theme.palette.text.secondary,
+          fontSize: '12px'
         }
       }
     },
     yaxis: {
-      title: { text: 'Nombre de bouteilles' },
+      title: {
+        text: 'Nombre de bouteilles',
+        style: {
+          color: theme.palette.text.secondary
+        }
+      },
       min: 0,
       labels: {
         style: {
           colors: theme.palette.text.secondary
-        }
+        },
+        formatter: (value) => Math.floor(value) === value ? value : ''
       }
     },
-    fill: { 
+    fill: {
       opacity: 1,
-      colors: [theme.palette.primary.light, theme.palette.success.main]
+      type: 'solid'
     },
-    colors: [theme.palette.primary.light, theme.palette.success.main],
+    colors: [
+      theme.palette.error.dark,
+      theme.palette.success.dark
+    ],
     legend: {
       position: 'top',
       horizontalAlign: 'right',
+      fontSize: '14px',
       labels: {
-        colors: theme.palette.text.secondary
+        colors: theme.palette.text.secondary,
+        useSeriesColors: false
+      },
+      markers: {
+        width: 12,
+        height: 12,
+        radius: 12
       }
     },
     tooltip: {
+      shared: true,
+      intersect: false,
       y: {
         formatter: (val) => `${val} Bouteille${val !== 1 ? 's' : ''}`
+      },
+      style: {
+        fontSize: '14px'
       }
     },
     grid: {
@@ -134,14 +163,44 @@ export const OverviewBarChart = (props) => {
           show: true
         }
       }
-    }
+    },
+    responsive: [{
+      breakpoint: 600,
+      options: {
+        plotOptions: {
+          bar: {
+            columnWidth: '60%'
+          }
+        },
+        legend: {
+          position: 'bottom'
+        }
+      }
+    }]
   };
 
   if (isLoading) {
     return (
       <Card sx={sx}>
-        <CardContent>
-          <Typography>Aucune donnée disponible...</Typography>
+        <CardContent 
+          sx={{ 
+            display: 'flex', 
+            justifyContent: 'center', 
+            alignItems: 'center', 
+            minHeight: 450 
+          }}
+        >
+          <Stack 
+            alignItems="center" 
+            spacing={2}
+          >
+            <CircularProgress />
+            <Typography 
+              color="text.secondary"
+            >
+              Chargement des données de la bouteille...
+            </Typography>
+          </Stack>
         </CardContent>
       </Card>
     );
@@ -150,8 +209,35 @@ export const OverviewBarChart = (props) => {
   if (error) {
     return (
       <Card sx={sx}>
-        <CardContent>
-          <Typography color="error">Erreur: {error}</Typography>
+        <CardContent 
+          sx={{ 
+            minHeight: 450, 
+            display: 'flex', 
+            flexDirection: 'column', 
+            justifyContent: 'center' 
+          }}
+        >
+          <Typography 
+            color="error" 
+            variant="h6" 
+            gutterBottom
+          >
+            Erreur lors du chargement des données
+          </Typography>
+          <Typography 
+            color="text.secondary" 
+            paragraph
+          >
+            {error}
+          </Typography>
+          <Button
+            variant="outlined"
+            color="primary"
+            onClick={fetchMaterialData}
+            sx={{ mt: 2, alignSelf: 'flex-start' }}
+          >
+            Réessayer
+          </Button>
         </CardContent>
       </Card>
     );
@@ -160,40 +246,53 @@ export const OverviewBarChart = (props) => {
   return (
     <Card sx={sx}>
       <CardContent>
-        <Stack spacing={2}>
-          {/* Header row with title and button */}
+        <Stack spacing={3}>
           <Stack 
             direction="row" 
             justifyContent="space-between" 
             alignItems="center"
           >
             <Typography 
-              color="text.secondary" 
+              color="text.primary"
               variant="overline"
             >
               Distribution annuelle de bouteilles par le laboratoire
             </Typography>
-            
             <Button
-              color="inherit"
               size="small"
-              onClick={handleRefresh}
+              onClick={fetchMaterialData}
               disabled={isLoading}
+              startIcon={isLoading ? <CircularProgress size={16} /> : null}
             >
-              {isLoading ? 'Chargement...' : 'Rafraîchi'}
+              {isLoading ? 'Chargement...' : 'Rafraîchir'}
             </Button>
           </Stack>
 
-          {/* Chart with full width */}
-          <Box sx={{ width: '100%', height: '100%' }}>
-            <Chart
-              height={450}
-              options={chartOptions}
-              series={chartData.series}
-              type="bar"
-              width="100%"
-            />
-          </Box>
+          {chartData.series.length > 0 ? (
+            <Box sx={{ height: 450 }}>
+              <Chart
+                options={chartOptions}
+                series={chartData.series}
+                type="bar"
+                height="100%"
+              />
+            </Box>
+          ) : (
+            <Box 
+              sx={{ 
+                height: 450, 
+                display: 'flex', 
+                alignItems: 'center', 
+                justifyContent: 'center' 
+              }}
+            >
+              <Typography 
+                color="text.secondary"
+              >
+                Aucune donnée disponible sur la bouteille
+              </Typography>
+            </Box>
+          )}
         </Stack>
       </CardContent>
     </Card>

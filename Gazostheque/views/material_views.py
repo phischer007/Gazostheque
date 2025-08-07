@@ -131,7 +131,6 @@ def material_events_lite(request, pk):
     events =  get_events_detail_lite(pk)
     return JsonResponse(events, safe=False)
 
-
 @login_required
 @api_view(['GET'])
 def get_total_count(request):
@@ -182,53 +181,93 @@ def get_materials_by_lab(request):
         'IGE': ige_count
     })
 
+# @login_required
+# @api_view(['GET'])
+# def get_materials_by_year_and_lab(request):
+#     """
+#     Get material counts grouped by year and lab destination
+#     Returns data in format suitable for ApexCharts
+#     """
+#     materials = Materials.objects.annotate(
+#         year=ExtractYear('created_at')
+#     ).values('year', 'lab_destination').annotate(
+#         count=Count('material_id')
+#     ).order_by('year', 'lab_destination')
+    
+#     # Transform data into format suitable for ApexCharts
+#     years = sorted(set(item['year'] for item in materials))
+#     labs = sorted(set(item['lab_destination'] for item in materials if item['lab_destination']))
+    
+#     result = {
+#         'years': years,
+#         'series': []
+#     }
+    
+#     # Initialize series data structure
+#     series = []
+#     for lab in labs:
+#         lab_data = {
+#             'name': lab,
+#             'data': []
+#         }
+#         for year in years:
+#             # Find count for this lab/year combination
+#             count = next(
+#                 (item['count'] for item in materials 
+#                  if item['year'] == year and item['lab_destination'] == lab),
+#                 0
+#             )
+#             lab_data['data'].append(count)
+#         series.append(lab_data)
+    
+#     return JsonResponse(result, safe=False)
+
 @login_required
 @api_view(['GET'])
 def get_materials_by_year_and_lab(request):
     """
-    Get material counts grouped by year and lab destination
-    Returns data in format suitable for ApexCharts
+    Get material counts grouped by year and lab destination.
+    Returns data in format: {
+        'years': [list of years],
+        'series': [{
+            'name': lab_name,
+            'data': [counts per year]
+        }]
+    }
     """
+    # Execute the equivalent of your PostgreSQL query using Django ORM
     materials = Materials.objects.annotate(
         year=ExtractYear('created_at')
     ).values('year', 'lab_destination').annotate(
         count=Count('material_id')
     ).order_by('year', 'lab_destination')
     
-    # Transform data into format suitable for ApexCharts
-    # years = sorted(set(item['year'] for item in materials))
-    # labs = sorted(set(item['lab_destination'] for item in materials if item['lab_destination']))
-    years = sorted(set(item['year'] for item in materials))
-    labs = sorted(set(item['lab_destination'] if item['lab_destination'] is not None else 'Unknown' for item in materials))
+    # Get all unique years and labs from the query results
+    years = sorted({item['year'] for item in materials})
+    labs = sorted({item['lab_destination'] for item in materials if item['lab_destination']})
     
+    # Initialize the result structure
     result = {
         'years': years,
         'series': []
     }
     
-    # Initialize series data structure
-    series = []
+    # For each lab, create a data series with counts for each year
     for lab in labs:
         lab_data = {
             'name': lab,
             'data': []
         }
+        
         for year in years:
-            # Find count for this lab/year combination
-            # count = next(
-            #     (item['count'] for item in materials 
-            #      if item['year'] == year and item['lab_destination'] == lab),
-            #     0
-            # )
-            # lab_data['data'].append(count)
+            # Find the count for this lab/year combination
             count = next(
                 (item['count'] for item in materials 
-                 if item['year'] == year and 
-                 (item['lab_destination'] == lab or 
-                  (item['lab_destination'] is None and lab == 'Unknown'))),
-                0
+                 if item['year'] == year and item['lab_destination'] == lab),
+                0  # Default to 0 if no entry exists
             )
             lab_data['data'].append(count)
-        series.append(lab_data)
+        
+        result['series'].append(lab_data)
     
-    return JsonResponse(result, safe=False)
+    return JsonResponse(result)
