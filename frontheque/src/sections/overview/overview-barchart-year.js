@@ -13,6 +13,8 @@ import { Chart } from 'src/components/chart';
 import { useEffect, useState } from 'react';
 import config from 'src/utils/config';
 
+
+
 export const OverviewBarChart = (props) => {
   const { sx } = props;
   const theme = useTheme();
