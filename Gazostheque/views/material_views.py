@@ -196,8 +196,10 @@ def get_materials_by_year_and_lab(request):
     ).order_by('year', 'lab_destination')
     
     # Transform data into format suitable for ApexCharts
+    # years = sorted(set(item['year'] for item in materials))
+    # labs = sorted(set(item['lab_destination'] for item in materials if item['lab_destination']))
     years = sorted(set(item['year'] for item in materials))
-    labs = sorted(set(item['lab_destination'] for item in materials if item['lab_destination']))
+    labs = sorted(set(item['lab_destination'] if item['lab_destination'] is not None else 'Unknown' for item in materials))
     
     result = {
         'years': years,
@@ -213,9 +215,17 @@ def get_materials_by_year_and_lab(request):
         }
         for year in years:
             # Find count for this lab/year combination
+            # count = next(
+            #     (item['count'] for item in materials 
+            #      if item['year'] == year and item['lab_destination'] == lab),
+            #     0
+            # )
+            # lab_data['data'].append(count)
             count = next(
                 (item['count'] for item in materials 
-                 if item['year'] == year and item['lab_destination'] == lab),
+                 if item['year'] == year and 
+                 (item['lab_destination'] == lab or 
+                  (item['lab_destination'] is None and lab == 'Unknown'))),
                 0
             )
             lab_data['data'].append(count)

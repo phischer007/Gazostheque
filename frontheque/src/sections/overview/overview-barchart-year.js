@@ -31,16 +31,16 @@ export const OverviewBarChart = (props) => {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-          
         const data = await response.json();
+        console.log('Received data:', data);
         setChartData(data);
       } catch (error) {
         console.error('Error fetching material data:', error);
+        setError(error.message)
       } finally {
         setIsLoading(false);
       }
     };
-
     fetchData();
   }, []);
 
@@ -55,7 +55,7 @@ export const OverviewBarChart = (props) => {
     } finally {
       setIsLoading(false);
     }
-  };
+  };  
 
   const chartOptions = {
     chart: {
@@ -141,7 +141,7 @@ export const OverviewBarChart = (props) => {
     return (
       <Card sx={sx}>
         <CardContent>
-          <Typography>Chargement des données de la bouteille...</Typography>
+          <Typography>Aucune donnée disponible...</Typography>
         </CardContent>
       </Card>
     );
@@ -151,7 +151,7 @@ export const OverviewBarChart = (props) => {
     return (
       <Card sx={sx}>
         <CardContent>
-          <Typography color="error">Error: {error}</Typography>
+          <Typography color="error">Erreur: {error}</Typography>
         </CardContent>
       </Card>
     );
@@ -167,7 +167,10 @@ export const OverviewBarChart = (props) => {
             justifyContent="space-between" 
             alignItems="center"
           >
-            <Typography color="text.secondary" variant="overline">
+            <Typography 
+              color="text.secondary" 
+              variant="overline"
+            >
               Distribution annuelle de bouteilles par le laboratoire
             </Typography>
             
