@@ -20,6 +20,8 @@ from Gazostheque.controllers.owner_controller import update_owner, generate_owne
 from Gazostheque.controllers.session_controller import *
 from Gazostheque.custom_exception import *
 
+from Gazostheque.models.user_model import CustomUsers
+
 @login_required
 @api_view(['GET' ,'DELETE'])
 def user_list(request):
@@ -213,3 +215,27 @@ def session_data(request):
 #                 {'error': 'Error fetching user statistics', 'message': str(e)},
 #                 status=status.HTTP_500_INTERNAL_SERVER_ERROR
 #             )
+
+
+@login_required
+@api_view(['GET'])
+def user_stats(request):
+    role_counts = CustomUsers.objects.exclude(email='admin@example.com') \
+        .values('role') \
+        .annotate(count=Count('id')) \
+        .order_by('role')
+    
+    total_users = sum(item['count'] for item in role_counts)
+    
+    labels = []
+    series = []
+    
+    for item in role_counts:
+        labels.append(item['role'])
+        percentage = (item['count'] / total_users) * 100 if total_users > 0 else 0
+        series.append(round(percentage, 1))  # Round to 1 decimal place
+    
+    return JsonResponse({
+        'labels': labels,
+        'series': series
+    })

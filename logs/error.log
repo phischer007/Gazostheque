@@ -1072,3 +1072,203 @@
 [2025-08-08 07:57:48 +0200] [3057304] [DEBUG] Closing connection.
 [2025-08-08 08:28:21 +0200] [3057308] [DEBUG] GET /admin/.env
 [2025-08-08 08:28:21 +0200] [3057308] [DEBUG] Closing connection.
+[2025-08-08 09:19:09 +0200] [3057305] [DEBUG] GET /admin/login.asp
+[2025-08-08 09:19:09 +0200] [3057305] [DEBUG] Closing connection.
+[2025-08-08 10:18:30 +0200] [3057312] [DEBUG] GET /admin/assets/js/views/login.js
+[2025-08-08 10:18:30 +0200] [3057312] [DEBUG] Closing connection.
+[2025-08-08 10:23:34 +0200] [3057305] [DEBUG] GET /api/session/
+[2025-08-08 10:23:34 +0200] [3057305] [DEBUG] Closing connection.
+[2025-08-08 10:23:34 +0200] [3057305] [DEBUG] GET /api/cas/login/
+[2025-08-08 10:23:34 +0200] [3057305] [DEBUG] Closing connection.
+[2025-08-08 10:23:46 +0200] [3057308] [DEBUG] GET /api/cas/validate/
+[2025-08-08 10:23:46 +0200] [3057308] [DEBUG] Closing connection.
+[2025-08-08 10:23:46 +0200] [3057308] [DEBUG] GET /api/session/
+[2025-08-08 10:23:46 +0200] [3057308] [DEBUG] Closing connection.
+[2025-08-08 10:23:47 +0200] [3057308] [DEBUG] GET /api/materials/count-by-lab
+[2025-08-08 10:23:47 +0200] [3057312] [DEBUG] GET /api/materials/bar-chart
+[2025-08-08 10:23:47 +0200] [3057308] [DEBUG] Closing connection.
+[2025-08-08 10:23:47 +0200] [3057308] [DEBUG] GET /api/users/stats
+[2025-08-08 10:23:47 +0200] [3057308] [DEBUG] Closing connection.
+[2025-08-08 10:23:47 +0200] [3057312] [DEBUG] Closing connection.
+[2025-08-08 10:23:47 +0200] [3057308] [DEBUG] GET /api/materials/count/
+[2025-08-08 10:23:47 +0200] [3057308] [DEBUG] Closing connection.
+[2025-08-08 10:25:26 +0200] [3057306] [INFO] Parent changed, shutting down: <Worker 3057306>
+[2025-08-08 10:25:26 +0200] [3057306] [INFO] Worker exiting (pid: 3057306)
+[2025-08-08 10:25:26 +0200] [3057310] [INFO] Parent changed, shutting down: <Worker 3057310>
+[2025-08-08 10:25:26 +0200] [3057310] [INFO] Worker exiting (pid: 3057310)
+[2025-08-08 10:25:26 +0200] [3057309] [INFO] Parent changed, shutting down: <Worker 3057309>
+[2025-08-08 10:25:26 +0200] [3057309] [INFO] Worker exiting (pid: 3057309)
+[2025-08-08 10:25:26 +0200] [3057300] [INFO] Parent changed, shutting down: <Worker 3057300>
+[2025-08-08 10:25:26 +0200] [3057300] [INFO] Worker exiting (pid: 3057300)
+[2025-08-08 10:25:27 +0200] [3057297] [INFO] Parent changed, shutting down: <Worker 3057297>
+[2025-08-08 10:25:27 +0200] [3057297] [INFO] Worker exiting (pid: 3057297)
+[2025-08-08 10:25:27 +0200] [3057305] [INFO] Parent changed, shutting down: <Worker 3057305>
+[2025-08-08 10:25:27 +0200] [3057305] [INFO] Worker exiting (pid: 3057305)
+[2025-08-08 10:25:27 +0200] [3057298] [INFO] Parent changed, shutting down: <Worker 3057298>
+[2025-08-08 10:25:27 +0200] [3057303] [INFO] Parent changed, shutting down: <Worker 3057303>
+[2025-08-08 10:25:27 +0200] [3057298] [INFO] Worker exiting (pid: 3057298)
+[2025-08-08 10:25:27 +0200] [3057303] [INFO] Worker exiting (pid: 3057303)
+[2025-08-08 10:25:27 +0200] [3057311] [INFO] Parent changed, shutting down: <Worker 3057311>
+[2025-08-08 10:25:27 +0200] [3057299] [INFO] Parent changed, shutting down: <Worker 3057299>
+[2025-08-08 10:25:27 +0200] [3057311] [INFO] Worker exiting (pid: 3057311)
+[2025-08-08 10:25:27 +0200] [3057304] [INFO] Parent changed, shutting down: <Worker 3057304>
+[2025-08-08 10:25:27 +0200] [3057308] [INFO] Parent changed, shutting down: <Worker 3057308>
+[2025-08-08 10:25:27 +0200] [3057299] [INFO] Worker exiting (pid: 3057299)
+[2025-08-08 10:25:27 +0200] [3057312] [INFO] Parent changed, shutting down: <Worker 3057312>
+[2025-08-08 10:25:27 +0200] [3057308] [INFO] Worker exiting (pid: 3057308)
+[2025-08-08 10:25:27 +0200] [3057304] [INFO] Worker exiting (pid: 3057304)
+[2025-08-08 10:25:27 +0200] [3057312] [INFO] Worker exiting (pid: 3057312)
+[2025-08-08 10:25:27 +0200] [3057313] [INFO] Parent changed, shutting down: <Worker 3057313>
+[2025-08-08 10:25:27 +0200] [3057307] [INFO] Parent changed, shutting down: <Worker 3057307>
+[2025-08-08 10:25:27 +0200] [3057313] [INFO] Worker exiting (pid: 3057313)
+[2025-08-08 10:25:27 +0200] [3057307] [INFO] Worker exiting (pid: 3057307)
+[2025-08-08 10:25:27 +0200] [3057302] [INFO] Parent changed, shutting down: <Worker 3057302>
+[2025-08-08 10:25:27 +0200] [3057302] [INFO] Worker exiting (pid: 3057302)
+[2025-08-08 10:25:27 +0200] [3057301] [INFO] Parent changed, shutting down: <Worker 3057301>
+[2025-08-08 10:25:27 +0200] [3057301] [INFO] Worker exiting (pid: 3057301)
+[2025-08-08 10:27:14 +0200] [3071492] [DEBUG] Current configuration:
+  config: gunicorn-gazostheque.py
+  wsgi_app: None
+  bind: ['0.0.0.0:8005']
+  backlog: 2048
+  workers: 17
+  worker_class: sync
+  threads: 16
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 60
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  print_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/vikhram/Gazostheque_App
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 1021
+  group: 1021
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1', '::1']
+  accesslog: /home/vikhram/Gazostheque_App/logs/access.log
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: /home/vikhram/Gazostheque_App/logs/error.log
+  loglevel: debug
+  capture_output: True
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  logconfig_json: None
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: GazosthequeRestApis.wsgi
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7fb7ab64bb80>
+  on_reload: <function OnReload.on_reload at 0x7fb7ab64bca0>
+  when_ready: <function WhenReady.when_ready at 0x7fb7ab64bdc0>
+  pre_fork: <function Prefork.pre_fork at 0x7fb7ab64bee0>
+  post_fork: <function Postfork.post_fork at 0x7fb7ab663040>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7fb7ab663160>
+  worker_int: <function WorkerInt.worker_int at 0x7fb7ab663280>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7fb7ab6633a0>
+  pre_exec: <function PreExec.pre_exec at 0x7fb7ab6634c0>
+  pre_request: <function PreRequest.pre_request at 0x7fb7ab6635e0>
+  post_request: <function PostRequest.post_request at 0x7fb7ab663670>
+  child_exit: <function ChildExit.child_exit at 0x7fb7ab663790>
+  worker_exit: <function WorkerExit.worker_exit at 0x7fb7ab6638b0>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7fb7ab6639d0>
+  on_exit: <function OnExit.on_exit at 0x7fb7ab663af0>
+  ssl_context: <function NewSSLContext.ssl_context at 0x7fb7ab663c10>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1', '::1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  permit_obsolete_folding: False
+  strip_header_spaces: False
+  permit_unconventional_http_method: False
+  permit_unconventional_http_version: False
+  casefold_http_method: False
+  forwarder_headers: ['SCRIPT_NAME', 'PATH_INFO']
+  header_map: drop
+[2025-08-08 10:27:14 +0200] [3071492] [INFO] Starting gunicorn 23.0.0
+[2025-08-08 10:27:14 +0200] [3071492] [DEBUG] Arbiter booted
+[2025-08-08 10:27:14 +0200] [3071492] [INFO] Listening at: http://0.0.0.0:8005 (3071492)
+[2025-08-08 10:27:14 +0200] [3071492] [INFO] Using worker: gthread
+[2025-08-08 10:27:14 +0200] [3071494] [INFO] Booting worker with pid: 3071494
+[2025-08-08 10:27:14 +0200] [3071495] [INFO] Booting worker with pid: 3071495
+[2025-08-08 10:27:15 +0200] [3071496] [INFO] Booting worker with pid: 3071496
+[2025-08-08 10:27:15 +0200] [3071497] [INFO] Booting worker with pid: 3071497
+[2025-08-08 10:27:15 +0200] [3071498] [INFO] Booting worker with pid: 3071498
+[2025-08-08 10:27:15 +0200] [3071499] [INFO] Booting worker with pid: 3071499
+[2025-08-08 10:27:15 +0200] [3071500] [INFO] Booting worker with pid: 3071500
+[2025-08-08 10:27:15 +0200] [3071501] [INFO] Booting worker with pid: 3071501
+[2025-08-08 10:27:15 +0200] [3071502] [INFO] Booting worker with pid: 3071502
+[2025-08-08 10:27:15 +0200] [3071503] [INFO] Booting worker with pid: 3071503
+[2025-08-08 10:27:15 +0200] [3071504] [INFO] Booting worker with pid: 3071504
+[2025-08-08 10:27:15 +0200] [3071505] [INFO] Booting worker with pid: 3071505
+[2025-08-08 10:27:15 +0200] [3071506] [INFO] Booting worker with pid: 3071506
+[2025-08-08 10:27:15 +0200] [3071507] [INFO] Booting worker with pid: 3071507
+[2025-08-08 10:27:15 +0200] [3071508] [INFO] Booting worker with pid: 3071508
+[2025-08-08 10:27:15 +0200] [3071509] [INFO] Booting worker with pid: 3071509
+[2025-08-08 10:27:15 +0200] [3071510] [INFO] Booting worker with pid: 3071510
+[2025-08-08 10:27:15 +0200] [3071492] [DEBUG] 17 workers
+[2025-08-08 10:28:09 +0200] [3071507] [DEBUG] GET /api/materials/count-by-lab
+[2025-08-08 10:28:09 +0200] [3071500] [DEBUG] GET /api/materials/bar-chart
+[2025-08-08 10:28:09 +0200] [3071508] [DEBUG] GET /api/users/stats
+[2025-08-08 10:28:09 +0200] [3071510] [DEBUG] GET /api/materials/count/
+[2025-08-08 10:28:09 +0200] [3071507] [DEBUG] Closing connection.
+[2025-08-08 10:28:09 +0200] [3071500] [DEBUG] Closing connection.
+[2025-08-08 10:28:09 +0200] [3071508] [DEBUG] Closing connection.
+[2025-08-08 10:28:09 +0200] [3071510] [DEBUG] Closing connection.
+[2025-08-08 10:28:13 +0200] [3071509] [DEBUG] GET /admin/login/
+[2025-08-08 10:28:13 +0200] [3071509] [DEBUG] Closing connection.
+[2025-08-08 10:28:18 +0200] [3071509] [DEBUG] POST /admin/login/
+[2025-08-08 10:28:18 +0200] [3071509] [DEBUG] Closing connection.
+[2025-08-08 10:28:18 +0200] [3071506] [DEBUG] GET /admin/
+[2025-08-08 10:28:18 +0200] [3071506] [DEBUG] Closing connection.
+[2025-08-08 10:32:27 +0200] [3071509] [DEBUG] GET /admin/taggit/tag/
+[2025-08-08 10:32:27 +0200] [3071509] [DEBUG] Closing connection.
+[2025-08-08 10:32:27 +0200] [3071510] [DEBUG] GET /admin/jsi18n/
+[2025-08-08 10:32:27 +0200] [3071510] [DEBUG] Closing connection.
+[2025-08-08 10:32:29 +0200] [3071507] [DEBUG] GET /admin/Gazostheque/materials/
+[2025-08-08 10:32:29 +0200] [3071507] [DEBUG] Closing connection.
+[2025-08-08 10:32:29 +0200] [3071510] [DEBUG] GET /admin/jsi18n/
+[2025-08-08 10:32:29 +0200] [3071510] [DEBUG] Closing connection.
+[2025-08-08 10:38:17 +0200] [3071508] [DEBUG] GET /api/materials/count-by-lab
+[2025-08-08 10:38:17 +0200] [3071510] [DEBUG] GET /api/materials/bar-chart
+[2025-08-08 10:38:17 +0200] [3071503] [DEBUG] GET /api/users/stats
+[2025-08-08 10:38:17 +0200] [3071508] [DEBUG] Closing connection.
+[2025-08-08 10:38:17 +0200] [3071510] [DEBUG] Closing connection.
+[2025-08-08 10:38:17 +0200] [3071503] [DEBUG] GET /api/materials/count/
+[2025-08-08 10:38:17 +0200] [3071503] [DEBUG] Closing connection.
+[2025-08-08 10:38:17 +0200] [3071503] [DEBUG] Closing connection.

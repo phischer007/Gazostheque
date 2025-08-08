@@ -23,7 +23,7 @@ import { Layout as DashboardLayout } from 'src/layouts/dashboard/layout';
 import { OverviewTotalMaterialsByLab } from 'src/sections/overview/overview-total';
 import { OverviewBarChart } from 'src/sections/overview/overview-barchart-year';
 import { OverviewTotalMaterials } from 'src/sections/overview/overview-total-material';
-// import { OverviewUserStats } from 'src/sections/overview/overview-user-stats';
+import { OverviewUserStats } from 'src/sections/overview/overview-user-stats';
 
 // -------------------------------------------------------------------------- //
 
@@ -110,13 +110,13 @@ const Page = () => {
             <OverviewBarChart sx={{ height: '100%' }}/>
           </Grid>
 
-          {/* <Grid
+          <Grid
             xs={12}
             md={6}
             lg={4}
           >
             <OverviewUserStats sx={{ height: '100%' }}/>
-          </Grid> */}
+          </Grid>
 
 
         </Grid>
