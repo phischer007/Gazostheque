@@ -201,12 +201,6 @@ export const MaterialDetailEdit = (props) => {
                     value={formData.origin || ''}
                   />
                 </Grid>
-                {/* <Grid
-                  xs={12}
-                  md={6}
-                >
-                  <InputTags />
-                </Grid> */}
                 <Grid xs={12} 
                   md={6}
                 >

@@ -168,7 +168,7 @@ const Page = () => {
                 </Grid>
 
                 {/* Delete or Remove */}
-                {canDeleteOrRemove && (
+                {canDeleteOrRemove && user.role !== 'user' && (
                   <Grid
                     xs={12}
                   >
