@@ -691,3 +691,384 @@
 [2025-08-07 14:19:58 +0200] [3037232] [DEBUG] Closing connection.
 [2025-08-07 14:19:58 +0200] [3037232] [DEBUG] GET /admin/jsi18n/
 [2025-08-07 14:19:58 +0200] [3037232] [DEBUG] Closing connection.
+[2025-08-07 14:40:18 +0200] [3037227] [DEBUG] GET /api/materials/count-by-lab
+[2025-08-07 14:40:18 +0200] [3037232] [DEBUG] GET /api/materials/bar-chart
+[2025-08-07 14:40:18 +0200] [3037232] [DEBUG] Closing connection.
+[2025-08-07 14:40:18 +0200] [3037227] [DEBUG] Closing connection.
+[2025-08-07 14:40:18 +0200] [3037232] [DEBUG] GET /api/materials/count/
+[2025-08-07 14:40:18 +0200] [3037232] [DEBUG] Closing connection.
+[2025-08-07 14:45:52 +0200] [3037232] [DEBUG] GET /api/materials/count-by-lab
+[2025-08-07 14:45:52 +0200] [3037222] [DEBUG] GET /api/materials/bar-chart
+[2025-08-07 14:45:52 +0200] [3037223] [DEBUG] GET /api/users/stats
+[2025-08-07 14:45:52 +0200] [3037232] [DEBUG] Closing connection.
+[2025-08-07 14:45:52 +0200] [3037224] [DEBUG] GET /api/materials/count/
+[2025-08-07 14:45:52 +0200] [3037222] [DEBUG] Closing connection.
+[2025-08-07 14:45:52 +0200] [3037223] [DEBUG] Closing connection.
+[2025-08-07 14:45:52 +0200] [3037224] [DEBUG] Closing connection.
+[2025-08-07 14:46:05 +0200] [3037229] [DEBUG] GET /api/materials/count-by-lab
+[2025-08-07 14:46:05 +0200] [3037226] [DEBUG] GET /api/users/stats
+[2025-08-07 14:46:05 +0200] [3037221] [DEBUG] GET /api/materials/bar-chart
+[2025-08-07 14:46:05 +0200] [3037226] [DEBUG] Closing connection.
+[2025-08-07 14:46:05 +0200] [3037229] [DEBUG] Closing connection.
+[2025-08-07 14:46:05 +0200] [3037224] [DEBUG] GET /api/materials/count/
+[2025-08-07 14:46:05 +0200] [3037224] [DEBUG] Closing connection.
+[2025-08-07 14:46:05 +0200] [3037221] [DEBUG] Closing connection.
+[2025-08-07 14:47:10 +0200] [3037219] [INFO] Parent changed, shutting down: <Worker 3037219>
+[2025-08-07 14:47:10 +0200] [3037219] [INFO] Worker exiting (pid: 3037219)
+[2025-08-07 14:47:10 +0200] [3037220] [INFO] Parent changed, shutting down: <Worker 3037220>
+[2025-08-07 14:47:10 +0200] [3037220] [INFO] Worker exiting (pid: 3037220)
+[2025-08-07 14:47:10 +0200] [3037230] [INFO] Parent changed, shutting down: <Worker 3037230>
+[2025-08-07 14:47:10 +0200] [3037230] [INFO] Worker exiting (pid: 3037230)
+[2025-08-07 14:47:10 +0200] [3037231] [INFO] Parent changed, shutting down: <Worker 3037231>
+[2025-08-07 14:47:10 +0200] [3037231] [INFO] Worker exiting (pid: 3037231)
+[2025-08-07 14:47:10 +0200] [3037228] [INFO] Parent changed, shutting down: <Worker 3037228>
+[2025-08-07 14:47:10 +0200] [3037228] [INFO] Worker exiting (pid: 3037228)
+[2025-08-07 14:47:10 +0200] [3037218] [INFO] Parent changed, shutting down: <Worker 3037218>
+[2025-08-07 14:47:10 +0200] [3037216] [INFO] Parent changed, shutting down: <Worker 3037216>
+[2025-08-07 14:47:10 +0200] [3037218] [INFO] Worker exiting (pid: 3037218)
+[2025-08-07 14:47:10 +0200] [3037216] [INFO] Worker exiting (pid: 3037216)
+[2025-08-07 14:47:11 +0200] [3037221] [INFO] Parent changed, shutting down: <Worker 3037221>
+[2025-08-07 14:47:11 +0200] [3037232] [INFO] Parent changed, shutting down: <Worker 3037232>
+[2025-08-07 14:47:11 +0200] [3037227] [INFO] Parent changed, shutting down: <Worker 3037227>
+[2025-08-07 14:47:11 +0200] [3037232] [INFO] Worker exiting (pid: 3037232)
+[2025-08-07 14:47:11 +0200] [3037221] [INFO] Worker exiting (pid: 3037221)
+[2025-08-07 14:47:11 +0200] [3037227] [INFO] Worker exiting (pid: 3037227)
+[2025-08-07 14:47:11 +0200] [3037225] [INFO] Parent changed, shutting down: <Worker 3037225>
+[2025-08-07 14:47:11 +0200] [3037225] [INFO] Worker exiting (pid: 3037225)
+[2025-08-07 14:47:11 +0200] [3037229] [INFO] Parent changed, shutting down: <Worker 3037229>
+[2025-08-07 14:47:11 +0200] [3037222] [INFO] Parent changed, shutting down: <Worker 3037222>
+[2025-08-07 14:47:11 +0200] [3037224] [INFO] Parent changed, shutting down: <Worker 3037224>
+[2025-08-07 14:47:11 +0200] [3037229] [INFO] Worker exiting (pid: 3037229)
+[2025-08-07 14:47:11 +0200] [3037217] [INFO] Parent changed, shutting down: <Worker 3037217>
+[2025-08-07 14:47:11 +0200] [3037224] [INFO] Worker exiting (pid: 3037224)
+[2025-08-07 14:47:11 +0200] [3037222] [INFO] Worker exiting (pid: 3037222)
+[2025-08-07 14:47:11 +0200] [3037226] [INFO] Parent changed, shutting down: <Worker 3037226>
+[2025-08-07 14:47:11 +0200] [3037217] [INFO] Worker exiting (pid: 3037217)
+[2025-08-07 14:47:11 +0200] [3037226] [INFO] Worker exiting (pid: 3037226)
+[2025-08-07 14:47:11 +0200] [3037223] [INFO] Parent changed, shutting down: <Worker 3037223>
+[2025-08-07 14:47:11 +0200] [3037223] [INFO] Worker exiting (pid: 3037223)
+[2025-08-07 14:47:38 +0200] [3053958] [DEBUG] Current configuration:
+  config: gunicorn-gazostheque.py
+  wsgi_app: None
+  bind: ['0.0.0.0:8005']
+  backlog: 2048
+  workers: 17
+  worker_class: sync
+  threads: 16
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 60
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  print_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/vikhram/Gazostheque_App
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 1021
+  group: 1021
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1', '::1']
+  accesslog: /home/vikhram/Gazostheque_App/logs/access.log
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: /home/vikhram/Gazostheque_App/logs/error.log
+  loglevel: debug
+  capture_output: True
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  logconfig_json: None
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: GazosthequeRestApis.wsgi
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7fea88cbab80>
+  on_reload: <function OnReload.on_reload at 0x7fea88cbaca0>
+  when_ready: <function WhenReady.when_ready at 0x7fea88cbadc0>
+  pre_fork: <function Prefork.pre_fork at 0x7fea88cbaee0>
+  post_fork: <function Postfork.post_fork at 0x7fea88cd2040>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7fea88cd2160>
+  worker_int: <function WorkerInt.worker_int at 0x7fea88cd2280>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7fea88cd23a0>
+  pre_exec: <function PreExec.pre_exec at 0x7fea88cd24c0>
+  pre_request: <function PreRequest.pre_request at 0x7fea88cd25e0>
+  post_request: <function PostRequest.post_request at 0x7fea88cd2670>
+  child_exit: <function ChildExit.child_exit at 0x7fea88cd2790>
+  worker_exit: <function WorkerExit.worker_exit at 0x7fea88cd28b0>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7fea88cd29d0>
+  on_exit: <function OnExit.on_exit at 0x7fea88cd2af0>
+  ssl_context: <function NewSSLContext.ssl_context at 0x7fea88cd2c10>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1', '::1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  permit_obsolete_folding: False
+  strip_header_spaces: False
+  permit_unconventional_http_method: False
+  permit_unconventional_http_version: False
+  casefold_http_method: False
+  forwarder_headers: ['SCRIPT_NAME', 'PATH_INFO']
+  header_map: drop
+[2025-08-07 14:47:38 +0200] [3053958] [INFO] Starting gunicorn 23.0.0
+[2025-08-07 14:47:38 +0200] [3053958] [DEBUG] Arbiter booted
+[2025-08-07 14:47:38 +0200] [3053958] [INFO] Listening at: http://0.0.0.0:8005 (3053958)
+[2025-08-07 14:47:38 +0200] [3053958] [INFO] Using worker: gthread
+[2025-08-07 14:47:38 +0200] [3053960] [INFO] Booting worker with pid: 3053960
+[2025-08-07 14:47:38 +0200] [3053961] [INFO] Booting worker with pid: 3053961
+[2025-08-07 14:47:38 +0200] [3053962] [INFO] Booting worker with pid: 3053962
+[2025-08-07 14:47:38 +0200] [3053963] [INFO] Booting worker with pid: 3053963
+[2025-08-07 14:47:38 +0200] [3053964] [INFO] Booting worker with pid: 3053964
+[2025-08-07 14:47:38 +0200] [3053965] [INFO] Booting worker with pid: 3053965
+[2025-08-07 14:47:38 +0200] [3053966] [INFO] Booting worker with pid: 3053966
+[2025-08-07 14:47:38 +0200] [3053967] [INFO] Booting worker with pid: 3053967
+[2025-08-07 14:47:38 +0200] [3053968] [INFO] Booting worker with pid: 3053968
+[2025-08-07 14:47:38 +0200] [3053969] [INFO] Booting worker with pid: 3053969
+[2025-08-07 14:47:39 +0200] [3053970] [INFO] Booting worker with pid: 3053970
+[2025-08-07 14:47:39 +0200] [3053971] [INFO] Booting worker with pid: 3053971
+[2025-08-07 14:47:39 +0200] [3053972] [INFO] Booting worker with pid: 3053972
+[2025-08-07 14:47:39 +0200] [3053973] [INFO] Booting worker with pid: 3053973
+[2025-08-07 14:47:39 +0200] [3053974] [INFO] Booting worker with pid: 3053974
+[2025-08-07 14:47:39 +0200] [3053975] [INFO] Booting worker with pid: 3053975
+[2025-08-07 14:47:39 +0200] [3053976] [INFO] Booting worker with pid: 3053976
+[2025-08-07 14:47:39 +0200] [3053958] [DEBUG] 17 workers
+[2025-08-07 14:48:23 +0200] [3053976] [DEBUG] GET /api/materials/count-by-lab
+[2025-08-07 14:48:23 +0200] [3053971] [DEBUG] GET /api/materials/bar-chart
+[2025-08-07 14:48:23 +0200] [3053974] [DEBUG] GET /api/users/stats
+[2025-08-07 14:48:23 +0200] [3053973] [DEBUG] GET /api/materials/count/
+[2025-08-07 14:48:23 +0200] [3053976] [DEBUG] Closing connection.
+[2025-08-07 14:48:23 +0200] [3053971] [DEBUG] Closing connection.
+[2025-08-07 14:48:23 +0200] [3053974] [DEBUG] Closing connection.
+[2025-08-07 14:48:23 +0200] [3053973] [DEBUG] Closing connection.
+[2025-08-07 14:50:48 +0200] [3053974] [DEBUG] GET /api/materials/count-by-lab
+[2025-08-07 14:50:48 +0200] [3053974] [DEBUG] GET /api/materials/bar-chart
+[2025-08-07 14:50:48 +0200] [3053974] [DEBUG] Closing connection.
+[2025-08-07 14:50:48 +0200] [3053974] [DEBUG] Closing connection.
+[2025-08-07 14:50:48 +0200] [3053976] [DEBUG] GET /api/materials/count/
+[2025-08-07 14:50:48 +0200] [3053976] [DEBUG] Closing connection.
+[2025-08-07 14:50:50 +0200] [3053976] [DEBUG] GET /api/active_owners/lite/
+[2025-08-07 14:50:50 +0200] [3053976] [DEBUG] Closing connection.
+[2025-08-07 14:50:51 +0200] [3053973] [DEBUG] GET /api/materials/
+[2025-08-07 14:50:51 +0200] [3053970] [DEBUG] GET /api/materials/owner/3/
+[2025-08-07 14:50:51 +0200] [3053973] [DEBUG] Closing connection.
+[2025-08-07 14:50:51 +0200] [3053970] [DEBUG] Closing connection.
+[2025-08-07 14:50:52 +0200] [3053974] [DEBUG] GET /api/materials/count-by-lab
+[2025-08-07 14:50:52 +0200] [3053975] [DEBUG] GET /api/materials/bar-chart
+[2025-08-07 14:50:52 +0200] [3053974] [DEBUG] Closing connection.
+[2025-08-07 14:50:52 +0200] [3053970] [DEBUG] GET /api/materials/count/
+[2025-08-07 14:50:52 +0200] [3053970] [DEBUG] Closing connection.
+[2025-08-07 14:50:52 +0200] [3053975] [DEBUG] Closing connection.
+[2025-08-07 14:51:01 +0200] [3053958] [ERROR] Worker (pid:3053961) was sent SIGHUP!
+[2025-08-07 14:51:01 +0200] [3053958] [ERROR] Worker (pid:3053963) was sent SIGHUP!
+[2025-08-07 14:51:01 +0200] [3053958] [ERROR] Worker (pid:3053969) was sent SIGHUP!
+[2025-08-07 14:51:01 +0200] [3053958] [ERROR] Worker (pid:3053971) was sent SIGHUP!
+[2025-08-07 14:51:01 +0200] [3053958] [ERROR] Worker (pid:3053972) was sent SIGHUP!
+[2025-08-07 14:51:01 +0200] [3053958] [ERROR] Worker (pid:3053973) was sent SIGHUP!
+[2025-08-07 14:51:01 +0200] [3053958] [ERROR] Worker (pid:3053975) was sent SIGHUP!
+[2025-08-07 14:51:01 +0200] [3053958] [ERROR] Worker (pid:3053976) was sent SIGHUP!
+[2025-08-07 14:51:01 +0200] [3057268] [INFO] Booting worker with pid: 3057268
+[2025-08-07 14:51:01 +0200] [3053958] [ERROR] Worker (pid:3053967) was sent SIGHUP!
+[2025-08-07 14:51:01 +0200] [3053958] [ERROR] Worker (pid:3053962) was sent SIGHUP!
+[2025-08-07 14:51:01 +0200] [3053958] [ERROR] Worker (pid:3053974) was sent SIGHUP!
+[2025-08-07 14:51:01 +0200] [3053958] [ERROR] Worker (pid:3053964) was sent SIGHUP!
+[2025-08-07 14:51:01 +0200] [3053958] [ERROR] Worker (pid:3053970) was sent SIGHUP!
+[2025-08-07 14:51:01 +0200] [3053958] [ERROR] Worker (pid:3053960) was sent SIGHUP!
+[2025-08-07 14:51:01 +0200] [3053958] [ERROR] Worker (pid:3053966) was sent SIGHUP!
+[2025-08-07 14:51:01 +0200] [3053958] [ERROR] Worker (pid:3053968) was sent SIGHUP!
+[2025-08-07 14:51:01 +0200] [3053958] [ERROR] Worker (pid:3053965) was sent SIGHUP!
+[2025-08-07 14:51:01 +0200] [3057269] [INFO] Booting worker with pid: 3057269
+[2025-08-07 14:51:01 +0200] [3057270] [INFO] Booting worker with pid: 3057270
+[2025-08-07 14:51:01 +0200] [3057292] [INFO] Booting worker with pid: 3057292
+[2025-08-07 14:51:01 +0200] [3057293] [INFO] Booting worker with pid: 3057293
+[2025-08-07 14:51:01 +0200] [3057294] [INFO] Booting worker with pid: 3057294
+[2025-08-07 14:51:01 +0200] [3057295] [INFO] Booting worker with pid: 3057295
+[2025-08-07 14:51:01 +0200] [3057296] [INFO] Booting worker with pid: 3057296
+[2025-08-07 14:51:01 +0200] [3053958] [DEBUG] 8 workers
+[2025-08-07 14:51:01 +0200] [3053958] [INFO] Handling signal: hup
+[2025-08-07 14:51:01 +0200] [3053958] [INFO] Hang up: Master
+[2025-08-07 14:51:01 +0200] [3053958] [DEBUG] Current configuration:
+  config: gunicorn-gazostheque.py
+  wsgi_app: None
+  bind: ['0.0.0.0:8005']
+  backlog: 2048
+  workers: 17
+  worker_class: sync
+  threads: 16
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 60
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  print_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/vikhram/Gazostheque_App
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 1021
+  group: 1021
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1', '::1']
+  accesslog: /home/vikhram/Gazostheque_App/logs/access.log
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: /home/vikhram/Gazostheque_App/logs/error.log
+  loglevel: debug
+  capture_output: True
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  logconfig_json: None
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: GazosthequeRestApis.wsgi
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7fea88cbab80>
+  on_reload: <function OnReload.on_reload at 0x7fea88cbaca0>
+  when_ready: <function WhenReady.when_ready at 0x7fea88cbadc0>
+  pre_fork: <function Prefork.pre_fork at 0x7fea88cbaee0>
+  post_fork: <function Postfork.post_fork at 0x7fea88cd2040>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7fea88cd2160>
+  worker_int: <function WorkerInt.worker_int at 0x7fea88cd2280>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7fea88cd23a0>
+  pre_exec: <function PreExec.pre_exec at 0x7fea88cd24c0>
+  pre_request: <function PreRequest.pre_request at 0x7fea88cd25e0>
+  post_request: <function PostRequest.post_request at 0x7fea88cd2670>
+  child_exit: <function ChildExit.child_exit at 0x7fea88cd2790>
+  worker_exit: <function WorkerExit.worker_exit at 0x7fea88cd28b0>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7fea88cd29d0>
+  on_exit: <function OnExit.on_exit at 0x7fea88cd2af0>
+  ssl_context: <function NewSSLContext.ssl_context at 0x7fea88cd2c10>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1', '::1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  permit_obsolete_folding: False
+  strip_header_spaces: False
+  permit_unconventional_http_method: False
+  permit_unconventional_http_version: False
+  casefold_http_method: False
+  forwarder_headers: ['SCRIPT_NAME', 'PATH_INFO']
+  header_map: drop
+[2025-08-07 14:51:01 +0200] [3057297] [INFO] Booting worker with pid: 3057297
+[2025-08-07 14:51:01 +0200] [3057301] [INFO] Booting worker with pid: 3057301
+[2025-08-07 14:51:01 +0200] [3057300] [INFO] Booting worker with pid: 3057300
+[2025-08-07 14:51:01 +0200] [3057302] [INFO] Booting worker with pid: 3057302
+[2025-08-07 14:51:01 +0200] [3057303] [INFO] Booting worker with pid: 3057303
+[2025-08-07 14:51:01 +0200] [3057304] [INFO] Booting worker with pid: 3057304
+[2025-08-07 14:51:01 +0200] [3057299] [INFO] Booting worker with pid: 3057299
+[2025-08-07 14:51:01 +0200] [3057306] [INFO] Booting worker with pid: 3057306
+[2025-08-07 14:51:01 +0200] [3057305] [INFO] Booting worker with pid: 3057305
+[2025-08-07 14:51:01 +0200] [3057298] [INFO] Booting worker with pid: 3057298
+[2025-08-07 14:51:01 +0200] [3057307] [INFO] Booting worker with pid: 3057307
+[2025-08-07 14:51:01 +0200] [3057310] [INFO] Booting worker with pid: 3057310
+[2025-08-07 14:51:01 +0200] [3057308] [INFO] Booting worker with pid: 3057308
+[2025-08-07 14:51:01 +0200] [3057309] [INFO] Booting worker with pid: 3057309
+[2025-08-07 14:51:01 +0200] [3053958] [DEBUG] 17 workers
+[2025-08-07 14:51:01 +0200] [3057313] [INFO] Booting worker with pid: 3057313
+[2025-08-07 14:51:01 +0200] [3057311] [INFO] Booting worker with pid: 3057311
+[2025-08-07 14:51:01 +0200] [3057312] [INFO] Booting worker with pid: 3057312
+[2025-08-07 14:51:01 +0200] [3057270] [INFO] Worker exiting (pid: 3057270)
+[2025-08-07 14:51:02 +0200] [3057292] [INFO] Worker exiting (pid: 3057292)
+[2025-08-07 14:51:02 +0200] [3053958] [ERROR] Worker (pid:3057292) was sent SIGTERM!
+[2025-08-07 14:51:02 +0200] [3057293] [INFO] Worker exiting (pid: 3057293)
+[2025-08-07 14:51:02 +0200] [3057294] [INFO] Worker exiting (pid: 3057294)
+[2025-08-07 14:51:02 +0200] [3057295] [INFO] Worker exiting (pid: 3057295)
+[2025-08-07 14:51:02 +0200] [3057268] [INFO] Worker exiting (pid: 3057268)
+[2025-08-07 14:51:02 +0200] [3057296] [INFO] Worker exiting (pid: 3057296)
+[2025-08-07 14:51:02 +0200] [3053958] [ERROR] Worker (pid:3057268) was sent SIGTERM!
+[2025-08-07 14:51:02 +0200] [3053958] [ERROR] Worker (pid:3057295) was sent SIGTERM!
+[2025-08-07 14:51:02 +0200] [3053958] [ERROR] Worker (pid:3057293) was sent SIGTERM!
+[2025-08-07 14:51:02 +0200] [3053958] [ERROR] Worker (pid:3057296) was sent SIGTERM!
+[2025-08-07 14:51:02 +0200] [3057269] [INFO] Worker exiting (pid: 3057269)
+[2025-08-07 16:15:37 +0200] [3057308] [DEBUG] GET /admin/assets/js/views/login.js
+[2025-08-07 16:15:37 +0200] [3057308] [DEBUG] Closing connection.
+[2025-08-07 20:37:44 +0200] [3057307] [DEBUG] GET /admin/assets/js/views/login.js
+[2025-08-07 20:37:44 +0200] [3057307] [DEBUG] Closing connection.
+[2025-08-07 23:17:50 +0200] [3057310] [DEBUG] GET /admin/.env
+[2025-08-07 23:17:50 +0200] [3057310] [DEBUG] Closing connection.
+[2025-08-07 23:17:50 +0200] [3057308] [DEBUG] GET /api/.env
+[2025-08-07 23:17:50 +0200] [3057308] [DEBUG] Closing connection.
+[2025-08-07 23:17:50 +0200] [3057308] [DEBUG] GET /api/config/tsconfig.json
+[2025-08-07 23:17:50 +0200] [3057308] [DEBUG] Closing connection.
+[2025-08-07 23:18:00 +0200] [3057301] [DEBUG] GET /admin/config
+[2025-08-07 23:18:00 +0200] [3057301] [DEBUG] Closing connection.
+[2025-08-07 23:18:04 +0200] [3057308] [DEBUG] GET /admin/.env
+[2025-08-07 23:18:04 +0200] [3057308] [DEBUG] Closing connection.
+[2025-08-07 23:18:25 +0200] [3057301] [DEBUG] GET /api/.env
+[2025-08-07 23:18:25 +0200] [3057301] [DEBUG] Closing connection.
+[2025-08-07 23:18:32 +0200] [3057312] [DEBUG] GET /api/config/tsconfig.json
+[2025-08-07 23:18:32 +0200] [3057312] [DEBUG] Closing connection.
+[2025-08-07 23:18:33 +0200] [3057308] [DEBUG] GET /admin/config
+[2025-08-07 23:18:33 +0200] [3057308] [DEBUG] Closing connection.
+[2025-08-08 00:37:48 +0200] [3057307] [DEBUG] GET /admin/assets/css/jquery-ui.css
+[2025-08-08 00:37:48 +0200] [3057307] [DEBUG] Closing connection.
+[2025-08-08 03:44:55 +0200] [3057301] [DEBUG] GET /admin/assets/js/views/login.js
+[2025-08-08 03:44:55 +0200] [3057301] [DEBUG] Closing connection.
+[2025-08-08 07:57:46 +0200] [3057304] [DEBUG] GET /api/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php
+[2025-08-08 07:57:46 +0200] [3057304] [DEBUG] Closing connection.
+[2025-08-08 07:57:48 +0200] [3057304] [DEBUG] GET /admin/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php
+[2025-08-08 07:57:48 +0200] [3057304] [DEBUG] Closing connection.
+[2025-08-08 08:28:21 +0200] [3057308] [DEBUG] GET /admin/.env
+[2025-08-08 08:28:21 +0200] [3057308] [DEBUG] Closing connection.

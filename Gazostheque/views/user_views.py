@@ -197,19 +197,19 @@ def session_data(request):
         }, status=status.HTTP_400_BAD_REQUEST)
 
 
-@login_required
-@api_view(['GET'])
-def user_statistics(request):
-    """
-    API endpoint to get user statistics grouped by year and role.
-    Returns JSON data with year, role, and user count.
-    """
-    if request.method == 'GET':
-        try:
-            statistics = get_users_by_year_and_role()
-            return JsonResponse(statistics, safe=False)
-        except Exception as e:
-            return JsonResponse(
-                {'error': 'Error fetching user statistics', 'message': str(e)},
-                status=status.HTTP_500_INTERNAL_SERVER_ERROR
-            )
+# @login_required
+# @api_view(['GET'])
+# def user_statistics(request):
+#     """
+#     API endpoint to get user statistics grouped by year and role.
+#     Returns JSON data with year, role, and user count.
+#     """
+#     if request.method == 'GET':
+#         try:
+#             statistics = get_users_by_year_and_role()
+#             return JsonResponse(statistics, safe=False)
+#         except Exception as e:
+#             return JsonResponse(
+#                 {'error': 'Error fetching user statistics', 'message': str(e)},
+#                 status=status.HTTP_500_INTERNAL_SERVER_ERROR
+#             )

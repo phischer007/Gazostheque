@@ -31,7 +31,7 @@ urlpatterns = [
     path('users/<int:pk>/', user_views.user_detail),
     path('users/upload_pictures/<int:pk>/', user_views.upload_profile_pic),
 
-    path('users/stats', user_views.user_statistics),
+    # path('users/stats', user_views.user_statistics),
 
 
     path('notifications/', notification_views.notification_operations),

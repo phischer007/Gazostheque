@@ -39,18 +39,18 @@ def get_formatted_user(user):
     
     return user_details
 
-def get_user_stats():
-    """
-    Retrieves user statistics grouped by year of registration and role.
-    Returns a list of dictionaries containing year, role, and user count.
-    """
-    User = get_user_model()
+# def get_user_stats():
+#     """
+#     Retrieves user statistics grouped by year of registration and role.
+#     Returns a list of dictionaries containing year, role, and user count.
+#     """
+#     User = get_user_model()
     
-    # Using Django ORM to avoid raw SQL
-    queryset = User.objects.exclude(email='admin@example.com').annotate(
-        year=ExtractYear('date_joined')
-    ).values('year', 'role').annotate(
-        user_count=Count('user_id')
-    ).order_by('year')
+#     # Using Django ORM to avoid raw SQL
+#     queryset = User.objects.exclude(email='admin@example.com').annotate(
+#         year=ExtractYear('date_joined')
+#     ).values('year', 'role').annotate(
+#         user_count=Count('user_id')
+#     ).order_by('year')
     
-    return list(queryset)
+#     return list(queryset)
