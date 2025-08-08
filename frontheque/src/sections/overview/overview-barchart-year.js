@@ -125,8 +125,8 @@ export const OverviewBarChart = (props) => {
       type: 'solid'
     },
     colors: [
-      theme.palette.error.dark,
-      theme.palette.success.dark
+      theme.palette.dutchwhite.main,
+      theme.palette.pakistangreen.main
     ],
     legend: {
       position: 'top',

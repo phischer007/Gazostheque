@@ -1,6 +1,6 @@
 import { common } from '@mui/material/colors';
 import { alpha } from '@mui/material/styles';
-import { error, indigo, info, neutral, success, warning, cream, black } from './colors';
+import { error, indigo, info, neutral, success, warning, cream, black, dutchwhite, pakistangreen } from './colors';
 
 export function createPalette() {
   return {
@@ -20,9 +20,11 @@ export function createPalette() {
     error,
     info,
     cream,
+    dutchwhite,
     indigo,
     mode: 'light',
     neutral,
+    pakistangreen,
     primary: black,
     success,
     text: {

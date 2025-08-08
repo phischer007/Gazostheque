@@ -83,7 +83,7 @@ export const OverviewTotalMaterials = (props) => {
           </Stack>
           <Avatar
             sx={{
-              backgroundColor: 'primary.main',
+              backgroundColor: 'error.darkest',
               height: 56,
               width: 56
             }}

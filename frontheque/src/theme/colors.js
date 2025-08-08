@@ -86,3 +86,11 @@ export const black = withAlphas({
   darkest: '#0D1114',   // Cool deep black
   contrastText: '#FFFFFF' // White text for contrast
 });
+
+export const dutchwhite = withAlphas({
+  main : '#E2D7AB'
+});
+
+export const pakistangreen = withAlphas({
+  main : '#0F4415'
+});
