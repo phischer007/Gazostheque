@@ -21,14 +21,26 @@ import {
   Divider, 
   SvgIcon,
   TextField, 
+  Typography, 
+  MenuItem,
+  Select,
   Unstable_Grid2 as Grid, 
 } from '@mui/material';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-import InputTags from 'src/sections/tags/input-tag';
 
 export const MaterialDetailEdit = (props) => {
   const { user } = useAuth();
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState({
+    material_title: '',
+    team: '',
+    origin: '',
+    codeCommande: '',
+    codeBarres: '',
+    size: '',
+    levRisk: '',
+    date_arrivee: null,
+    date_depart: null,
+  });
   const [materialID, setMaterialID] = useState(null);
   const [openDialog, setOpenDialog] = useState(false);
 
@@ -90,6 +102,7 @@ export const MaterialDetailEdit = (props) => {
         codeBarres: props.data.codeBarres || '',
         size: props.data.size || '',
         levRisk: props.data.levRisk || '',
+        date_arrivee: props.data.date_arrivee ? new Date(props.data.date_arrivee) : null,
         date_depart: props.data.date_depart ? new Date(props.data.date_depart) : null,
       });
     }
@@ -99,35 +112,37 @@ export const MaterialDetailEdit = (props) => {
     async (event) => {
       event.preventDefault();
       
-      if (!formData.date_depart) {
-        toast.error("Veuillez sélectionner une nouvelle date de départ");
-        return;
-      }
-  
-      const formattedDate = formData.date_depart ? moment(formData.date_depart).format('YYYY-MM-DDTHH:mm:ss.SSS[Z]') : null;
-  
-      const dataToSend = {
-        ...formData,
-        date_depart: formattedDate,
-      };
-  
-      if (materialID) {
-        const response = await fetch(`${config.apiUrl}/materials/${materialID}/`, {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(dataToSend),
-        });
-  
-        if (!response.ok) {
-          const errorMessage = await response.text();
-          let decodeResponse = JSON.parse(errorMessage);
-          toast.error(decodeResponse.message, { autoClose: false });
-        } else {
-          toast.success("Les détails de la bouteille ont été mis à jour avec succès !");
-          window.location.reload();
+      try {
+        const formattedDateArrivee = formData.date_arrivee ? moment(formData.date_arrivee).format('YYYY-MM-DDTHH:mm:ss.SSS[Z]') : null;
+        const formattedDateDepart = formData.date_depart ? moment(formData.date_depart).format('YYYY-MM-DDTHH:mm:ss.SSS[Z]') : null;
+    
+        const dataToSend = {
+          ...formData,
+          date_arrivee: formattedDateArrivee,
+          date_depart: formattedDateDepart,
+        };
+    
+        if (materialID) {
+          const response = await fetch(`${config.apiUrl}/materials/${materialID}/`, {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(dataToSend),
+          });
+    
+          if (!response.ok) {
+            const errorMessage = await response.text();
+            let decodeResponse = JSON.parse(errorMessage);
+            toast.error(decodeResponse.message, { autoClose: false });
+          } else {
+            toast.success("Les détails de la bouteille ont été mis à jour avec succès !");
+            window.location.reload();
+          }
         }
+      } catch (error) {
+        toast.error("Une erreur est survenue lors de la mise à jour");
+        console.error("Update error:", error);
       }
     },
     [formData, materialID]
@@ -168,14 +183,33 @@ export const MaterialDetailEdit = (props) => {
                   />
                 </Grid>
                 <Grid xs={12} md={6}>
-                  <TextField 
+                  <Select
                     fullWidth
                     label="Equipe"
-                    name='team'
+                    name="team"
                     disabled={!props.canEdit}
                     onChange={handleChange}
                     value={formData.team || ''}
-                  />
+                    displayEmpty
+                    renderValue={(selected) => (
+                      <Typography
+                        variant="subtitle2"
+                        style={{
+                          fontFamily: 'inherit',
+                          color: selected ? 'inherit' : 'rgba(0, 0, 0, 0.6)'
+                        }}
+                      >
+                        {selected || 'Choisir une équipe'}
+                      </Typography>
+                    )}
+                  >
+                    <MenuItem value=""> <em>Réinitialiser</em> </MenuItem>
+                    {equipe.map((team, index) => (
+                      <MenuItem key={index} value={team.value}>
+                        {team.label}
+                      </MenuItem>
+                    ))}
+                  </Select>
                 </Grid>
                 <Grid xs={12} md={6}>
                   <TextField 
@@ -208,25 +242,87 @@ export const MaterialDetailEdit = (props) => {
                   />
                 </Grid>
                 <Grid xs={12} md={6}>
-                  <TextField 
+                  <Select
                     fullWidth
                     label="Taille de la bouteille"
-                    name='size'
+                    name="size"
                     disabled={!props.canEdit}
                     onChange={handleChange}
                     value={formData.size || ''}
-                  />
+                    displayEmpty
+                    renderValue={(selected) => (
+                      <Typography
+                        variant="subtitle2"
+                        style={{
+                          fontFamily: 'inherit',
+                          color: selected ? 'inherit' : 'rgba(0, 0, 0, 0.6)'
+                        }}
+                      >
+                        {selected || 'Choisir la taille'}
+                      </Typography>
+                    )}
+                  >
+                    <MenuItem value=""> <em>Réinitialiser</em> </MenuItem>
+                    {taille.map((size, index) => (
+                      <MenuItem key={index} value={size.value}>
+                        {size.label}
+                      </MenuItem>
+                    ))}
+                  </Select>
                 </Grid>
                 <Grid xs={12} md={6}>
-                  <TextField 
+                  <Select
                     fullWidth
                     label="Risque associé à la bouteille"
-                    name='levRisk'
+                    name="levRisk"
                     disabled={!props.canEdit}
                     onChange={handleChange}
                     value={formData.levRisk || ''}
-                  />
+                    displayEmpty
+                    renderValue={(selected) => (
+                      <Typography
+                        variant="subtitle2"
+                        style={{
+                          fontFamily: 'inherit',
+                          color: selected ? 'inherit' : 'rgba(0, 0, 0, 0.6)'
+                        }}
+                      >
+                        {selected || 'Choisir le risque'}
+                      </Typography>
+                    )}
+                  >
+                    <MenuItem value=""> <em>Réinitialiser</em> </MenuItem>
+                    {risque.map((risk, index) => (
+                      <MenuItem key={index} value={risk.value}>
+                        {risk.label}
+                      </MenuItem>
+                    ))}
+                  </Select>
                 </Grid>
+
+                <Grid item xs={12} sm={6}>
+                  <LocalizationProvider dateAdapter={AdapterDateFns}>
+                    <DatePicker 
+                      label="Date d'arrivée"
+                      format="dd/MM/yyyy"
+                      disabled={!props.canEdit}
+                      value={formData.date_arrivee}
+                      onChange={(date) => {
+                        setFormData((prevState) => ({
+                          ...prevState,
+                          date_arrivee: date,
+                        }));
+                      }}
+                      slotProps={{
+                        textField: {
+                          helperText: 'DD/MM/YYYY',
+                          fullWidth: true
+                        }
+                      }}
+                    />
+                  </LocalizationProvider>
+                </Grid>
+
                 <Grid item xs={12} md={6}>
                   <LocalizationProvider dateAdapter={AdapterDateFns}>
                     <DatePicker
