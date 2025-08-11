@@ -3405,3 +3405,61 @@
 [2025-08-11 13:00:35 +0200] [3115268] [DEBUG] Closing connection.
 [2025-08-11 13:00:36 +0200] [3115276] [DEBUG] GET /api/materials/4/
 [2025-08-11 13:00:36 +0200] [3115276] [DEBUG] Closing connection.
+[2025-08-11 13:14:19 +0200] [3115266] [DEBUG] GET /api/materials/owner/3/
+[2025-08-11 13:14:19 +0200] [3115265] [DEBUG] GET /api/materials/
+[2025-08-11 13:14:19 +0200] [3115265] [DEBUG] Closing connection.
+[2025-08-11 13:14:19 +0200] [3115266] [DEBUG] Closing connection.
+[2025-08-11 13:46:11 +0200] [3115261] [DEBUG] GET /api/materials/
+[2025-08-11 13:46:11 +0200] [3115272] [DEBUG] GET /api/materials/owner/3/
+[2025-08-11 13:46:11 +0200] [3115261] [DEBUG] Closing connection.
+[2025-08-11 13:46:11 +0200] [3115272] [DEBUG] Closing connection.
+[2025-08-11 13:46:43 +0200] [3115276] [DEBUG] GET /api/materials/
+[2025-08-11 13:46:43 +0200] [3115276] [DEBUG] GET /api/materials/owner/3/
+[2025-08-11 13:46:43 +0200] [3115276] [DEBUG] Closing connection.
+[2025-08-11 13:46:43 +0200] [3115276] [DEBUG] Closing connection.
+[2025-08-11 14:13:26 +0200] [3115267] [DEBUG] GET /api/materials/
+[2025-08-11 14:13:26 +0200] [3115267] [DEBUG] Closing connection.
+[2025-08-11 14:13:26 +0200] [3115267] [DEBUG] GET /api/materials/owner/3/
+[2025-08-11 14:13:26 +0200] [3115267] [DEBUG] Closing connection.
+[2025-08-11 14:13:30 +0200] [3115261] [DEBUG] GET /api/active_owners/lite/
+[2025-08-11 14:13:30 +0200] [3115261] [DEBUG] Closing connection.
+[2025-08-11 14:13:31 +0200] [3115261] [DEBUG] GET /api/materials/count-by-lab
+[2025-08-11 14:13:31 +0200] [3115261] [DEBUG] Closing connection.
+[2025-08-11 14:13:31 +0200] [3115276] [DEBUG] GET /api/materials/bar-chart
+[2025-08-11 14:13:31 +0200] [3115276] [DEBUG] Closing connection.
+[2025-08-11 14:13:31 +0200] [3115276] [DEBUG] GET /api/materials/count/
+[2025-08-11 14:13:31 +0200] [3115276] [DEBUG] Closing connection.
+[2025-08-11 14:13:57 +0200] [3115264] [INFO] Parent changed, shutting down: <Worker 3115264>
+[2025-08-11 14:13:57 +0200] [3115264] [INFO] Worker exiting (pid: 3115264)
+[2025-08-11 14:13:57 +0200] [3115269] [INFO] Parent changed, shutting down: <Worker 3115269>
+[2025-08-11 14:13:57 +0200] [3115269] [INFO] Worker exiting (pid: 3115269)
+[2025-08-11 14:13:57 +0200] [3115274] [INFO] Parent changed, shutting down: <Worker 3115274>
+[2025-08-11 14:13:57 +0200] [3115274] [INFO] Worker exiting (pid: 3115274)
+[2025-08-11 14:13:57 +0200] [3115262] [INFO] Parent changed, shutting down: <Worker 3115262>
+[2025-08-11 14:13:57 +0200] [3115262] [INFO] Worker exiting (pid: 3115262)
+[2025-08-11 14:13:58 +0200] [3115275] [INFO] Parent changed, shutting down: <Worker 3115275>
+[2025-08-11 14:13:58 +0200] [3115275] [INFO] Worker exiting (pid: 3115275)
+[2025-08-11 14:13:58 +0200] [3115273] [INFO] Parent changed, shutting down: <Worker 3115273>
+[2025-08-11 14:13:58 +0200] [3115273] [INFO] Worker exiting (pid: 3115273)
+[2025-08-11 14:13:58 +0200] [3115271] [INFO] Parent changed, shutting down: <Worker 3115271>
+[2025-08-11 14:13:58 +0200] [3115271] [INFO] Worker exiting (pid: 3115271)
+[2025-08-11 14:13:58 +0200] [3115270] [INFO] Parent changed, shutting down: <Worker 3115270>
+[2025-08-11 14:13:58 +0200] [3115265] [INFO] Parent changed, shutting down: <Worker 3115265>
+[2025-08-11 14:13:58 +0200] [3115270] [INFO] Worker exiting (pid: 3115270)
+[2025-08-11 14:13:58 +0200] [3115265] [INFO] Worker exiting (pid: 3115265)
+[2025-08-11 14:13:58 +0200] [3115266] [INFO] Parent changed, shutting down: <Worker 3115266>
+[2025-08-11 14:13:58 +0200] [3115266] [INFO] Worker exiting (pid: 3115266)
+[2025-08-11 14:13:58 +0200] [3115261] [INFO] Parent changed, shutting down: <Worker 3115261>
+[2025-08-11 14:13:58 +0200] [3115267] [INFO] Parent changed, shutting down: <Worker 3115267>
+[2025-08-11 14:13:58 +0200] [3115261] [INFO] Worker exiting (pid: 3115261)
+[2025-08-11 14:13:58 +0200] [3115267] [INFO] Worker exiting (pid: 3115267)
+[2025-08-11 14:13:58 +0200] [3115272] [INFO] Parent changed, shutting down: <Worker 3115272>
+[2025-08-11 14:13:58 +0200] [3115272] [INFO] Worker exiting (pid: 3115272)
+[2025-08-11 14:13:58 +0200] [3115276] [INFO] Parent changed, shutting down: <Worker 3115276>
+[2025-08-11 14:13:58 +0200] [3115276] [INFO] Worker exiting (pid: 3115276)
+[2025-08-11 14:13:58 +0200] [3115263] [INFO] Parent changed, shutting down: <Worker 3115263>
+[2025-08-11 14:13:58 +0200] [3115263] [INFO] Worker exiting (pid: 3115263)
+[2025-08-11 14:13:58 +0200] [3115268] [INFO] Parent changed, shutting down: <Worker 3115268>
+[2025-08-11 14:13:58 +0200] [3115268] [INFO] Worker exiting (pid: 3115268)
+[2025-08-11 14:13:58 +0200] [3115260] [INFO] Parent changed, shutting down: <Worker 3115260>
+[2025-08-11 14:13:58 +0200] [3115260] [INFO] Worker exiting (pid: 3115260)

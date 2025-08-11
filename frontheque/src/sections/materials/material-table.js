@@ -1,19 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import {
-  Link,
-  TableContainer,
-  Table,
-  TableHead,
-  TableCell,
-  TableRow,
-  TableBody,
-  TablePagination,
-  Paper,
+  Box,
   CircularProgress,
-  Typography,
+  InputAdornment,
+  Link,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TablePagination,
+  TableRow,
+  TextField,
+  Typography
 } from '@mui/material';
 import config from 'src/utils/config';
 import PropTypes from 'prop-types';
+import { Search as SearchIcon } from '@mui/icons-material';
 
 // ---------------------------------------------------------- //
 
@@ -24,6 +28,9 @@ export const MaterialTable = (props) => {
   const [totalCount, setTotalCount] = useState(0);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(25);
+  const [filteredMaterials, setFilteredMaterials] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+
 
   useEffect(() => {
     const fetchMaterials = async () => {
@@ -44,6 +51,26 @@ export const MaterialTable = (props) => {
 
     fetchMaterials();
   }, []);
+
+  useEffect(() => {
+    if (searchTerm === '') {
+      setFilteredMaterials(materials);
+      setTotalCount(materials.length);
+      setPage(0);
+    } else {
+      const filtered = materials.filter((materials) => {
+        const searchLower = searchTerm.toLowerCase();
+        return (
+          (materials.material_title && materials.material_title.toLowerCase().includes(searchLower))
+          (materials.team  && materials.team .toLowerCase().includes(searchLower))
+        ) 
+      });
+      setFilteredMaterials(filtered);
+      setTotalCount(filtered.length);
+      setPage(0);
+    }
+  }, [searchTerm, materials]);
+  
 
   if (loading) {
     return (
@@ -78,14 +105,39 @@ export const MaterialTable = (props) => {
     setPage(0); // Reset to first page when rows per page changes
   };
 
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
   // Calculate the current page's materials
-  const currentPageMaterials = materials.slice(
+  // const currentPageMaterials = materials.slice(
+  //   page * rowsPerPage,
+  //   page * rowsPerPage + rowsPerPage
+  // );
+  const currentPageMaterials = filteredMaterials.slice(
     page * rowsPerPage,
     page * rowsPerPage + rowsPerPage
   );
 
   return (
     <>
+      <Box sx={{ mb: 2 }}>
+        <TextField
+          fullWidth
+          variant="outlined"
+          placeholder="Rechercher un matériel..."
+          value={searchTerm}
+          onChange={handleSearchChange}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <SearchIcon />
+              </InputAdornment>
+            ),
+          }}
+        />
+      </Box>
+
       <TableContainer component={Paper}>
         <Table>
           <TableHead>
