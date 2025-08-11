@@ -7,7 +7,6 @@ from .forms import CustomUserCreationForm, CustomUserChangeForm
 from Gazostheque.models.owner_model import Owners
 from Gazostheque.models.material_model import Materials
 from Gazostheque.models.notification_model import Notifications
-# from Gazostheque.models.tag_model import Tags
 
 
 # Override the default UserAdmin to customize the admin interface for user management
@@ -78,6 +77,7 @@ class MaterialsAdmin(admin.ModelAdmin):
         "date_depart", 
         "created_at",
         "updated_at",
+        "tags",
     )
 
     # A custom method to get the owner's username
@@ -95,16 +95,8 @@ class NotificationsAdmin(admin.ModelAdmin):
     # Set a custom description for the owner field in the admin interface
     readonly_fields = ('created_at',)
 
-class TagsAdmin(admin.ModelAdmin):
-    list_display = ('user', 'markup')
-    list_filter = ('user', 'markup')
-
-    readonly_fields = ('created_at',)
-
-
 # Register your models here.
 admin.site.register(CustomUsers, CustomUserAdmin)
 admin.site.register(Owners, OwnersAdmin)
 admin.site.register(Materials, MaterialsAdmin)
 admin.site.register(Notifications, NotificationsAdmin)
-# admin.site.register(Tags, TagsAdmin)

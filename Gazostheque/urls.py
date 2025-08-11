@@ -6,8 +6,6 @@ from Gazostheque.views import owner_views
 from Gazostheque.views import material_views
 from Gazostheque.views import notification_views
 
-from Gazostheque.views import tag_views
-
 urlpatterns = [
     # Endpoint for adding new bottle / cylinder
     path('materials/create/', material_views.create_material),

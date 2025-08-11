@@ -36,8 +36,7 @@ class Materials(models.Model):
     created_at = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(default=timezone.now)
 
-    # tags field
-    tags = TaggableManager(blank=True)
+    tags = TaggableManager()
     
     USERNAME_FIELD = 'material_title'
 
