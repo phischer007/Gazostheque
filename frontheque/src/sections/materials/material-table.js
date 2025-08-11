@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
-  Box,
+  Card,
   CircularProgress,
   InputAdornment,
   Link,
@@ -12,12 +12,20 @@ import {
   TableHead,
   TablePagination,
   TableRow,
-  TextField,
-  Typography
+  OutlinedInput,
+  IconButton,
+  SvgIcon,
+  Stack, 
+  Typography,
+  Tooltip
 } from '@mui/material';
 import config from 'src/utils/config';
 import PropTypes from 'prop-types';
-import { Search as SearchIcon } from '@mui/icons-material';
+
+import { 
+  InformationCircleIcon,
+  MagnifyingGlassCircleIcon
+} from "@heroicons/react/24/outline";
 
 // ---------------------------------------------------------- //
 
@@ -30,6 +38,13 @@ export const MaterialTable = (props) => {
   const [rowsPerPage, setRowsPerPage] = useState(25);
   const [filteredMaterials, setFilteredMaterials] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+
+  const [isCheckedInformation, setCheckedInformation] = useState(false);
+
+  // useCallback must also be at the top
+  const handleInformationShow = useCallback(() => {
+    setCheckedInformation(!isCheckedInformation);
+  }, [isCheckedInformation]);
 
 
   useEffect(() => {
@@ -58,12 +73,14 @@ export const MaterialTable = (props) => {
       setTotalCount(materials.length);
       setPage(0);
     } else {
-      const filtered = materials.filter((materials) => {
+      const filtered = materials.filter((material) => {
         const searchLower = searchTerm.toLowerCase();
         return (
-          (materials.material_title && materials.material_title.toLowerCase().includes(searchLower))
-          (materials.team  && materials.team .toLowerCase().includes(searchLower))
-        ) 
+          (material.material_title && material.material_title.toLowerCase().includes(searchLower)) ||
+          (material.team && material.team.toLowerCase().includes(searchLower)) ||
+          (material.owner_first_name&& material.owner_first_name.toLowerCase().includes(searchLower)) || 
+          (material.owner_last_name&& material.owner_last_name.toLowerCase().includes(searchLower))
+        );
       });
       setFilteredMaterials(filtered);
       setTotalCount(filtered.length);
@@ -109,11 +126,6 @@ export const MaterialTable = (props) => {
     setSearchTerm(event.target.value);
   };
 
-  // Calculate the current page's materials
-  // const currentPageMaterials = materials.slice(
-  //   page * rowsPerPage,
-  //   page * rowsPerPage + rowsPerPage
-  // );
   const currentPageMaterials = filteredMaterials.slice(
     page * rowsPerPage,
     page * rowsPerPage + rowsPerPage
@@ -121,90 +133,93 @@ export const MaterialTable = (props) => {
 
   return (
     <>
-      <Box sx={{ mb: 2 }}>
-        <TextField
-          fullWidth
-          variant="outlined"
-          placeholder="Rechercher un matériel..."
-          value={searchTerm}
-          onChange={handleSearchChange}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <SearchIcon />
+      <Card sx={{ p: 2, maxWidth: 800 }}>
+        <Stack
+          direction='row'
+          spacing={2}
+          alignItems='center'
+        >
+          <OutlinedInput
+            value={searchTerm}
+            onChange={handleSearchChange}
+            fullWidth
+            placeholder='Nom de bouteille ou Equipe ou Nom du responsable'
+            startAdornment={(
+              <InputAdornment position='start'>
+                <SvgIcon
+                  color='action'
+                  fontSize='small'
+                >
+                  <MagnifyingGlassCircleIcon />
+                </SvgIcon>
               </InputAdornment>
-            ),
-          }}
-        />
-      </Box>
+            )}
+            sx={{ 
+              flex: 1,
+              '& .MuiInputBase-input::placeholder': {
+                color: 'lightgray',
+                opacity: 1,
+              }
+            }}
+          />
+          <IconButton onClick={handleInformationShow}>
+            <SvgIcon fontSize='small'>
+              <InformationCircleIcon />
+            </SvgIcon>
+          </IconButton>
+        </Stack>
+        {isCheckedInformation && (
+          <Stack spacing={2}
+            sx={{
+              my: 1,
+              p: 1,
+              bgcolor: '#f5f5f5',
+              border: '1px solid #ccc',
+              borderRadius: 0,
+              maxWidth: 715,
+              borderBottomRightRadius: 65
+            }}>
+            <Typography
+              color="neutral.500"
+              variant="caption"
+            >
+              Recherche par Nom de bouteille, Equipe ou Nom du responsable (ex. Marmottant, BIOP)
+            </Typography>
+          </Stack>
+        )}
+      </Card>
 
       <TableContainer component={Paper}>
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell
-                style={{
-                  backgroundColor: 'rgb(1, 50, 32)',
-                  color: 'white'
-                }}
-              >
-                Composition du gaz
-              </TableCell>
-              <TableCell
-                style={{
-                  backgroundColor: 'rgb(1, 50, 32)',
-                  color: 'white'
-                }}
-              >
-                Equipe
-              </TableCell>
-              <TableCell
-                style={{
-                  backgroundColor: 'rgb(1, 50, 32)',
-                  color: 'white'
-                }}
-              >
-                Nom du responsable
-              </TableCell>
-              <TableCell
-                style={{
-                  backgroundColor: 'rgb(1, 50, 32)',
-                  color: 'white'
-                }}
-              >
-                Salle de stockage
-              </TableCell>
-              <TableCell
-                style={{
-                  backgroundColor: 'rgb(1, 50, 32)',
-                  color: 'white'
-                }}
-              >
-                Taille de la bouteille
-              </TableCell>
-              <TableCell
-                style={{
-                  backgroundColor: 'rgb(1, 50, 32)',
-                  color: 'white'
-                }}
-              >
-                Date d&apos;arrivée
-              </TableCell>
-              <TableCell
-                style={{
-                  backgroundColor: 'rgb(1, 50, 32)',
-                  color: 'white'
-                }}
-              >
-                Date de départ
-              </TableCell>
+              {['Composition du gaz', 'Equipe', 'Nom du responsable', 'Salle de stockage', 'Taille de la bouteille', 'Date d\'arrivée', 'Date de départ'].map((header) => (
+                <TableCell
+                  key={header}
+                  style={{
+                    backgroundColor: 'rgb(1, 50, 32)',
+                    color: 'white'
+                  }}
+                >
+                  {header}
+                </TableCell>
+              ))}
             </TableRow>
+
           </TableHead>
           <TableBody>
             {currentPageMaterials.map((material) => {
               const hasDepartDate = material.date_depart !== null && material.date_depart !== undefined && material.date_depart !== '';
-              const rowStyle = hasDepartDate ? { backgroundColor: 'rgb(229, 228, 226' } : {};
-              
+              // const rowStyle = hasDepartDate ? { backgroundColor: 'rgb(229, 228, 226' } : {};
+
+              const rowStyle = {
+                backgroundColor: hasDepartDate ? 'rgb(229, 228, 226)' : 'inherit',
+                opacity: hasDepartDate ? 0.6 : 1,
+                cursor: 'pointer'
+              };
+
+              const tooltipTitle = hasDepartDate ? 'Consignée – non modifiable' : 'Cliquer pour modifier';
+
               const rowContent = (
                 <TableRow key={material.material_id}
                   style={rowStyle}
@@ -221,21 +236,35 @@ export const MaterialTable = (props) => {
                 </TableRow>
               );
 
-              return hasDepartDate ? (
-                <React.Fragment key={material.material_id}>
-                  {rowContent}
-                </React.Fragment>
-              ) : (
-                <Link
-                  key={material.material_id}
-                  underline='none'
-                  color="inherit"
-                  href={`/gazostheque/details/material-detail/${material.material_id}`}
-                  style={{ display: 'contents' }}
-                >
-                  {rowContent}
-                </Link>
+              // return hasDepartDate ? (
+              //   <React.Fragment key={material.material_id}>
+              //     {rowContent}
+              //   </React.Fragment>
+              // ) : (
+              //   <Link
+              //     key={material.material_id}
+              //     underline='none'
+              //     color="inherit"
+              //     href={`/gazostheque/details/material-detail/${material.material_id}`}
+              //     style={{ display: 'contents' }}
+              //   >
+              //     {rowContent}
+              //   </Link>
+              // );
+
+              return (
+                <Tooltip title={tooltipTitle} key={material.material_id}>
+                  <Link
+                    underline="none"
+                    color="inherit"
+                    href={`/gazostheque/details/material-detail/${material.material_id}`}
+                    style={{ display: 'contents' }}
+                  >
+                    {rowContent}
+                  </Link>
+                </Tooltip>
               );
+
             })}
           </TableBody>
         </Table>
