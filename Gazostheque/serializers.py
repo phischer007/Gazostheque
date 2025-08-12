@@ -10,16 +10,18 @@ from taggit.serializers import TagListSerializerField
 # These classes help us convert complex data from our models into a format that can be easily transferred over the web.
 
 class MaterialSerializer(serializers.ModelSerializer):
-    # tags = TagListSerializerField()  # Add this line for tags
-    tags = serializers.ListField(
-        child=serializers.CharField(),
-        required=False,
-        write_only=True  # If you don't want tags in the output
-    )
+    tags = TagListSerializerField(required=False)
 
     class Meta:
         model = Materials
         fields = '__all__'
+
+    def create(self, validated_data):
+        tags = validated_data.pop('tags', [])
+        instance = super().create(validated_data)
+        if tags:
+            instance.tags.set(tags)
+        return instance
 
 class OwnerSerializer(serializers.ModelSerializer):
     class Meta:

@@ -1389,3 +1389,53 @@ ModuleNotFoundError: No module named 'GazosthequeRestApis.wsqi'
 [2025-08-12 09:55:03 +0200] [3200253] [DEBUG] Closing connection.
 [2025-08-12 09:55:04 +0200] [3200253] [DEBUG] GET /api/cas/login/
 [2025-08-12 09:55:04 +0200] [3200253] [DEBUG] Closing connection.
+[2025-08-12 09:58:44 +0200] [3200251] [DEBUG] GET /admin/login/
+[2025-08-12 09:58:44 +0200] [3200251] [DEBUG] Closing connection.
+[2025-08-12 09:58:48 +0200] [3200251] [DEBUG] POST /admin/login/
+[2025-08-12 09:58:48 +0200] [3200251] [DEBUG] Closing connection.
+[2025-08-12 09:58:48 +0200] [3200251] [DEBUG] GET /admin/
+[2025-08-12 09:58:48 +0200] [3200251] [DEBUG] Closing connection.
+[2025-08-12 09:58:51 +0200] [3200245] [DEBUG] GET /admin/Gazostheque/materials/
+[2025-08-12 09:58:52 +0200] [3200245] [DEBUG] Closing connection.
+[2025-08-12 09:58:52 +0200] [3200245] [DEBUG] GET /admin/jsi18n/
+[2025-08-12 09:58:52 +0200] [3200245] [DEBUG] Closing connection.
+[2025-08-12 09:58:54 +0200] [3200251] [DEBUG] GET /admin/Gazostheque/materials/1/change/
+[2025-08-12 09:58:54 +0200] [3200251] [DEBUG] Closing connection.
+[2025-08-12 09:58:54 +0200] [3200245] [DEBUG] GET /admin/jsi18n/
+[2025-08-12 09:58:54 +0200] [3200245] [DEBUG] Closing connection.
+[2025-08-12 10:07:22 +0200] [3200246] [DEBUG] GET /admin/assets/js/views/login.js
+[2025-08-12 10:07:22 +0200] [3200246] [DEBUG] Closing connection.
+[2025-08-12 10:22:06 +0200] [3200240] [INFO] Parent changed, shutting down: <Worker 3200240>
+[2025-08-12 10:22:06 +0200] [3200240] [INFO] Worker exiting (pid: 3200240)
+[2025-08-12 10:22:06 +0200] [3200245] [INFO] Parent changed, shutting down: <Worker 3200245>
+[2025-08-12 10:22:06 +0200] [3200245] [INFO] Worker exiting (pid: 3200245)
+[2025-08-12 10:22:06 +0200] [3200249] [INFO] Parent changed, shutting down: <Worker 3200249>
+[2025-08-12 10:22:06 +0200] [3200249] [INFO] Worker exiting (pid: 3200249)
+[2025-08-12 10:22:06 +0200] [3200242] [INFO] Parent changed, shutting down: <Worker 3200242>
+[2025-08-12 10:22:06 +0200] [3200242] [INFO] Worker exiting (pid: 3200242)
+[2025-08-12 10:22:06 +0200] [3200237] [INFO] Parent changed, shutting down: <Worker 3200237>
+[2025-08-12 10:22:06 +0200] [3200237] [INFO] Worker exiting (pid: 3200237)
+[2025-08-12 10:22:06 +0200] [3200247] [INFO] Parent changed, shutting down: <Worker 3200247>
+[2025-08-12 10:22:06 +0200] [3200247] [INFO] Worker exiting (pid: 3200247)
+[2025-08-12 10:22:06 +0200] [3200253] [INFO] Parent changed, shutting down: <Worker 3200253>
+[2025-08-12 10:22:06 +0200] [3200253] [INFO] Worker exiting (pid: 3200253)
+[2025-08-12 10:22:06 +0200] [3200238] [INFO] Parent changed, shutting down: <Worker 3200238>
+[2025-08-12 10:22:06 +0200] [3200238] [INFO] Worker exiting (pid: 3200238)
+[2025-08-12 10:22:06 +0200] [3200248] [INFO] Parent changed, shutting down: <Worker 3200248>
+[2025-08-12 10:22:06 +0200] [3200248] [INFO] Worker exiting (pid: 3200248)
+[2025-08-12 10:22:06 +0200] [3200250] [INFO] Parent changed, shutting down: <Worker 3200250>
+[2025-08-12 10:22:06 +0200] [3200250] [INFO] Worker exiting (pid: 3200250)
+[2025-08-12 10:22:06 +0200] [3200244] [INFO] Parent changed, shutting down: <Worker 3200244>
+[2025-08-12 10:22:06 +0200] [3200239] [INFO] Parent changed, shutting down: <Worker 3200239>
+[2025-08-12 10:22:06 +0200] [3200244] [INFO] Worker exiting (pid: 3200244)
+[2025-08-12 10:22:06 +0200] [3200239] [INFO] Worker exiting (pid: 3200239)
+[2025-08-12 10:22:06 +0200] [3200252] [INFO] Parent changed, shutting down: <Worker 3200252>
+[2025-08-12 10:22:06 +0200] [3200252] [INFO] Worker exiting (pid: 3200252)
+[2025-08-12 10:22:06 +0200] [3200246] [INFO] Parent changed, shutting down: <Worker 3200246>
+[2025-08-12 10:22:06 +0200] [3200251] [INFO] Parent changed, shutting down: <Worker 3200251>
+[2025-08-12 10:22:06 +0200] [3200246] [INFO] Worker exiting (pid: 3200246)
+[2025-08-12 10:22:06 +0200] [3200251] [INFO] Worker exiting (pid: 3200251)
+[2025-08-12 10:22:07 +0200] [3200241] [INFO] Parent changed, shutting down: <Worker 3200241>
+[2025-08-12 10:22:07 +0200] [3200241] [INFO] Worker exiting (pid: 3200241)
+[2025-08-12 10:22:07 +0200] [3200243] [INFO] Parent changed, shutting down: <Worker 3200243>
+[2025-08-12 10:22:07 +0200] [3200243] [INFO] Worker exiting (pid: 3200243)

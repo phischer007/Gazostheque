@@ -40,18 +40,26 @@ def get_materials(request):
     )
     return JsonResponse(list(selected_inventory), safe=False)
 
-@login_required
-@api_view(['GET'])
-def get_materials_by_tag(request, tag):
-    materials = Materials.objects.filter(tags__name__in=[tag])
-    serializer = MaterialSerializer(materials, many=True)
-    return JsonResponse(serializer.data, safe=False)
-
+# @login_required
+# @api_view(['POST'])
+# def create_material(request):
+#     if request.method == 'POST':
+#        return on_create_material(request)
 @login_required
 @api_view(['POST'])
 def create_material(request):
     if request.method == 'POST':
-       return on_create_material(request)
+        # Get the tags from the request data
+        tags = request.data.getlist('tags', [])
+        
+        # Create a mutable copy of the request data
+        data = request.data.copy()
+        
+        # Add the tags to the data dictionary
+        data.setlist('tags', tags)
+        
+        # Pass the data to your controller
+        return on_create_material(request)
 
 
 @api_view(['GET', 'PUT', 'DELETE'])

@@ -11,7 +11,7 @@ def send_registration_email(user):
     html_message = render_to_string('emails/signup_email.html', context)
     plain_message = strip_tags(html_message)
     # Send the email
-    subject = 'Welcome Aboard!'
+    subject = 'Bienvenue à Gazostheque'
     from_email = settings.EMAIL_HOST_USER
     to_email = user['email']
     send_mail(subject, plain_message, from_email, [to_email], html_message=html_message)
