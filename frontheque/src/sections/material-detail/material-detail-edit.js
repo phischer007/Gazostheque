@@ -28,6 +28,10 @@ import {
 } from '@mui/material';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 
+/*
+  * Modify existing record of gas bottle
+*/
+
 export const MaterialDetailEdit = (props) => {
   const { user } = useAuth();
   const [formData, setFormData] = useState({
@@ -150,7 +154,10 @@ export const MaterialDetailEdit = (props) => {
 
   return props.data && user ? (
     <>
-      <form autoComplete="off" noValidate onSubmit={handleSubmit}>
+      <form autoComplete="off" 
+        noValidate 
+        onSubmit={handleSubmit}
+      >
         <Card elevation={2} sx={{ my: 3, py: 2 }}>
           <CardHeader 
             subheader={props.canEdit ? 
@@ -160,8 +167,12 @@ export const MaterialDetailEdit = (props) => {
           />
           <CardContent sx={{ pt: 0 }}>
             <Box sx={{ m: -1.5 }}>
-              <Grid container spacing={3}>
-                <Grid xs={12} md={6}>
+              <Grid container 
+                spacing={3}
+              >
+                <Grid xs={12} 
+                  md={6}
+                >
                   <TextField 
                     fullWidth
                     label="Composition du gaz"
@@ -171,7 +182,9 @@ export const MaterialDetailEdit = (props) => {
                     value={formData.material_title || ''}
                   />
                 </Grid>
-                <Grid xs={12} md={6}>
+                <Grid xs={12} 
+                  md={6}
+                >
                   <TextField
                     fullWidth
                     label="Nom du responsable"
@@ -182,7 +195,9 @@ export const MaterialDetailEdit = (props) => {
                       'N/A'}
                   />
                 </Grid>
-                <Grid xs={12} md={6}>
+                <Grid xs={12} 
+                  md={6}
+                >
                   <Select
                     fullWidth
                     label="Equipe"
@@ -205,13 +220,17 @@ export const MaterialDetailEdit = (props) => {
                   >
                     <MenuItem value=""> <em>Réinitialiser</em> </MenuItem>
                     {equipe.map((team, index) => (
-                      <MenuItem key={index} value={team.value}>
+                      <MenuItem key={index} 
+                        value={team.value}
+                      >
                         {team.label}
                       </MenuItem>
                     ))}
                   </Select>
                 </Grid>
-                <Grid xs={12} md={6}>
+                <Grid xs={12} 
+                  md={6}
+                >
                   <TextField 
                     fullWidth
                     label="Salle de stockage"
@@ -221,7 +240,9 @@ export const MaterialDetailEdit = (props) => {
                     value={formData.origin || ''}
                   />
                 </Grid>
-                <Grid xs={12} md={6}>
+                <Grid xs={12} 
+                  md={6}
+                >
                   <TextField 
                     fullWidth
                     label="Code barres Air Liquide"
@@ -231,7 +252,9 @@ export const MaterialDetailEdit = (props) => {
                     value={formData.codeCommande || ''}
                   />
                 </Grid>
-                <Grid xs={12} md={6}>
+                <Grid xs={12} 
+                  md={6}
+                >
                   <TextField 
                     fullWidth
                     label="Code commande Air Liquide"
@@ -241,7 +264,9 @@ export const MaterialDetailEdit = (props) => {
                     value={formData.codeBarres || ''}
                   />
                 </Grid>
-                <Grid xs={12} md={6}>
+                <Grid xs={12} 
+                  md={6}
+                >
                   <Select
                     fullWidth
                     label="Taille de la bouteille"
@@ -264,13 +289,17 @@ export const MaterialDetailEdit = (props) => {
                   >
                     <MenuItem value=""> <em>Réinitialiser</em> </MenuItem>
                     {taille.map((size, index) => (
-                      <MenuItem key={index} value={size.value}>
+                      <MenuItem key={index} 
+                        value={size.value}
+                      >
                         {size.label}
                       </MenuItem>
                     ))}
                   </Select>
                 </Grid>
-                <Grid xs={12} md={6}>
+                <Grid xs={12} 
+                  md={6}
+                >
                   <Select
                     fullWidth
                     label="Risque associé à la bouteille"
@@ -293,14 +322,19 @@ export const MaterialDetailEdit = (props) => {
                   >
                     <MenuItem value=""> <em>Réinitialiser</em> </MenuItem>
                     {risque.map((risk, index) => (
-                      <MenuItem key={index} value={risk.value}>
+                      <MenuItem key={index} 
+                        value={risk.value}
+                      >
                         {risk.label}
                       </MenuItem>
                     ))}
                   </Select>
                 </Grid>
 
-                <Grid item xs={12} sm={6}>
+                <Grid item 
+                  xs={12} 
+                  sm={6}
+                >
                   <LocalizationProvider dateAdapter={AdapterDateFns}>
                     <DatePicker 
                       label="Date d'arrivée"
@@ -323,7 +357,10 @@ export const MaterialDetailEdit = (props) => {
                   </LocalizationProvider>
                 </Grid>
 
-                <Grid item xs={12} md={6}>
+                <Grid item 
+                  xs={12} 
+                  md={6}
+                >
                   <LocalizationProvider dateAdapter={AdapterDateFns}>
                     <DatePicker
                       label="Date départure"
@@ -392,7 +429,9 @@ export const MaterialDetailEdit = (props) => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => setOpenDialog(false)} color="primary">
+          <Button onClick={() => setOpenDialog(false)} 
+            color="primary"
+          >
             Annuler
           </Button>
           <Button 

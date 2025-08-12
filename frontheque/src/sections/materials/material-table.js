@@ -18,7 +18,6 @@ import {
   Stack, 
   Typography,
   Tooltip,
-  Box,
   Grid,
   Button
 } from '@mui/material';
@@ -124,10 +123,18 @@ export const MaterialTable = (props) => {
 
   return (
     <>
-      <Grid container spacing={2}>
-        <Grid item xs={12} md={8}>
+      <Grid container 
+        spacing={2}
+      >
+        <Grid item 
+          xs={12} 
+          md={8}
+        >
           <Card sx={{ p: 2 }}>
-            <Stack direction='row' spacing={2} alignItems='center'>
+            <Stack direction='row' 
+              spacing={2} 
+              alignItems='center'
+            >
               <OutlinedInput
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
@@ -160,15 +167,17 @@ export const MaterialTable = (props) => {
               )}
             </Stack>
             {isCheckedInformation && (
-              <Stack spacing={2} sx={{
-                my: 1,
-                p: 1,
-                bgcolor: '#f5f5f5',
-                border: '1px solid #ccc',
-                borderRadius: 0,
-                maxWidth: '100%',
-                borderBottomRightRadius: 65
-              }}>
+              <Stack spacing={2} 
+                sx={{
+                  my: 1,
+                  p: 1,
+                  bgcolor: '#f5f5f5',
+                  border: '1px solid #ccc',
+                  borderRadius: 0,
+                  maxWidth: '100%',
+                  borderBottomRightRadius: 65
+                }}
+              >
                 <Typography color="neutral.500" variant="caption">
                   Recherche par Nom de bouteille, Equipe ou Nom du responsable (ex. Marmottant, BIOP)
                 </Typography>
@@ -177,7 +186,10 @@ export const MaterialTable = (props) => {
           </Card>
         </Grid>
         
-        <Grid item xs={12} md={4}>
+        <Grid item 
+          xs={12} 
+          md={4}
+        >
           <Card sx={{ p: 2, height: '100%' }}>
             <TagSearch 
               onMaterialsFound={handleServerSearch}
@@ -192,7 +204,9 @@ export const MaterialTable = (props) => {
         </Grid>
       </Grid>
 
-      <TableContainer component={Paper} sx={{ mt: 2 }}>
+      <TableContainer component={Paper} 
+        sx={{ mt: 2 }}
+      >
         <Table>
           <TableHead>
             <TableRow>
@@ -220,7 +234,9 @@ export const MaterialTable = (props) => {
               const tooltipTitle = hasDepartDate ? 'Archived - not editable' : 'Click to edit';
 
               return (
-                <Tooltip title={tooltipTitle} key={material.material_id}>
+                <Tooltip title={tooltipTitle} 
+                  key={material.material_id}
+                >
                   <Link
                     underline="none"
                     color="inherit"

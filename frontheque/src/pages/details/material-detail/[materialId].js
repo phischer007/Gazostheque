@@ -532,14 +532,23 @@ const Page = () => {
       <Head>
         <title>Détails sur la bouteille</title>
       </Head>
-      <Box component="main" sx={{ flexGrow: 1, py: 8 }}>
+      <Box component="main" 
+        sx={{ flexGrow: 1, py: 8 }}
+      >
         <Container maxWidth='lg'>
           <Stack spacing={3}>
-            <Stack direction='row' justifyContent='space-between' spacing={4}>
-              <Typography variant='h4'>Détails sur la bouteille</Typography>
+            <Stack direction='row' 
+              justifyContent='space-between' 
+              spacing={4}
+            >
+              <Typography variant='h4'>
+                Détails sur la bouteille
+              </Typography>
             </Stack>
             <div>
-              <Grid container spacing={3}>
+              <Grid container 
+                spacing={3}
+              >
                 <Grid xs={12}>
                   <MaterialDetailOverview data={materialData} />
                 </Grid>
@@ -571,7 +580,9 @@ const Page = () => {
                       </Button>
                     </CardActions>
 
-                    <Dialog open={open} onClose={() => setOpen(false)}>
+                    <Dialog open={open} 
+                      onClose={() => setOpen(false)}
+                    >
                       <DialogTitle>{getDialogDetails().title}</DialogTitle>
                       <DialogContent>
                         <DialogContentText>
@@ -582,7 +593,9 @@ const Page = () => {
                         <Button onClick={() => setOpen(false)}>
                           Annuler
                         </Button>
-                        <Button onClick={getDialogDetails().action} color="error">
+                        <Button onClick={getDialogDetails().action} 
+                          color="error"
+                        >
                           {getDialogDetails().buttonText}
                         </Button>
                       </DialogActions>
