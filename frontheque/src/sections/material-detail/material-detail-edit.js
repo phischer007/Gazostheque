@@ -145,7 +145,6 @@ export const MaterialDetailEdit = (props) => {
           }
         }
       } catch (error) {
-        toast.error("Une erreur est survenue lors de la mise à jour");
         console.error("Update error:", error);
       }
     },
@@ -158,7 +157,9 @@ export const MaterialDetailEdit = (props) => {
         noValidate 
         onSubmit={handleSubmit}
       >
-        <Card elevation={2} sx={{ my: 3, py: 2 }}>
+        <Card elevation={2} 
+          sx={{ my: 3, py: 2 }}
+        >
           <CardHeader 
             subheader={props.canEdit ? 
               "Les informations peuvent être modifiées" : 

@@ -24,7 +24,8 @@ from taggit.models import Tag
 @login_required
 @api_view(['GET'])
 def get_materials(request):
-    materials = Materials.objects.all()
+    # materials = Materials.objects.all()
+    materials = Materials.objects.all().prefetch_related('tags')
     
     selected_inventory = materials.values(
         'material_id',
@@ -46,6 +47,7 @@ def get_materials(request):
 # def create_material(request):
 #     if request.method == 'POST':
 #        return on_create_material(request)
+
 @login_required
 @api_view(['POST'])
 def create_material(request):
@@ -61,19 +63,6 @@ def create_material(request):
         
         # Pass the data to your controller
         return on_create_material(request)
-
-# @api_view(['GET'])
-# def get_tag_suggestions(request):
-#     search_term = request.GET.get('search', '').strip()
-    
-#     if not search_term:
-#         return JsonResponse([], safe=False)
-    
-#     tags = Tag.objects.filter(
-#         name__icontains=search_term
-#     ).order_by('name').values_list('name', flat=True)[:10]  # Limit to 10 results
-    
-#     return JsonResponse(list(tags), safe=False)
 
 @api_view(['GET'])
 def get_all_tags(request):

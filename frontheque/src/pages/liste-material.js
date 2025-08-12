@@ -7,7 +7,6 @@ import { useAuth } from 'src/hooks/use-auth';
 import {
   Box,
   Container,
-  Pagination,
   Stack,
   Typography,
   Unstable_Grid2 as Grid
@@ -15,7 +14,6 @@ import {
 
 import { Layout as DashboardLayout } from 'src/layouts/dashboard/layout';
 import { MaterialTable } from 'src/sections/materials/material-table.js'
-import { MaterialSearch } from 'src/sections/materials/material-search';
 
 // ----------------------------------------------------------------------------- //
 
@@ -61,24 +59,6 @@ const Page = () => {
               <Typography variant='h4'>
                 Liste des bouteilles de gaz
               </Typography>
-            </div>
-
-            <div>
-              <Grid
-                container
-                width={'100%'}
-              >
-                <Grid
-                  xs={12}
-                  md={6}
-                  lg={10}
-                >
-                  {/* <MaterialSearch
-                    searchTerm={searchTerm}
-                    onSearchChange={handleSearchChange}
-                  /> */}
-                </Grid>
-              </Grid>
             </div>
 
             <div>
