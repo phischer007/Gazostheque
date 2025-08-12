@@ -23,6 +23,7 @@ export const useNewMaterialHandlers = (data) => {
     levRisk: null,
     lab_destination: null,
     date_arrivee: null,
+    tags: null,
   });
 
   const [message, setMessage] = useState({
@@ -102,6 +103,7 @@ export const useNewMaterialHandlers = (data) => {
           { key: 'levRisk', value: formData.levRisk },
           { key: 'lab_destination', value: formData.lab_destination },
           { key: 'date_arrivee', value: formData.date_arrivee ? moment(formData.date_arrivee).format('YYYY-MM-DD') : null },
+          { key: 'tags', value: formData.tags},
         ];
 
         // Add tags to the form data

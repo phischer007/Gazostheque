@@ -57,7 +57,7 @@ class OwnersAdmin(admin.ModelAdmin):
 
 class MaterialsAdmin(admin.ModelAdmin):
     # Define which fields to display in the list view and provide filtering options
-    list_display = ("material_title", "get_owner_username")
+    list_display = ("material_title", "get_owner_username", "get_tags")
     list_filter = ("material_title", "owner")
     
     # Specify fields that should be read-only in the admin interface
@@ -79,6 +79,9 @@ class MaterialsAdmin(admin.ModelAdmin):
         "updated_at",
         "tags",
     )
+
+    def get_tags(self, obj):
+        return ", ".join(o for o in obj.tags.names())
 
     # A custom method to get the owner's username
     def get_owner_username(self, obj):

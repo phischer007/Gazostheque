@@ -544,3 +544,848 @@
 [2025-08-11 16:48:21 +0200] [3191050] [INFO] Worker exiting (pid: 3191050)
 [2025-08-11 16:48:21 +0200] [3191082] [INFO] Parent changed, shutting down: <Worker 3191082>
 [2025-08-11 16:48:21 +0200] [3191082] [INFO] Worker exiting (pid: 3191082)
+[2025-08-11 17:29:14 +0200] [3197681] [DEBUG] Current configuration:
+  config: gunicorn-gazostheque.py
+  wsgi_app: None
+  bind: ['0.0.0.0:8005']
+  backlog: 2048
+  workers: 17
+  worker_class: sync
+  threads: 16
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 60
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  print_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/vikhram/Gazostheque_App
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 1021
+  group: 1021
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1', '::1']
+  accesslog: /home/vikhram/Gazostheque_App/logs/access.log
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: /home/vikhram/Gazostheque_App/logs/error.log
+  loglevel: debug
+  capture_output: True
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  logconfig_json: None
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: GazosthequeRestApis.wsqi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7f848c2ebb80>
+  on_reload: <function OnReload.on_reload at 0x7f848c2ebca0>
+  when_ready: <function WhenReady.when_ready at 0x7f848c2ebdc0>
+  pre_fork: <function Prefork.pre_fork at 0x7f848c2ebee0>
+  post_fork: <function Postfork.post_fork at 0x7f848c303040>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7f848c303160>
+  worker_int: <function WorkerInt.worker_int at 0x7f848c303280>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7f848c3033a0>
+  pre_exec: <function PreExec.pre_exec at 0x7f848c3034c0>
+  pre_request: <function PreRequest.pre_request at 0x7f848c3035e0>
+  post_request: <function PostRequest.post_request at 0x7f848c303670>
+  child_exit: <function ChildExit.child_exit at 0x7f848c303790>
+  worker_exit: <function WorkerExit.worker_exit at 0x7f848c3038b0>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7f848c3039d0>
+  on_exit: <function OnExit.on_exit at 0x7f848c303af0>
+  ssl_context: <function NewSSLContext.ssl_context at 0x7f848c303c10>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1', '::1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  permit_obsolete_folding: False
+  strip_header_spaces: False
+  permit_unconventional_http_method: False
+  permit_unconventional_http_version: False
+  casefold_http_method: False
+  forwarder_headers: ['SCRIPT_NAME', 'PATH_INFO']
+  header_map: drop
+[2025-08-11 17:29:14 +0200] [3197681] [INFO] Starting gunicorn 23.0.0
+[2025-08-11 17:29:14 +0200] [3197681] [DEBUG] Arbiter booted
+[2025-08-11 17:29:14 +0200] [3197681] [INFO] Listening at: http://0.0.0.0:8005 (3197681)
+[2025-08-11 17:29:14 +0200] [3197681] [INFO] Using worker: gthread
+[2025-08-11 17:29:14 +0200] [3197683] [INFO] Booting worker with pid: 3197683
+[2025-08-11 17:29:14 +0200] [3197683] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/vikhram/Gazostheque_App/gazotheque_env/lib/python3.9/site-packages/gunicorn/arbiter.py", line 608, in spawn_worker
+    worker.init_process()
+  File "/home/vikhram/Gazostheque_App/gazotheque_env/lib/python3.9/site-packages/gunicorn/workers/gthread.py", line 94, in init_process
+    super().init_process()
+  File "/home/vikhram/Gazostheque_App/gazotheque_env/lib/python3.9/site-packages/gunicorn/workers/base.py", line 135, in init_process
+    self.load_wsgi()
+  File "/home/vikhram/Gazostheque_App/gazotheque_env/lib/python3.9/site-packages/gunicorn/workers/base.py", line 147, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/vikhram/Gazostheque_App/gazotheque_env/lib/python3.9/site-packages/gunicorn/app/base.py", line 66, in wsgi
+    self.callable = self.load()
+  File "/home/vikhram/Gazostheque_App/gazotheque_env/lib/python3.9/site-packages/gunicorn/app/wsgiapp.py", line 57, in load
+    return self.load_wsgiapp()
+  File "/home/vikhram/Gazostheque_App/gazotheque_env/lib/python3.9/site-packages/gunicorn/app/wsgiapp.py", line 47, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/vikhram/Gazostheque_App/gazotheque_env/lib/python3.9/site-packages/gunicorn/util.py", line 370, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.9/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1030, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1007, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 984, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'GazosthequeRestApis.wsqi'
+[2025-08-11 17:29:14 +0200] [3197683] [INFO] Worker exiting (pid: 3197683)
+[2025-08-11 17:29:14 +0200] [3197684] [INFO] Booting worker with pid: 3197684
+[2025-08-11 17:29:14 +0200] [3197684] [ERROR] Exception in worker process
+Traceback (most recent call last):
+  File "/home/vikhram/Gazostheque_App/gazotheque_env/lib/python3.9/site-packages/gunicorn/arbiter.py", line 608, in spawn_worker
+    worker.init_process()
+  File "/home/vikhram/Gazostheque_App/gazotheque_env/lib/python3.9/site-packages/gunicorn/workers/gthread.py", line 94, in init_process
+    super().init_process()
+  File "/home/vikhram/Gazostheque_App/gazotheque_env/lib/python3.9/site-packages/gunicorn/workers/base.py", line 135, in init_process
+    self.load_wsgi()
+  File "/home/vikhram/Gazostheque_App/gazotheque_env/lib/python3.9/site-packages/gunicorn/workers/base.py", line 147, in load_wsgi
+    self.wsgi = self.app.wsgi()
+  File "/home/vikhram/Gazostheque_App/gazotheque_env/lib/python3.9/site-packages/gunicorn/app/base.py", line 66, in wsgi
+    self.callable = self.load()
+  File "/home/vikhram/Gazostheque_App/gazotheque_env/lib/python3.9/site-packages/gunicorn/app/wsgiapp.py", line 57, in load
+    return self.load_wsgiapp()
+  File "/home/vikhram/Gazostheque_App/gazotheque_env/lib/python3.9/site-packages/gunicorn/app/wsgiapp.py", line 47, in load_wsgiapp
+    return util.import_app(self.app_uri)
+  File "/home/vikhram/Gazostheque_App/gazotheque_env/lib/python3.9/site-packages/gunicorn/util.py", line 370, in import_app
+    mod = importlib.import_module(module)
+  File "/usr/lib/python3.9/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1030, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1007, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 984, in _find_and_load_unlocked
+ModuleNotFoundError: No module named 'GazosthequeRestApis.wsqi'
+[2025-08-11 17:29:14 +0200] [3197684] [INFO] Worker exiting (pid: 3197684)
+[2025-08-11 17:29:14 +0200] [3197681] [ERROR] Worker (pid:3197683) exited with code 3
+[2025-08-11 17:29:14 +0200] [3197681] [ERROR] Worker (pid:3197684) was sent SIGTERM!
+[2025-08-11 17:29:14 +0200] [3197681] [ERROR] Shutting down: Master
+[2025-08-11 17:29:14 +0200] [3197681] [ERROR] Reason: Worker failed to boot.
+[2025-08-11 17:30:46 +0200] [3197887] [DEBUG] Current configuration:
+  config: gunicorn-gazostheque.py
+  wsgi_app: None
+  bind: ['0.0.0.0:8005']
+  backlog: 2048
+  workers: 17
+  worker_class: sync
+  threads: 16
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 60
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  print_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/vikhram/Gazostheque_App
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 1021
+  group: 1021
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1', '::1']
+  accesslog: /home/vikhram/Gazostheque_App/logs/access.log
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: /home/vikhram/Gazostheque_App/logs/error.log
+  loglevel: debug
+  capture_output: True
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  logconfig_json: None
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: GazosthequeRestApis.wsgi
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7f2cd35dfb80>
+  on_reload: <function OnReload.on_reload at 0x7f2cd35dfca0>
+  when_ready: <function WhenReady.when_ready at 0x7f2cd35dfdc0>
+  pre_fork: <function Prefork.pre_fork at 0x7f2cd35dfee0>
+  post_fork: <function Postfork.post_fork at 0x7f2cd35f7040>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7f2cd35f7160>
+  worker_int: <function WorkerInt.worker_int at 0x7f2cd35f7280>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7f2cd35f73a0>
+  pre_exec: <function PreExec.pre_exec at 0x7f2cd35f74c0>
+  pre_request: <function PreRequest.pre_request at 0x7f2cd35f75e0>
+  post_request: <function PostRequest.post_request at 0x7f2cd35f7670>
+  child_exit: <function ChildExit.child_exit at 0x7f2cd35f7790>
+  worker_exit: <function WorkerExit.worker_exit at 0x7f2cd35f78b0>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7f2cd35f79d0>
+  on_exit: <function OnExit.on_exit at 0x7f2cd35f7af0>
+  ssl_context: <function NewSSLContext.ssl_context at 0x7f2cd35f7c10>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1', '::1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  permit_obsolete_folding: False
+  strip_header_spaces: False
+  permit_unconventional_http_method: False
+  permit_unconventional_http_version: False
+  casefold_http_method: False
+  forwarder_headers: ['SCRIPT_NAME', 'PATH_INFO']
+  header_map: drop
+[2025-08-11 17:30:46 +0200] [3197887] [INFO] Starting gunicorn 23.0.0
+[2025-08-11 17:30:46 +0200] [3197887] [DEBUG] Arbiter booted
+[2025-08-11 17:30:46 +0200] [3197887] [INFO] Listening at: http://0.0.0.0:8005 (3197887)
+[2025-08-11 17:30:46 +0200] [3197887] [INFO] Using worker: gthread
+[2025-08-11 17:30:46 +0200] [3197889] [INFO] Booting worker with pid: 3197889
+[2025-08-11 17:30:46 +0200] [3197890] [INFO] Booting worker with pid: 3197890
+[2025-08-11 17:30:46 +0200] [3197891] [INFO] Booting worker with pid: 3197891
+[2025-08-11 17:30:46 +0200] [3197892] [INFO] Booting worker with pid: 3197892
+[2025-08-11 17:30:46 +0200] [3197893] [INFO] Booting worker with pid: 3197893
+[2025-08-11 17:30:46 +0200] [3197894] [INFO] Booting worker with pid: 3197894
+[2025-08-11 17:30:46 +0200] [3197895] [INFO] Booting worker with pid: 3197895
+[2025-08-11 17:30:46 +0200] [3197897] [INFO] Booting worker with pid: 3197897
+[2025-08-11 17:30:46 +0200] [3197898] [INFO] Booting worker with pid: 3197898
+[2025-08-11 17:30:46 +0200] [3197899] [INFO] Booting worker with pid: 3197899
+[2025-08-11 17:30:46 +0200] [3197900] [INFO] Booting worker with pid: 3197900
+[2025-08-11 17:30:46 +0200] [3197901] [INFO] Booting worker with pid: 3197901
+[2025-08-11 17:30:46 +0200] [3197902] [INFO] Booting worker with pid: 3197902
+[2025-08-11 17:30:46 +0200] [3197903] [INFO] Booting worker with pid: 3197903
+[2025-08-11 17:30:46 +0200] [3197904] [INFO] Booting worker with pid: 3197904
+[2025-08-11 17:30:46 +0200] [3197905] [INFO] Booting worker with pid: 3197905
+[2025-08-11 17:30:46 +0200] [3197906] [INFO] Booting worker with pid: 3197906
+[2025-08-11 17:30:46 +0200] [3197887] [DEBUG] 17 workers
+[2025-08-11 17:30:55 +0200] [3197905] [DEBUG] GET /admin/login/
+[2025-08-11 17:30:55 +0200] [3197905] [DEBUG] Closing connection.
+[2025-08-11 17:30:59 +0200] [3197906] [DEBUG] POST /admin/login/
+[2025-08-11 17:31:00 +0200] [3197906] [DEBUG] Closing connection.
+[2025-08-11 17:31:00 +0200] [3197905] [DEBUG] GET /admin/
+[2025-08-11 17:31:00 +0200] [3197905] [DEBUG] Closing connection.
+[2025-08-11 17:31:03 +0200] [3197900] [DEBUG] GET /admin/Gazostheque/materials/add/
+[2025-08-11 17:31:03 +0200] [3197900] [DEBUG] Closing connection.
+[2025-08-11 17:31:03 +0200] [3197905] [DEBUG] GET /admin/jsi18n/
+[2025-08-11 17:31:03 +0200] [3197905] [DEBUG] Closing connection.
+[2025-08-11 17:32:48 +0200] [3197906] [DEBUG] GET /admin/Gazostheque/customusers/
+[2025-08-11 17:32:48 +0200] [3197906] [DEBUG] Closing connection.
+[2025-08-11 17:32:48 +0200] [3197902] [DEBUG] GET /admin/jsi18n/
+[2025-08-11 17:32:48 +0200] [3197902] [DEBUG] Closing connection.
+[2025-08-11 17:32:49 +0200] [3197905] [DEBUG] GET /admin/Gazostheque/owners/
+[2025-08-11 17:32:50 +0200] [3197905] [DEBUG] Closing connection.
+[2025-08-11 17:32:50 +0200] [3197900] [DEBUG] GET /admin/jsi18n/
+[2025-08-11 17:32:50 +0200] [3197900] [DEBUG] Closing connection.
+[2025-08-11 17:43:14 +0200] [3197890] [INFO] Parent changed, shutting down: <Worker 3197890>
+[2025-08-11 17:43:14 +0200] [3197904] [INFO] Parent changed, shutting down: <Worker 3197904>
+[2025-08-11 17:43:14 +0200] [3197890] [INFO] Worker exiting (pid: 3197890)
+[2025-08-11 17:43:14 +0200] [3197904] [INFO] Worker exiting (pid: 3197904)
+[2025-08-11 17:43:14 +0200] [3197906] [INFO] Parent changed, shutting down: <Worker 3197906>
+[2025-08-11 17:43:14 +0200] [3197906] [INFO] Worker exiting (pid: 3197906)
+[2025-08-11 17:43:14 +0200] [3197905] [INFO] Parent changed, shutting down: <Worker 3197905>
+[2025-08-11 17:43:14 +0200] [3197899] [INFO] Parent changed, shutting down: <Worker 3197899>
+[2025-08-11 17:43:14 +0200] [3197899] [INFO] Worker exiting (pid: 3197899)
+[2025-08-11 17:43:14 +0200] [3197905] [INFO] Worker exiting (pid: 3197905)
+[2025-08-11 17:43:14 +0200] [3197901] [INFO] Parent changed, shutting down: <Worker 3197901>
+[2025-08-11 17:43:14 +0200] [3197901] [INFO] Worker exiting (pid: 3197901)
+[2025-08-11 17:43:14 +0200] [3197900] [INFO] Parent changed, shutting down: <Worker 3197900>
+[2025-08-11 17:43:14 +0200] [3197900] [INFO] Worker exiting (pid: 3197900)
+[2025-08-11 17:43:14 +0200] [3197902] [INFO] Parent changed, shutting down: <Worker 3197902>
+[2025-08-11 17:43:14 +0200] [3197902] [INFO] Worker exiting (pid: 3197902)
+[2025-08-11 17:43:14 +0200] [3197903] [INFO] Parent changed, shutting down: <Worker 3197903>
+[2025-08-11 17:43:14 +0200] [3197894] [INFO] Parent changed, shutting down: <Worker 3197894>
+[2025-08-11 17:43:14 +0200] [3197903] [INFO] Worker exiting (pid: 3197903)
+[2025-08-11 17:43:14 +0200] [3197898] [INFO] Parent changed, shutting down: <Worker 3197898>
+[2025-08-11 17:43:14 +0200] [3197894] [INFO] Worker exiting (pid: 3197894)
+[2025-08-11 17:43:14 +0200] [3197898] [INFO] Worker exiting (pid: 3197898)
+[2025-08-11 17:43:15 +0200] [3197889] [INFO] Parent changed, shutting down: <Worker 3197889>
+[2025-08-11 17:43:15 +0200] [3197889] [INFO] Worker exiting (pid: 3197889)
+[2025-08-11 17:43:15 +0200] [3197891] [INFO] Parent changed, shutting down: <Worker 3197891>
+[2025-08-11 17:43:15 +0200] [3197891] [INFO] Worker exiting (pid: 3197891)
+[2025-08-11 17:43:15 +0200] [3197892] [INFO] Parent changed, shutting down: <Worker 3197892>
+[2025-08-11 17:43:15 +0200] [3197893] [INFO] Parent changed, shutting down: <Worker 3197893>
+[2025-08-11 17:43:15 +0200] [3197892] [INFO] Worker exiting (pid: 3197892)
+[2025-08-11 17:43:15 +0200] [3197893] [INFO] Worker exiting (pid: 3197893)
+[2025-08-11 17:43:15 +0200] [3197895] [INFO] Parent changed, shutting down: <Worker 3197895>
+[2025-08-11 17:43:15 +0200] [3197895] [INFO] Worker exiting (pid: 3197895)
+[2025-08-11 17:43:15 +0200] [3197897] [INFO] Parent changed, shutting down: <Worker 3197897>
+[2025-08-11 17:43:15 +0200] [3197897] [INFO] Worker exiting (pid: 3197897)
+[2025-08-11 17:43:24 +0200] [3198425] [DEBUG] Current configuration:
+  config: gunicorn-gazostheque.py
+  wsgi_app: None
+  bind: ['0.0.0.0:8005']
+  backlog: 2048
+  workers: 17
+  worker_class: sync
+  threads: 16
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 60
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  print_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/vikhram/Gazostheque_App
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 1021
+  group: 1021
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1', '::1']
+  accesslog: /home/vikhram/Gazostheque_App/logs/access.log
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: /home/vikhram/Gazostheque_App/logs/error.log
+  loglevel: debug
+  capture_output: True
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  logconfig_json: None
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: GazosthequeRestApis.wsgi
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7f6fe3c97b80>
+  on_reload: <function OnReload.on_reload at 0x7f6fe3c97ca0>
+  when_ready: <function WhenReady.when_ready at 0x7f6fe3c97dc0>
+  pre_fork: <function Prefork.pre_fork at 0x7f6fe3c97ee0>
+  post_fork: <function Postfork.post_fork at 0x7f6fe3caf040>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7f6fe3caf160>
+  worker_int: <function WorkerInt.worker_int at 0x7f6fe3caf280>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7f6fe3caf3a0>
+  pre_exec: <function PreExec.pre_exec at 0x7f6fe3caf4c0>
+  pre_request: <function PreRequest.pre_request at 0x7f6fe3caf5e0>
+  post_request: <function PostRequest.post_request at 0x7f6fe3caf670>
+  child_exit: <function ChildExit.child_exit at 0x7f6fe3caf790>
+  worker_exit: <function WorkerExit.worker_exit at 0x7f6fe3caf8b0>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7f6fe3caf9d0>
+  on_exit: <function OnExit.on_exit at 0x7f6fe3cafaf0>
+  ssl_context: <function NewSSLContext.ssl_context at 0x7f6fe3cafc10>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1', '::1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  permit_obsolete_folding: False
+  strip_header_spaces: False
+  permit_unconventional_http_method: False
+  permit_unconventional_http_version: False
+  casefold_http_method: False
+  forwarder_headers: ['SCRIPT_NAME', 'PATH_INFO']
+  header_map: drop
+[2025-08-11 17:43:24 +0200] [3198425] [INFO] Starting gunicorn 23.0.0
+[2025-08-11 17:43:24 +0200] [3198425] [DEBUG] Arbiter booted
+[2025-08-11 17:43:24 +0200] [3198425] [INFO] Listening at: http://0.0.0.0:8005 (3198425)
+[2025-08-11 17:43:24 +0200] [3198425] [INFO] Using worker: gthread
+[2025-08-11 17:43:24 +0200] [3198427] [INFO] Booting worker with pid: 3198427
+[2025-08-11 17:43:25 +0200] [3198428] [INFO] Booting worker with pid: 3198428
+[2025-08-11 17:43:25 +0200] [3198429] [INFO] Booting worker with pid: 3198429
+[2025-08-11 17:43:25 +0200] [3198430] [INFO] Booting worker with pid: 3198430
+[2025-08-11 17:43:25 +0200] [3198431] [INFO] Booting worker with pid: 3198431
+[2025-08-11 17:43:25 +0200] [3198432] [INFO] Booting worker with pid: 3198432
+[2025-08-11 17:43:25 +0200] [3198433] [INFO] Booting worker with pid: 3198433
+[2025-08-11 17:43:25 +0200] [3198434] [INFO] Booting worker with pid: 3198434
+[2025-08-11 17:43:25 +0200] [3198435] [INFO] Booting worker with pid: 3198435
+[2025-08-11 17:43:25 +0200] [3198436] [INFO] Booting worker with pid: 3198436
+[2025-08-11 17:43:25 +0200] [3198437] [INFO] Booting worker with pid: 3198437
+[2025-08-11 17:43:25 +0200] [3198438] [INFO] Booting worker with pid: 3198438
+[2025-08-11 17:43:25 +0200] [3198439] [INFO] Booting worker with pid: 3198439
+[2025-08-11 17:43:25 +0200] [3198440] [INFO] Booting worker with pid: 3198440
+[2025-08-11 17:43:25 +0200] [3198441] [INFO] Booting worker with pid: 3198441
+[2025-08-11 17:43:25 +0200] [3198442] [INFO] Booting worker with pid: 3198442
+[2025-08-11 17:43:25 +0200] [3198443] [INFO] Booting worker with pid: 3198443
+[2025-08-11 17:43:25 +0200] [3198425] [DEBUG] 17 workers
+[2025-08-11 17:43:29 +0200] [3198441] [DEBUG] GET /admin/Gazostheque/owners/
+[2025-08-11 17:43:29 +0200] [3198441] [DEBUG] Closing connection.
+[2025-08-11 17:43:29 +0200] [3198443] [DEBUG] GET /admin/jsi18n/
+[2025-08-11 17:43:30 +0200] [3198443] [DEBUG] Closing connection.
+[2025-08-11 17:43:31 +0200] [3198443] [DEBUG] GET /admin/Gazostheque/materials/
+[2025-08-11 17:43:31 +0200] [3198443] [DEBUG] Closing connection.
+[2025-08-11 17:43:35 +0200] [3198441] [DEBUG] GET /admin/Gazostheque/materials/
+[2025-08-11 17:43:35 +0200] [3198441] [DEBUG] Closing connection.
+[2025-08-11 17:43:37 +0200] [3198442] [DEBUG] GET /admin/Gazostheque/owners/
+[2025-08-11 17:43:37 +0200] [3198442] [DEBUG] Closing connection.
+[2025-08-11 17:43:39 +0200] [3198443] [DEBUG] POST /admin/logout/
+[2025-08-11 17:43:39 +0200] [3198443] [DEBUG] Closing connection.
+[2025-08-11 17:43:41 +0200] [3198443] [DEBUG] GET /admin/
+[2025-08-11 17:43:41 +0200] [3198443] [DEBUG] Closing connection.
+[2025-08-11 17:43:41 +0200] [3198443] [DEBUG] GET /admin/login/
+[2025-08-11 17:43:41 +0200] [3198443] [DEBUG] Closing connection.
+[2025-08-11 17:43:44 +0200] [3198442] [DEBUG] POST /admin/login/
+[2025-08-11 17:43:45 +0200] [3198442] [DEBUG] Closing connection.
+[2025-08-11 17:43:45 +0200] [3198443] [DEBUG] GET /admin/
+[2025-08-11 17:43:45 +0200] [3198443] [DEBUG] Closing connection.
+[2025-08-11 17:43:47 +0200] [3198443] [DEBUG] GET /admin/Gazostheque/materials/
+[2025-08-11 17:43:47 +0200] [3198443] [DEBUG] Closing connection.
+[2025-08-11 17:43:49 +0200] [3198437] [DEBUG] GET /admin/
+[2025-08-11 17:43:49 +0200] [3198437] [DEBUG] Closing connection.
+[2025-08-11 17:44:01 +0200] [3198431] [INFO] Parent changed, shutting down: <Worker 3198431>
+[2025-08-11 17:44:01 +0200] [3198431] [INFO] Worker exiting (pid: 3198431)
+[2025-08-11 17:44:02 +0200] [3198441] [INFO] Parent changed, shutting down: <Worker 3198441>
+[2025-08-11 17:44:02 +0200] [3198443] [INFO] Parent changed, shutting down: <Worker 3198443>
+[2025-08-11 17:44:02 +0200] [3198436] [INFO] Parent changed, shutting down: <Worker 3198436>
+[2025-08-11 17:44:02 +0200] [3198433] [INFO] Parent changed, shutting down: <Worker 3198433>
+[2025-08-11 17:44:02 +0200] [3198439] [INFO] Parent changed, shutting down: <Worker 3198439>
+[2025-08-11 17:44:02 +0200] [3198430] [INFO] Parent changed, shutting down: <Worker 3198430>
+[2025-08-11 17:44:02 +0200] [3198434] [INFO] Parent changed, shutting down: <Worker 3198434>
+[2025-08-11 17:44:02 +0200] [3198443] [INFO] Worker exiting (pid: 3198443)
+[2025-08-11 17:44:02 +0200] [3198441] [INFO] Worker exiting (pid: 3198441)
+[2025-08-11 17:44:02 +0200] [3198436] [INFO] Worker exiting (pid: 3198436)
+[2025-08-11 17:44:02 +0200] [3198433] [INFO] Worker exiting (pid: 3198433)
+[2025-08-11 17:44:02 +0200] [3198439] [INFO] Worker exiting (pid: 3198439)
+[2025-08-11 17:44:02 +0200] [3198430] [INFO] Worker exiting (pid: 3198430)
+[2025-08-11 17:44:02 +0200] [3198434] [INFO] Worker exiting (pid: 3198434)
+[2025-08-11 17:44:02 +0200] [3198437] [INFO] Parent changed, shutting down: <Worker 3198437>
+[2025-08-11 17:44:02 +0200] [3198437] [INFO] Worker exiting (pid: 3198437)
+[2025-08-11 17:44:02 +0200] [3198442] [INFO] Parent changed, shutting down: <Worker 3198442>
+[2025-08-11 17:44:02 +0200] [3198442] [INFO] Worker exiting (pid: 3198442)
+[2025-08-11 17:44:02 +0200] [3198427] [INFO] Parent changed, shutting down: <Worker 3198427>
+[2025-08-11 17:44:02 +0200] [3198427] [INFO] Worker exiting (pid: 3198427)
+[2025-08-11 17:44:02 +0200] [3198429] [INFO] Parent changed, shutting down: <Worker 3198429>
+[2025-08-11 17:44:02 +0200] [3198429] [INFO] Worker exiting (pid: 3198429)
+[2025-08-11 17:44:02 +0200] [3198428] [INFO] Parent changed, shutting down: <Worker 3198428>
+[2025-08-11 17:44:02 +0200] [3198428] [INFO] Worker exiting (pid: 3198428)
+[2025-08-11 17:44:02 +0200] [3198432] [INFO] Parent changed, shutting down: <Worker 3198432>
+[2025-08-11 17:44:02 +0200] [3198432] [INFO] Worker exiting (pid: 3198432)
+[2025-08-11 17:44:02 +0200] [3198438] [INFO] Parent changed, shutting down: <Worker 3198438>
+[2025-08-11 17:44:02 +0200] [3198438] [INFO] Worker exiting (pid: 3198438)
+[2025-08-11 17:44:02 +0200] [3198440] [INFO] Parent changed, shutting down: <Worker 3198440>
+[2025-08-11 17:44:02 +0200] [3198440] [INFO] Worker exiting (pid: 3198440)
+[2025-08-11 17:44:02 +0200] [3198435] [INFO] Parent changed, shutting down: <Worker 3198435>
+[2025-08-11 17:44:02 +0200] [3198435] [INFO] Worker exiting (pid: 3198435)
+[2025-08-11 17:44:57 +0200] [3198897] [DEBUG] Current configuration:
+  config: gunicorn-gazostheque.py
+  wsgi_app: None
+  bind: ['0.0.0.0:8005']
+  backlog: 2048
+  workers: 17
+  worker_class: sync
+  threads: 16
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 60
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  print_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/vikhram/Gazostheque_App
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 1021
+  group: 1021
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1', '::1']
+  accesslog: /home/vikhram/Gazostheque_App/logs/access.log
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: /home/vikhram/Gazostheque_App/logs/error.log
+  loglevel: debug
+  capture_output: True
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  logconfig_json: None
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: GazosthequeRestApis.wsgi
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7f3fedd52b80>
+  on_reload: <function OnReload.on_reload at 0x7f3fedd52ca0>
+  when_ready: <function WhenReady.when_ready at 0x7f3fedd52dc0>
+  pre_fork: <function Prefork.pre_fork at 0x7f3fedd52ee0>
+  post_fork: <function Postfork.post_fork at 0x7f3fedd6a040>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7f3fedd6a160>
+  worker_int: <function WorkerInt.worker_int at 0x7f3fedd6a280>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7f3fedd6a3a0>
+  pre_exec: <function PreExec.pre_exec at 0x7f3fedd6a4c0>
+  pre_request: <function PreRequest.pre_request at 0x7f3fedd6a5e0>
+  post_request: <function PostRequest.post_request at 0x7f3fedd6a670>
+  child_exit: <function ChildExit.child_exit at 0x7f3fedd6a790>
+  worker_exit: <function WorkerExit.worker_exit at 0x7f3fedd6a8b0>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7f3fedd6a9d0>
+  on_exit: <function OnExit.on_exit at 0x7f3fedd6aaf0>
+  ssl_context: <function NewSSLContext.ssl_context at 0x7f3fedd6ac10>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1', '::1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  permit_obsolete_folding: False
+  strip_header_spaces: False
+  permit_unconventional_http_method: False
+  permit_unconventional_http_version: False
+  casefold_http_method: False
+  forwarder_headers: ['SCRIPT_NAME', 'PATH_INFO']
+  header_map: drop
+[2025-08-11 17:44:57 +0200] [3198897] [INFO] Starting gunicorn 23.0.0
+[2025-08-11 17:44:57 +0200] [3198897] [DEBUG] Arbiter booted
+[2025-08-11 17:44:57 +0200] [3198897] [INFO] Listening at: http://0.0.0.0:8005 (3198897)
+[2025-08-11 17:44:57 +0200] [3198897] [INFO] Using worker: gthread
+[2025-08-11 17:44:57 +0200] [3198899] [INFO] Booting worker with pid: 3198899
+[2025-08-11 17:44:57 +0200] [3198900] [INFO] Booting worker with pid: 3198900
+[2025-08-11 17:44:58 +0200] [3198901] [INFO] Booting worker with pid: 3198901
+[2025-08-11 17:44:58 +0200] [3198902] [INFO] Booting worker with pid: 3198902
+[2025-08-11 17:44:58 +0200] [3198903] [INFO] Booting worker with pid: 3198903
+[2025-08-11 17:44:58 +0200] [3198904] [INFO] Booting worker with pid: 3198904
+[2025-08-11 17:44:58 +0200] [3198905] [INFO] Booting worker with pid: 3198905
+[2025-08-11 17:44:58 +0200] [3198906] [INFO] Booting worker with pid: 3198906
+[2025-08-11 17:44:58 +0200] [3198907] [INFO] Booting worker with pid: 3198907
+[2025-08-11 17:44:58 +0200] [3198908] [INFO] Booting worker with pid: 3198908
+[2025-08-11 17:44:58 +0200] [3198909] [INFO] Booting worker with pid: 3198909
+[2025-08-11 17:44:58 +0200] [3198910] [INFO] Booting worker with pid: 3198910
+[2025-08-11 17:44:58 +0200] [3198911] [INFO] Booting worker with pid: 3198911
+[2025-08-11 17:44:58 +0200] [3198912] [INFO] Booting worker with pid: 3198912
+[2025-08-11 17:44:58 +0200] [3198913] [INFO] Booting worker with pid: 3198913
+[2025-08-11 17:44:58 +0200] [3198914] [INFO] Booting worker with pid: 3198914
+[2025-08-11 17:44:58 +0200] [3198915] [INFO] Booting worker with pid: 3198915
+[2025-08-11 17:44:58 +0200] [3198897] [DEBUG] 17 workers
+[2025-08-11 17:45:00 +0200] [3198914] [DEBUG] GET /admin/
+[2025-08-11 17:45:01 +0200] [3198914] [DEBUG] Closing connection.
+[2025-08-11 17:45:03 +0200] [3198915] [DEBUG] GET /admin/Gazostheque/materials/
+[2025-08-11 17:45:03 +0200] [3198915] [DEBUG] Closing connection.
+[2025-08-11 17:45:03 +0200] [3198914] [DEBUG] GET /admin/jsi18n/
+[2025-08-11 17:45:03 +0200] [3198914] [DEBUG] Closing connection.
+[2025-08-11 17:45:11 +0200] [3198912] [DEBUG] GET /admin/Gazostheque/materials/add/
+[2025-08-11 17:45:11 +0200] [3198912] [DEBUG] Closing connection.
+[2025-08-11 17:45:11 +0200] [3198912] [DEBUG] GET /admin/jsi18n/
+[2025-08-11 17:45:11 +0200] [3198912] [DEBUG] Closing connection.
+[2025-08-11 17:46:27 +0200] [3198907] [DEBUG] GET /api/session/
+[2025-08-11 17:46:27 +0200] [3198907] [DEBUG] Closing connection.
+[2025-08-11 17:46:27 +0200] [3198907] [DEBUG] GET /api/cas/login/
+[2025-08-11 17:46:27 +0200] [3198907] [DEBUG] Closing connection.
+[2025-08-11 17:46:37 +0200] [3198907] [DEBUG] GET /api/cas/validate/
+[2025-08-11 17:46:37 +0200] [3198907] [DEBUG] Closing connection.
+[2025-08-11 17:46:38 +0200] [3198915] [DEBUG] GET /api/session/
+[2025-08-11 17:46:38 +0200] [3198915] [DEBUG] Closing connection.
+[2025-08-11 17:46:38 +0200] [3198915] [DEBUG] GET /api/materials/count-by-lab
+[2025-08-11 17:46:38 +0200] [3198915] [DEBUG] GET /api/materials/bar-chart
+[2025-08-11 17:46:38 +0200] [3198915] [DEBUG] Closing connection.
+[2025-08-11 17:46:38 +0200] [3198915] [DEBUG] Closing connection.
+[2025-08-11 17:46:38 +0200] [3198915] [DEBUG] GET /api/materials/count/
+[2025-08-11 17:46:38 +0200] [3198915] [DEBUG] Closing connection.
+[2025-08-11 17:47:13 +0200] [3198915] [DEBUG] GET /api/active_owners/lite/
+[2025-08-11 17:47:13 +0200] [3198915] [DEBUG] Closing connection.
+[2025-08-11 17:47:34 +0200] [3198915] [DEBUG] PUT /api/users/2/
+[2025-08-11 17:47:34 +0200] [3198915] [DEBUG] Closing connection.
+[2025-08-11 17:47:34 +0200] [3198915] [DEBUG] GET /api/users/2/
+[2025-08-11 17:47:34 +0200] [3198915] [DEBUG] Closing connection.
+[2025-08-11 17:47:36 +0200] [3198914] [DEBUG] GET /api/active_owners/lite/
+[2025-08-11 17:47:36 +0200] [3198914] [DEBUG] Closing connection.
+[2025-08-11 17:48:22 +0200] [3198913] [DEBUG] POST /api/materials/create/
+[2025-08-11 17:48:22 +0200] [3198913] [DEBUG] Closing connection.
+[2025-08-11 17:48:25 +0200] [3198909] [DEBUG] GET /api/materials/1
+[2025-08-11 17:48:25 +0200] [3198909] [DEBUG] Closing connection.
+[2025-08-11 17:48:25 +0200] [3198915] [DEBUG] GET /api/materials/1/
+[2025-08-11 17:48:25 +0200] [3198915] [DEBUG] Closing connection.
+[2025-08-11 17:48:28 +0200] [3198915] [DEBUG] GET /admin/Gazostheque/materials/add/
+[2025-08-11 17:48:28 +0200] [3198915] [DEBUG] Closing connection.
+[2025-08-11 17:48:28 +0200] [3198910] [DEBUG] GET /admin/jsi18n/
+[2025-08-11 17:48:28 +0200] [3198910] [DEBUG] Closing connection.
+[2025-08-11 17:48:30 +0200] [3198915] [DEBUG] GET /admin/Gazostheque/materials/
+[2025-08-11 17:48:30 +0200] [3198915] [DEBUG] Closing connection.
+[2025-08-11 17:48:30 +0200] [3198915] [DEBUG] GET /admin/jsi18n/
+[2025-08-11 17:48:30 +0200] [3198915] [DEBUG] Closing connection.
+[2025-08-11 17:48:36 +0200] [3198914] [DEBUG] GET /admin/Gazostheque/materials/1/change/
+[2025-08-11 17:48:36 +0200] [3198914] [DEBUG] Closing connection.
+[2025-08-11 17:48:36 +0200] [3198915] [DEBUG] GET /admin/jsi18n/
+[2025-08-11 17:48:36 +0200] [3198915] [DEBUG] Closing connection.
+[2025-08-11 17:48:41 +0200] [3198912] [DEBUG] GET /admin/Gazostheque/materials/
+[2025-08-11 17:48:41 +0200] [3198912] [DEBUG] Closing connection.
+[2025-08-11 17:55:16 +0200] [3198915] [DEBUG] GET /api/materials/owner/1/
+[2025-08-11 17:55:16 +0200] [3198915] [DEBUG] GET /api/materials/
+[2025-08-11 17:55:16 +0200] [3198915] [DEBUG] Closing connection.
+[2025-08-11 17:55:16 +0200] [3198915] [DEBUG] Closing connection.
+[2025-08-11 17:55:19 +0200] [3198913] [DEBUG] GET /api/materials/1/
+[2025-08-11 17:55:19 +0200] [3198913] [DEBUG] Closing connection.
+[2025-08-11 17:55:28 +0200] [3198897] [ERROR] Worker (pid:3198905) was sent SIGHUP!
+[2025-08-11 17:55:28 +0200] [3198897] [ERROR] Worker (pid:3198909) was sent SIGHUP!
+[2025-08-11 17:55:28 +0200] [3198897] [ERROR] Worker (pid:3198912) was sent SIGHUP!
+[2025-08-11 17:55:28 +0200] [3198897] [ERROR] Worker (pid:3198913) was sent SIGHUP!
+[2025-08-11 17:55:28 +0200] [3198897] [ERROR] Worker (pid:3198914) was sent SIGHUP!
+[2025-08-11 17:55:28 +0200] [3198897] [ERROR] Worker (pid:3198915) was sent SIGHUP!
+[2025-08-11 17:55:28 +0200] [3198897] [ERROR] Worker (pid:3198900) was sent SIGHUP!
+[2025-08-11 17:55:28 +0200] [3198897] [ERROR] Worker (pid:3198908) was sent SIGHUP!
+[2025-08-11 17:55:28 +0200] [3198897] [ERROR] Worker (pid:3198911) was sent SIGHUP!
+[2025-08-11 17:55:28 +0200] [3198897] [ERROR] Worker (pid:3198910) was sent SIGHUP!
+[2025-08-11 17:55:28 +0200] [3198897] [ERROR] Worker (pid:3198899) was sent SIGHUP!
+[2025-08-11 17:55:28 +0200] [3198897] [ERROR] Worker (pid:3198906) was sent SIGHUP!
+[2025-08-11 17:55:28 +0200] [3198897] [ERROR] Worker (pid:3198903) was sent SIGHUP!
+[2025-08-11 17:55:28 +0200] [3198897] [ERROR] Worker (pid:3198901) was sent SIGHUP!
+[2025-08-11 17:55:28 +0200] [3200230] [INFO] Booting worker with pid: 3200230
+[2025-08-11 17:55:28 +0200] [3198897] [ERROR] Worker (pid:3198907) was sent SIGHUP!
+[2025-08-11 17:55:28 +0200] [3198897] [ERROR] Worker (pid:3198902) was sent SIGHUP!
+[2025-08-11 17:55:28 +0200] [3198897] [ERROR] Worker (pid:3198904) was sent SIGHUP!
+[2025-08-11 17:55:28 +0200] [3200231] [INFO] Booting worker with pid: 3200231
+[2025-08-11 17:55:28 +0200] [3200232] [INFO] Booting worker with pid: 3200232
+[2025-08-11 17:55:28 +0200] [3200233] [INFO] Booting worker with pid: 3200233
+[2025-08-11 17:55:28 +0200] [3200234] [INFO] Booting worker with pid: 3200234
+[2025-08-11 17:55:28 +0200] [3200235] [INFO] Booting worker with pid: 3200235
+[2025-08-11 17:55:28 +0200] [3200236] [INFO] Booting worker with pid: 3200236
+[2025-08-11 17:55:28 +0200] [3198897] [DEBUG] 7 workers
+[2025-08-11 17:55:28 +0200] [3198897] [INFO] Handling signal: hup
+[2025-08-11 17:55:28 +0200] [3198897] [INFO] Hang up: Master
+[2025-08-11 17:55:28 +0200] [3198897] [DEBUG] Current configuration:
+  config: gunicorn-gazostheque.py
+  wsgi_app: None
+  bind: ['0.0.0.0:8005']
+  backlog: 2048
+  workers: 17
+  worker_class: sync
+  threads: 16
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 60
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  print_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/vikhram/Gazostheque_App
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 1021
+  group: 1021
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1', '::1']
+  accesslog: /home/vikhram/Gazostheque_App/logs/access.log
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: /home/vikhram/Gazostheque_App/logs/error.log
+  loglevel: debug
+  capture_output: True
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  logconfig_json: None
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: GazosthequeRestApis.wsgi
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7f3fedd52b80>
+  on_reload: <function OnReload.on_reload at 0x7f3fedd52ca0>
+  when_ready: <function WhenReady.when_ready at 0x7f3fedd52dc0>
+  pre_fork: <function Prefork.pre_fork at 0x7f3fedd52ee0>
+  post_fork: <function Postfork.post_fork at 0x7f3fedd6a040>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7f3fedd6a160>
+  worker_int: <function WorkerInt.worker_int at 0x7f3fedd6a280>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7f3fedd6a3a0>
+  pre_exec: <function PreExec.pre_exec at 0x7f3fedd6a4c0>
+  pre_request: <function PreRequest.pre_request at 0x7f3fedd6a5e0>
+  post_request: <function PostRequest.post_request at 0x7f3fedd6a670>
+  child_exit: <function ChildExit.child_exit at 0x7f3fedd6a790>
+  worker_exit: <function WorkerExit.worker_exit at 0x7f3fedd6a8b0>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7f3fedd6a9d0>
+  on_exit: <function OnExit.on_exit at 0x7f3fedd6aaf0>
+  ssl_context: <function NewSSLContext.ssl_context at 0x7f3fedd6ac10>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1', '::1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  permit_obsolete_folding: False
+  strip_header_spaces: False
+  permit_unconventional_http_method: False
+  permit_unconventional_http_version: False
+  casefold_http_method: False
+  forwarder_headers: ['SCRIPT_NAME', 'PATH_INFO']
+  header_map: drop
+[2025-08-11 17:55:28 +0200] [3200237] [INFO] Booting worker with pid: 3200237
+[2025-08-11 17:55:28 +0200] [3200238] [INFO] Booting worker with pid: 3200238
+[2025-08-11 17:55:28 +0200] [3200241] [INFO] Booting worker with pid: 3200241
+[2025-08-11 17:55:28 +0200] [3200242] [INFO] Booting worker with pid: 3200242
+[2025-08-11 17:55:28 +0200] [3200243] [INFO] Booting worker with pid: 3200243
+[2025-08-11 17:55:28 +0200] [3200244] [INFO] Booting worker with pid: 3200244
+[2025-08-11 17:55:28 +0200] [3200247] [INFO] Booting worker with pid: 3200247
+[2025-08-11 17:55:28 +0200] [3200240] [INFO] Booting worker with pid: 3200240
+[2025-08-11 17:55:28 +0200] [3200245] [INFO] Booting worker with pid: 3200245
+[2025-08-11 17:55:28 +0200] [3200246] [INFO] Booting worker with pid: 3200246
+[2025-08-11 17:55:28 +0200] [3198897] [DEBUG] 17 workers
+[2025-08-11 17:55:28 +0200] [3200248] [INFO] Booting worker with pid: 3200248
+[2025-08-11 17:55:28 +0200] [3200249] [INFO] Booting worker with pid: 3200249
+[2025-08-11 17:55:28 +0200] [3200239] [INFO] Booting worker with pid: 3200239
+[2025-08-11 17:55:28 +0200] [3200251] [INFO] Booting worker with pid: 3200251
+[2025-08-11 17:55:28 +0200] [3200250] [INFO] Booting worker with pid: 3200250
+[2025-08-11 17:55:28 +0200] [3200252] [INFO] Booting worker with pid: 3200252
+[2025-08-11 17:55:28 +0200] [3200253] [INFO] Booting worker with pid: 3200253
+[2025-08-11 17:55:28 +0200] [3200233] [INFO] Worker exiting (pid: 3200233)
+[2025-08-11 17:55:29 +0200] [3200234] [INFO] Worker exiting (pid: 3200234)
+[2025-08-11 17:55:29 +0200] [3200235] [INFO] Worker exiting (pid: 3200235)
+[2025-08-11 17:55:29 +0200] [3198897] [ERROR] Worker (pid:3200234) was sent SIGTERM!
+[2025-08-11 17:55:29 +0200] [3198897] [ERROR] Worker (pid:3200235) was sent SIGTERM!
+[2025-08-11 17:55:29 +0200] [3200236] [INFO] Worker exiting (pid: 3200236)
+[2025-08-11 17:55:29 +0200] [3200230] [INFO] Worker exiting (pid: 3200230)
+[2025-08-11 17:55:29 +0200] [3200231] [INFO] Worker exiting (pid: 3200231)
+[2025-08-11 17:55:29 +0200] [3200232] [INFO] Worker exiting (pid: 3200232)
+[2025-08-11 17:55:29 +0200] [3198897] [ERROR] Worker (pid:3200232) was sent SIGTERM!
+[2025-08-11 20:21:16 +0200] [3200249] [DEBUG] GET /admin/fckeditor/editor/filemanager/browser/default/connectors/php/connector.php
+[2025-08-11 20:21:16 +0200] [3200253] [DEBUG] GET /admin/includes/FCKeditor/editor/filemanager/browser/default/connectors/php/connector.php
+[2025-08-11 20:21:16 +0200] [3200245] [DEBUG] GET /admin/FCKeditor/editor/filemanager/browser/default/connectors/php/connector.php
+[2025-08-11 20:21:16 +0200] [3200249] [DEBUG] Closing connection.
+[2025-08-11 20:21:16 +0200] [3200253] [DEBUG] Closing connection.
+[2025-08-11 20:21:16 +0200] [3200245] [DEBUG] Closing connection.
+[2025-08-11 22:08:37 +0200] [3200237] [DEBUG] GET /admin/assets/js/views/login.js
+[2025-08-11 22:08:37 +0200] [3200237] [DEBUG] Closing connection.
+[2025-08-12 00:05:01 +0200] [3200251] [DEBUG] GET /admin/assets/css/jquery-ui.css
+[2025-08-12 00:05:01 +0200] [3200251] [DEBUG] Closing connection.
+[2025-08-12 02:01:36 +0200] [3200252] [DEBUG] GET /admin/.git/config
+[2025-08-12 02:01:36 +0200] [3200252] [DEBUG] Closing connection.
+[2025-08-12 02:01:37 +0200] [3200253] [DEBUG] GET /api/.env
+[2025-08-12 02:01:37 +0200] [3200253] [DEBUG] Closing connection.
+[2025-08-12 02:01:38 +0200] [3200253] [DEBUG] GET /api/.git/config
+[2025-08-12 02:01:38 +0200] [3200253] [DEBUG] Closing connection.
+[2025-08-12 04:30:04 +0200] [3200249] [DEBUG] GET /admin/assets/js/pbxlib.js
+[2025-08-12 04:30:04 +0200] [3200249] [DEBUG] Closing connection.
+[2025-08-12 07:35:34 +0200] [3200237] [DEBUG] GET /api/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php
+[2025-08-12 07:35:34 +0200] [3200237] [DEBUG] Closing connection.
+[2025-08-12 07:35:41 +0200] [3200247] [DEBUG] GET /admin/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php
+[2025-08-12 07:35:41 +0200] [3200247] [DEBUG] Closing connection.
+[2025-08-12 09:55:03 +0200] [3200253] [DEBUG] GET /api/session/
+[2025-08-12 09:55:03 +0200] [3200253] [DEBUG] Closing connection.
+[2025-08-12 09:55:04 +0200] [3200253] [DEBUG] GET /api/cas/login/
+[2025-08-12 09:55:04 +0200] [3200253] [DEBUG] Closing connection.
