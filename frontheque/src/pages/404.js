@@ -3,6 +3,7 @@ import NextLink from 'next/link';
 import ArrowLeftIcon from '@heroicons/react/24/solid/ArrowLeftIcon';
 import { Box, Button, Container, SvgIcon, Typography } from '@mui/material';
 
+const logoUrl = process.env.NEXT_PUBLIC_ASSETS + 'images/app/error.png';
 
 const Page = () => (
   <>
@@ -28,16 +29,15 @@ const Page = () => (
             flexDirection: 'column'
           }}
         >
-          <Typography
-            align="center"
-            sx={{ mb: 3 }}
-            variant="h3"
-          >
-            Oops !
-          </Typography>
-          <Typography>
-            404 : La page n&apos;a pas été trouvée
-          </Typography>
+          <img
+            alt="En cours de développement"
+            src={logoUrl}
+            style={{
+              display: 'inline-block',
+              maxWidth: '100%',
+              width: '100%'
+            }}
+          />
           
           <Button
             component={NextLink}
