@@ -17,6 +17,7 @@ from Gazostheque.serializers import MaterialSerializer
 from Gazostheque.controllers.materials_controller import *
 
 from django.db.models.functions import ExtractYear
+from taggit.models import Tag
 
 ############################################################################## 
 
@@ -60,6 +61,42 @@ def create_material(request):
         
         # Pass the data to your controller
         return on_create_material(request)
+
+# @api_view(['GET'])
+# def get_tag_suggestions(request):
+#     search_term = request.GET.get('search', '').strip()
+    
+#     if not search_term:
+#         return JsonResponse([], safe=False)
+    
+#     tags = Tag.objects.filter(
+#         name__icontains=search_term
+#     ).order_by('name').values_list('name', flat=True)[:10]  # Limit to 10 results
+    
+#     return JsonResponse(list(tags), safe=False)
+
+@api_view(['GET'])
+def get_all_tags(request):
+    # Get all tags with counts
+    tags = Tag.objects.annotate(num_times=Count('taggit_taggeditem_items')).order_by('-num_times')
+    tag_names = [tag.name for tag in tags]
+    return Response({'tags': tag_names})
+
+@api_view(['GET'])
+def search_by_tags(request):
+    tags = request.GET.get('tags', '')
+    if not tags:
+        return Response({'error': 'No tags provided'}, status=400)
+    
+    tag_list = [tag.strip() for tag in tags.split(',') if tag.strip()]
+    
+    # Get materials that have ALL the specified tags
+    materials = Materials.objects.filter(tags__name__in=tag_list).annotate(
+        matched_tags=Count('tags')
+    ).filter(matched_tags=len(tag_list)).distinct()
+    
+    serializer = MaterialSerializer(materials, many=True)
+    return Response({'results': serializer.data, 'searched_tags': tag_list})
 
 
 @api_view(['GET', 'PUT', 'DELETE'])

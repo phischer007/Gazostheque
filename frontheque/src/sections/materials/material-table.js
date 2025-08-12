@@ -17,17 +17,15 @@ import {
   SvgIcon,
   Stack, 
   Typography,
-  Tooltip
+  Tooltip,
+  Box,
+  Grid,
+  Button
 } from '@mui/material';
 import config from 'src/utils/config';
 import PropTypes from 'prop-types';
-
-import { 
-  InformationCircleIcon,
-  MagnifyingGlassCircleIcon
-} from "@heroicons/react/24/outline";
-
-// ---------------------------------------------------------- //
+import { InformationCircleIcon, MagnifyingGlassCircleIcon } from "@heroicons/react/24/outline";
+import { TagSearch } from '../tags/tag-search';
 
 export const MaterialTable = (props) => {
   const [materials, setMaterials] = useState([]);
@@ -38,24 +36,21 @@ export const MaterialTable = (props) => {
   const [rowsPerPage, setRowsPerPage] = useState(25);
   const [filteredMaterials, setFilteredMaterials] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
-
+  const [selectedTags, setSelectedTags] = useState([]);
   const [isCheckedInformation, setCheckedInformation] = useState(false);
 
-  // useCallback must also be at the top
   const handleInformationShow = useCallback(() => {
     setCheckedInformation(!isCheckedInformation);
   }, [isCheckedInformation]);
-
 
   useEffect(() => {
     const fetchMaterials = async () => {
       try {
         const response = await fetch(`${config.apiUrl}/materials/`);
-        if (!response.ok) {
-          throw new Error('Failed to fetch materials');
-        }
+        if (!response.ok) throw new Error('Failed to fetch materials');
         const data = await response.json();
         setMaterials(data);
+        setFilteredMaterials(data);
         setTotalCount(data.length);
       } catch (err) {
         setError(err.message);
@@ -63,67 +58,60 @@ export const MaterialTable = (props) => {
         setLoading(false);
       }
     };
-
     fetchMaterials();
   }, []);
 
   useEffect(() => {
-    if (searchTerm === '') {
-      setFilteredMaterials(materials);
-      setTotalCount(materials.length);
-      setPage(0);
-    } else {
-      const filtered = materials.filter((material) => {
-        const searchLower = searchTerm.toLowerCase();
+    let filtered = [...materials];
+    
+    if (searchTerm) {
+      const searchLower = searchTerm.toLowerCase();
+      filtered = filtered.filter((material) => {
         return (
           (material.material_title && material.material_title.toLowerCase().includes(searchLower)) ||
           (material.team && material.team.toLowerCase().includes(searchLower)) ||
-          (material.owner_first_name&& material.owner_first_name.toLowerCase().includes(searchLower)) || 
-          (material.owner_last_name&& material.owner_last_name.toLowerCase().includes(searchLower))
+          (material.owner_first_name && material.owner_first_name.toLowerCase().includes(searchLower)) || 
+          (material.owner_last_name && material.owner_last_name.toLowerCase().includes(searchLower))
         );
       });
-      setFilteredMaterials(filtered);
-      setTotalCount(filtered.length);
-      setPage(0);
     }
-  }, [searchTerm, materials]);
-  
 
-  if (loading) {
-    return (
-      <div style={{ display: 'flex', justifyContent: 'center', padding: '20px' }}>
-        <CircularProgress />
-      </div>
-    );
-  }
+    // Apply tag filter if tags are selected
+    if (selectedTags.length > 0) {
+      filtered = filtered.filter(material => {
+        if (!material.tags) return false;
+        return selectedTags.every(tag => material.tags.includes(tag));
+      });
+    }
+    
+    setFilteredMaterials(filtered);
+    setTotalCount(filtered.length);
+    setPage(0);
+  }, [searchTerm, materials, selectedTags]);
 
-  if (error) {
-    return (
-      <Typography color="error" 
-        align="center"
-      >
-        Error: {error}
-      </Typography>
-    );
-  }
-
-  const formatDate = (dateString) => {
-    if (!dateString) return '-';
-    const date = new Date(dateString);
-    return date.toLocaleDateString(); // Adjust format as needed
+  const handleServerSearch = (results) => {
+    setFilteredMaterials(results);
+    setTotalCount(results.length);
+    setPage(0);
   };
 
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
+  const handleTagSelection = (tags) => {
+    setSelectedTags(tags);
   };
 
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(parseInt(event.target.value, 10));
-    setPage(0); // Reset to first page when rows per page changes
+  const formatDate = (dateString) => dateString ? new Date(dateString).toLocaleDateString() : '-';
+
+  const handleChangePage = (_, newPage) => setPage(newPage);
+  const handleChangeRowsPerPage = (e) => {
+    setRowsPerPage(parseInt(e.target.value, 10));
+    setPage(0);
   };
 
-  const handleSearchChange = (event) => {
-    setSearchTerm(event.target.value);
+  const resetAllFilters = () => {
+    setSearchTerm('');
+    setSelectedTags([]);
+    setFilteredMaterials(materials);
+    setTotalCount(materials.length);
   };
 
   const currentPageMaterials = filteredMaterials.slice(
@@ -131,65 +119,80 @@ export const MaterialTable = (props) => {
     page * rowsPerPage + rowsPerPage
   );
 
+  if (loading) return <CircularProgress sx={{ display: 'block', margin: '20px auto' }} />;
+  if (error) return <Typography color="error" align="center">Error: {error}</Typography>;
+
   return (
     <>
-      <Card sx={{ p: 2, maxWidth: 800 }}>
-        <Stack
-          direction='row'
-          spacing={2}
-          alignItems='center'
-        >
-          <OutlinedInput
-            value={searchTerm}
-            onChange={handleSearchChange}
-            fullWidth
-            placeholder='Nom de bouteille ou Equipe ou Nom du responsable'
-            startAdornment={(
-              <InputAdornment position='start'>
-                <SvgIcon
-                  color='action'
-                  fontSize='small'
-                >
-                  <MagnifyingGlassCircleIcon />
+      <Grid container spacing={2}>
+        <Grid item xs={12} md={8}>
+          <Card sx={{ p: 2 }}>
+            <Stack direction='row' spacing={2} alignItems='center'>
+              <OutlinedInput
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                fullWidth
+                placeholder='Nom de bouteille ou Equipe ou Nom du responsable'
+                startAdornment={(
+                  <InputAdornment position='start'>
+                    <SvgIcon color='action' fontSize='small'>
+                      <MagnifyingGlassCircleIcon />
+                    </SvgIcon>
+                  </InputAdornment>
+                )}
+                sx={{ 
+                  flex: 1,
+                  '& .MuiInputBase-input::placeholder': {
+                    color: 'lightgray',
+                    opacity: 1,
+                  }
+                }}
+              />
+              <IconButton onClick={handleInformationShow}>
+                <SvgIcon fontSize='small'>
+                  <InformationCircleIcon />
                 </SvgIcon>
-              </InputAdornment>
+              </IconButton>
+              {(searchTerm || selectedTags.length > 0) && (
+                <Button onClick={resetAllFilters} variant="outlined">
+                  Réinitialiser
+                </Button>
+              )}
+            </Stack>
+            {isCheckedInformation && (
+              <Stack spacing={2} sx={{
+                my: 1,
+                p: 1,
+                bgcolor: '#f5f5f5',
+                border: '1px solid #ccc',
+                borderRadius: 0,
+                maxWidth: '100%',
+                borderBottomRightRadius: 65
+              }}>
+                <Typography color="neutral.500" variant="caption">
+                  Recherche par Nom de bouteille, Equipe ou Nom du responsable (ex. Marmottant, BIOP)
+                </Typography>
+              </Stack>
             )}
-            sx={{ 
-              flex: 1,
-              '& .MuiInputBase-input::placeholder': {
-                color: 'lightgray',
-                opacity: 1,
-              }
-            }}
-          />
-          <IconButton onClick={handleInformationShow}>
-            <SvgIcon fontSize='small'>
-              <InformationCircleIcon />
-            </SvgIcon>
-          </IconButton>
-        </Stack>
-        {isCheckedInformation && (
-          <Stack spacing={2}
-            sx={{
-              my: 1,
-              p: 1,
-              bgcolor: '#f5f5f5',
-              border: '1px solid #ccc',
-              borderRadius: 0,
-              maxWidth: 715,
-              borderBottomRightRadius: 65
-            }}>
-            <Typography
-              color="neutral.500"
-              variant="caption"
-            >
-              Recherche par Nom de bouteille, Equipe ou Nom du responsable (ex. Marmottant, BIOP)
-            </Typography>
-          </Stack>
-        )}
-      </Card>
+          </Card>
+        </Grid>
+        
+        <Grid item xs={12} md={4}>
+          <Card sx={{ p: 2, height: '100%' }}>
+            <TagSearch 
+              onMaterialsFound={handleServerSearch}
+              onTagSelection={handleTagSelection}
+              onReset={() => {
+                setSelectedTags([]);
+                setFilteredMaterials(materials);
+                setTotalCount(materials.length);
+              }}
+            />
+          </Card>
+        </Grid>
+      </Grid>
 
-      <TableContainer component={Paper}>
+      <TableContainer component={Paper} sx={{ mt: 2 }}>
         <Table>
           <TableHead>
             <TableRow>
@@ -205,52 +208,16 @@ export const MaterialTable = (props) => {
                 </TableCell>
               ))}
             </TableRow>
-
           </TableHead>
           <TableBody>
             {currentPageMaterials.map((material) => {
-              const hasDepartDate = material.date_depart !== null && material.date_depart !== undefined && material.date_depart !== '';
-              // const rowStyle = hasDepartDate ? { backgroundColor: 'rgb(229, 228, 226' } : {};
-
+              const hasDepartDate = Boolean(material.date_depart);
               const rowStyle = {
                 backgroundColor: hasDepartDate ? 'rgb(229, 228, 226)' : 'inherit',
                 opacity: hasDepartDate ? 0.6 : 1,
                 cursor: 'pointer'
               };
-
-              const tooltipTitle = hasDepartDate ? 'Consignée – non modifiable' : 'Cliquer pour modifier';
-
-              const rowContent = (
-                <TableRow key={material.material_id}
-                  style={rowStyle}
-                >
-                  <TableCell>{material.material_title}</TableCell>
-                  <TableCell>{material.team}</TableCell>
-                  <TableCell>
-                    {material.owner_first_name} {material.owner_last_name}
-                  </TableCell>
-                  <TableCell>{material.origin}</TableCell>
-                  <TableCell>{material.size}</TableCell>
-                  <TableCell>{formatDate(material.date_arrivee)}</TableCell>
-                  <TableCell>{formatDate(material.date_depart)}</TableCell>
-                </TableRow>
-              );
-
-              // return hasDepartDate ? (
-              //   <React.Fragment key={material.material_id}>
-              //     {rowContent}
-              //   </React.Fragment>
-              // ) : (
-              //   <Link
-              //     key={material.material_id}
-              //     underline='none'
-              //     color="inherit"
-              //     href={`/gazostheque/details/material-detail/${material.material_id}`}
-              //     style={{ display: 'contents' }}
-              //   >
-              //     {rowContent}
-              //   </Link>
-              // );
+              const tooltipTitle = hasDepartDate ? 'Archived - not editable' : 'Click to edit';
 
               return (
                 <Tooltip title={tooltipTitle} key={material.material_id}>
@@ -260,11 +227,18 @@ export const MaterialTable = (props) => {
                     href={`/gazostheque/details/material-detail/${material.material_id}`}
                     style={{ display: 'contents' }}
                   >
-                    {rowContent}
+                    <TableRow style={rowStyle}>
+                      <TableCell>{material.material_title}</TableCell>
+                      <TableCell>{material.team}</TableCell>
+                      <TableCell>{material.owner_first_name} {material.owner_last_name}</TableCell>
+                      <TableCell>{material.origin}</TableCell>
+                      <TableCell>{material.size}</TableCell>
+                      <TableCell>{formatDate(material.date_arrivee)}</TableCell>
+                      <TableCell>{formatDate(material.date_depart)}</TableCell>
+                    </TableRow>
                   </Link>
                 </Tooltip>
               );
-
             })}
           </TableBody>
         </Table>

@@ -21,6 +21,10 @@ urlpatterns = [
     path('materials/count-by-lab', material_views.get_materials_by_lab),
     path('materials/bar-chart', material_views.get_materials_by_year_and_lab),
 
+    # path('materials/tags', material_views.get_tag_suggestions),
+    path('materials/tags', material_views.get_all_tags),
+    path('materials/search-by-tags', material_views.search_by_tags),
+
     path('owners/', owner_views.owner_list),
     path('owners/<int:pk>/', owner_views.owner_detail),
     path('active_owners/lite/', owner_views.active_owners_lite),
