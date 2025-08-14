@@ -14,9 +14,6 @@ import {
 } from '@mui/material';
 import { PublicLayout } from 'src/layouts/public/public-layout';
 import { MaterialDetailOverview } from 'src/sections/material-detail/material-detail-overview';
-// import { MaterialDetailViewer } from 'src/sections/material-detail/material-detail-viewer';
-// import { MaterialDetailCalendar } from 'src/sections/material-detail/material-detail-calendar';
-
 import React, { useState, useEffect, useCallback, use } from 'react';
 
 // -------------------------------------------------------------------------------------------------- //
@@ -27,17 +24,6 @@ const Page = () => {
   const { materialId } = router.query;
   const [materialData, setMaterialData] = useState(null);
 
-  // fetching material data
-  // useEffect(() => {
-  //   if (materialId) {
-  //     fetch(`${config.apiUrl}/materials/${materialId}`)
-  //       .then(response => response.json())
-  //       .then(data => {
-  //         setMaterialData(data);
-  //       })
-  //       .catch(error => console.error('Error fetching data:', error));
-  //   }
-  // }, [materialId]);
   useEffect(() => {
     if (materialId) {
       fetch(`${config.apiUrl}/materials/${materialId}`)
@@ -52,6 +38,11 @@ const Page = () => {
         })
         .catch(error => console.error('Error fetching data:', error));
     }
+  }, [materialId]);
+
+  const handleMaterial = useCallback(() => {
+    const url = (`/details/material-detail/${materialData.material_id}`);
+    router.push(url);
   }, [materialId]);
 
   return (
@@ -108,7 +99,7 @@ const Page = () => {
             <Stack spacing={1}>
               <Button
                 variant='contained'
-                // onClick={}
+                onClick={handleMaterial}
               >
                 Départ
               </Button>

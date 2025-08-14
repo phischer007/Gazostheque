@@ -388,6 +388,7 @@ export const MaterialDetailEdit = (props) => {
               <CardActions sx={{ justifyContent: 'flex-end' }}>
                 <Button
                   fullWidth
+                  type='button'
                   onClick={() => setOpenDialog(true)}
                   variant='contained'
                   startIcon={(
