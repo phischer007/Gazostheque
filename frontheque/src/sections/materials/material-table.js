@@ -99,20 +99,20 @@ export const MaterialTable = (props) => {
   // }, [selectedTags]);
 
 
-  const handleTagClick = (tag) => {
-    setSelectedTags(prev => {
-      if (prev.includes(tag)) {
-        return prev.filter(t => t !== tag);
-      } else {
-        return [...prev, tag];
-      }
-    });
-  };
+  // const handleTagClick = (tag) => {
+  //   setSelectedTags(prev => {
+  //     if (prev.includes(tag)) {
+  //       return prev.filter(t => t !== tag);
+  //     } else {
+  //       return [...prev, tag];
+  //     }
+  //   });
+  // };
 
-  const clearFilters = () => {
-    setSelectedTags([]);
-    setMaterials([]);
-  };
+  // const clearFilters = () => {
+  //   setSelectedTags([]);
+  //   setMaterials([]);
+  // };
 
   useEffect(() => {
     let filtered = materials;
