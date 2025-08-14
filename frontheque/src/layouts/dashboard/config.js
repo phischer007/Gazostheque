@@ -34,6 +34,15 @@ export const items = [
       </SvgIcon>
     )
   },
+  // {
+  //   title: 'Recherche par tags',
+  //   path: '/tags',
+  //   icon: (
+  //     <SvgIcon fontSize="small">
+  //       <SquaresPlusIcon />
+  //     </SvgIcon>
+  //   )
+  // },
   {
     title: 'Compte',
     path: '/account',

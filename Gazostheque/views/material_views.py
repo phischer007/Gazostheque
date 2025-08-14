@@ -18,6 +18,7 @@ from Gazostheque.controllers.materials_controller import *
 
 from django.db.models.functions import ExtractYear
 from taggit.models import Tag
+from django.contrib.postgres.aggregates import ArrayAgg
 
 ############################################################################## 
 
@@ -33,12 +34,15 @@ def get_materials(request):
         'team',
         'origin',
         'size',
+        'codeBarres',
         'date_arrivee',
         'date_depart',
         owner_first_name=F('owner__user__first_name'),
         owner_last_name=F('owner__user__last_name'),
         owner_email=F('owner__user__email'),
         owner_profil=F('owner__user__profil_pic')
+    ).annotate(
+        tags=ArrayAgg('tags__name', distinct=True)  # This adds all tag names as an array
     )
     return JsonResponse(list(selected_inventory), safe=False)
 
@@ -52,40 +56,54 @@ def get_materials(request):
 @api_view(['POST'])
 def create_material(request):
     if request.method == 'POST':
-        # Get the tags from the request data
         tags = request.data.getlist('tags', [])
-        
-        # Create a mutable copy of the request data
         data = request.data.copy()
-        
-        # Add the tags to the data dictionary
         data.setlist('tags', tags)
-        
-        # Pass the data to your controller
         return on_create_material(request)
 
 @api_view(['GET'])
 def get_all_tags(request):
-    # Get all tags with counts
-    tags = Tag.objects.annotate(num_times=Count('taggit_taggeditem_items')).order_by('-num_times')
-    tag_names = [tag.name for tag in tags]
-    return Response({'tags': tag_names})
+    """
+    Return all distinct tags used in Materials.
+    """
+    tags = Tag.objects.filter(materials__isnull=False).values_list('name', flat=True).distinct()
+    return Response({'tags': list(tags)})
 
 @api_view(['GET'])
-def search_by_tags(request):
+def search_tags(request):
+    """
+    Filter materials by selected tags (must match all).
+    """
     tags = request.GET.get('tags', '')
     if not tags:
-        return Response({'error': 'No tags provided'}, status=400)
-    
+        return Response({'results': []})
+
     tag_list = [tag.strip() for tag in tags.split(',') if tag.strip()]
-    
-    # Get materials that have ALL the specified tags
-    materials = Materials.objects.filter(tags__name__in=tag_list).annotate(
-        matched_tags=Count('tags')
-    ).filter(matched_tags=len(tag_list)).distinct()
-    
-    serializer = MaterialSerializer(materials, many=True)
-    return Response({'results': serializer.data, 'searched_tags': tag_list})
+    materials = Materials.objects.all().prefetch_related('tags')
+
+    # Filter by tags - must match ALL tags
+    for tag in tag_list:
+        materials = materials.filter(tags__name=tag)
+
+    inventory = materials.values(
+        'material_id',
+        'material_title',
+        'team',
+        'origin',
+        'size',
+        'codeBarres',
+        'date_arrivee',
+        'date_depart',
+        'tags',
+        owner_first_name=F('owner__user__first_name'),
+        owner_last_name=F('owner__user__last_name'),
+        owner_email=F('owner__user__email'),
+        owner_profil=F('owner__user__profil_pic')
+    ).annotate(
+        tags=ArrayAgg('tags__name', distinct=True)
+    )
+    return Response({'results': list(inventory), 'searched_tags': tag_list})
+
 
 
 @api_view(['GET', 'PUT', 'DELETE'])

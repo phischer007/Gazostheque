@@ -17,7 +17,10 @@ import {
   SvgIcon,
   Stack, 
   Typography,
-  Tooltip
+  Tooltip,
+  Chip,
+  Box, 
+  Button
 } from '@mui/material';
 import config from 'src/utils/config';
 import PropTypes from 'prop-types';
@@ -35,15 +38,15 @@ export const MaterialTable = (props) => {
   const [rowsPerPage, setRowsPerPage] = useState(25);
   const [filteredMaterials, setFilteredMaterials] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [allTags, setAllTags] = useState([]); // State to store all available tags
 
+  const [tags, setTags] = useState([]);
+
+  const [selectedTags, setSelectedTags] = useState([]); // State to store selected tags
   const [isCheckedInformation, setCheckedInformation] = useState(false);
 
-  // useCallback must also be at the top
-  const handleInformationShow = useCallback(() => {
-    setCheckedInformation(!isCheckedInformation);
-  }, [isCheckedInformation]);
 
-
+  // Fetch all materials
   useEffect(() => {
     const fetchMaterials = async () => {
       try {
@@ -53,7 +56,15 @@ export const MaterialTable = (props) => {
         }
         const data = await response.json();
         setMaterials(data);
+        setFilteredMaterials(data); // Initialize filtered materials with all materials
         setTotalCount(data.length);
+
+        const allTags = data.flatMap(material => material.tags || []);
+        const uniqueTags = [...new Set(allTags)];
+        
+        setTags(uniqueTags);
+        setLoading(false);
+
       } catch (err) {
         setError(err.message);
       } finally {
@@ -64,27 +75,70 @@ export const MaterialTable = (props) => {
     fetchMaterials();
   }, []);
 
+
+  // useEffect(() => {
+  //   if (selectedTags.length === 0) return;
+
+  //   const fetchMaterialsByTags = async () => {
+  //     try {
+  //       const tagsQuery = selectedTags.join(',');
+  //       const response = await fetch(`${config.apiUrl}/materials/tags/?tags=${encodeURIComponent(tagsQuery)}`);
+        
+  //       if (!response.ok) {
+  //         throw new Error('Failed to fetch materials by tags');
+  //       }
+        
+  //       const data = await response.json();
+  //       setMaterials(data.results);
+  //     } catch (err) {
+  //       setError(err.message);
+  //     }
+  //   };
+
+  //   fetchMaterialsByTags();
+  // }, [selectedTags]);
+
+
+  const handleTagClick = (tag) => {
+    setSelectedTags(prev => {
+      if (prev.includes(tag)) {
+        return prev.filter(t => t !== tag);
+      } else {
+        return [...prev, tag];
+      }
+    });
+  };
+
+  const clearFilters = () => {
+    setSelectedTags([]);
+    setMaterials([]);
+  };
+
   useEffect(() => {
-    if (searchTerm === '') {
-      setFilteredMaterials(materials);
-      setTotalCount(materials.length);
-      setPage(0);
-    } else {
-      const filtered = materials.filter((material) => {
-        const searchLower = searchTerm.toLowerCase();
+    let filtered = materials;
+    
+    // Apply search term filter
+    if (searchTerm) {
+      const searchLower = searchTerm.toLowerCase();
+      filtered = filtered.filter((material) => {
         return (
           (material.material_title && material.material_title.toLowerCase().includes(searchLower)) ||
           (material.team && material.team.toLowerCase().includes(searchLower)) ||
-          (material.owner_first_name&& material.owner_first_name.toLowerCase().includes(searchLower)) || 
-          (material.owner_last_name&& material.owner_last_name.toLowerCase().includes(searchLower))
+          (material.owner_first_name && material.owner_first_name.toLowerCase().includes(searchLower)) || 
+          (material.owner_last_name && material.owner_last_name.toLowerCase().includes(searchLower)) ||
+          (material.codeBarres && material.codeBarres.toLowerCase().includes(searchLower))
         );
       });
-      setFilteredMaterials(filtered);
-      setTotalCount(filtered.length);
-      setPage(0);
     }
-  }, [searchTerm, materials]);
-  
+        
+    setFilteredMaterials(filtered);
+    setTotalCount(filtered.length);
+    setPage(0);
+  }, [searchTerm, selectedTags, materials]);
+
+  const handleInformationShow = useCallback(() => {
+    setCheckedInformation(!isCheckedInformation);
+  }, [isCheckedInformation]);
 
   if (loading) {
     return (
@@ -140,7 +194,7 @@ export const MaterialTable = (props) => {
             value={searchTerm}
             onChange={handleSearchChange}
             fullWidth
-            placeholder='Nom de bouteille ou Equipe ou Nom du responsable'
+            placeholder='Nom de bouteille ou Equipe ou Nom du responsable ou Code Barres'
             startAdornment={(
               <InputAdornment position='start'>
                 <SvgIcon
@@ -180,11 +234,70 @@ export const MaterialTable = (props) => {
               color="neutral.500"
               variant="caption"
             >
-              Recherche par Nom de bouteille, Equipe ou Nom du responsable (ex. Marmottant, BIOP)
+              Recherche par Nom de bouteille, Equipe ou Nom du responsable ou Code Barres (ex. Marmottant, BIOP, 0000468286)
             </Typography>
           </Stack>
         )}
       </Card>
+
+      {/* Tags filter section */}
+      {/* <Box sx={{ mt: 2, mb: 2, p: 2, backgroundColor: '#f5f5f5', borderRadius: 1 }}>
+        <Typography variant="subtitle2" 
+          sx={{ mb: 1 }}
+        >
+          Filtrer par mots-clés :  
+        </Typography>
+
+        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1}}>
+          {tags.map(tag => (
+            <Button
+              key={tag}
+              onClick={() => handleTagClick(tag)}
+              className={`tag ${selectedTags.includes(tag) ? 'active' : ''}`}
+              sx={{
+                backgroundColor: 'rgb(1, 50, 32)', 
+                color: 'white',
+                '&:hover': {
+                  backgroundColor: '#004d00', // darker green on hover
+                },
+                '&.active': {
+                  backgroundColor: '#003300', 
+                  border: '2px solid #001a00'
+                }
+              }}
+            >
+              {tag}
+            </Button>
+          ))}
+        </Box>
+        {selectedTags.length > 0 && (
+          <div className="selected-tags">
+            <p>Selected tags: {selectedTags.join(', ')}</p>
+            <Button onClick={clearFilters}>
+              Clear filters
+            </Button>
+          </div>
+        )}
+
+        {(selectedTags.length > 0 || searchTerm) && (
+          <Box sx={{ mt: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
+            <Typography variant="body2">
+              {selectedTags.length > 0 && `Tags sélectionnés: ${selectedTags.join(', ')}`}
+              {selectedTags.length > 0 && searchTerm && ' • '}
+              {searchTerm && `Recherche: "${searchTerm}"`}
+            </Typography>
+            <Button 
+              onClick={clearFilters}
+              size="small"
+              variant="outlined"
+              sx={{ ml: 1 }}
+            >
+              Réinitialiser les filtres
+            </Button>
+          </Box>
+        )}
+      </Box> */}
+
       <TableContainer component={Paper} 
         sx={{ mt: 2 }}
       >

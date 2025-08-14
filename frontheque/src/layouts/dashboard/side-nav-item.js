@@ -35,7 +35,7 @@ export const SideNavItem = (props) => {
             backgroundColor: 'rgba(255, 255, 255, 0.04)'
           }),
           '&:hover': {
-            backgroundColor: 'rgba(255, 255, 255, 0.04)'
+            backgroundColor: '#004d00'
           }
         }}
         {...linkProps}
