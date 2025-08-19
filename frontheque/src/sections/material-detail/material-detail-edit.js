@@ -418,7 +418,7 @@ export const MaterialDetailEdit = (props) => {
                     backgroundColor: 'rgb(1, 50, 32)',
                     color: 'white',
                     '&:hover': {
-                      backgroundColor: 'rgb(1, 50, 32)',
+                      backgroundColor: '#004d00',
                     },
                     gap: 1,
                     borderColor: 'rgb(1, 50, 32)'

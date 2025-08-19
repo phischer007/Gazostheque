@@ -1,7 +1,8 @@
 import ChartPieIcon from '@heroicons/react/24/solid/ChartPieIcon';
 import CircleStackIcon from '@heroicons/react/24/solid/CircleStackIcon';
-import UserIcon from '@heroicons/react/24/solid/UserIcon';
+import UserCircleIcon from '@heroicons/react/24/solid/UserCircleIcon';
 import SquaresPlusIcon from '@heroicons/react/24/solid/SquaresPlusIcon';
+import PlusCircleIcon  from '@heroicons/react/24/solid/PlusCircleIcon';
 
 import { SvgIcon } from '@mui/material';
 
@@ -39,7 +40,7 @@ export const items = [
     path: '/account',
     icon: (
       <SvgIcon fontSize="small">
-        <UserIcon />
+        <UserCircleIcon />
       </SvgIcon>
     )
   },

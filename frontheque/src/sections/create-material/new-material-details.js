@@ -98,7 +98,12 @@ const NewMaterialDetails = (props) => {
       noValidate
       onSubmit={handleSubmit}
     >
-      <Card>
+      <Card
+        sx={{
+          border: 1.5,
+          borderColor: 'divider'
+        }}
+      >
         <CardHeader subheader="Completez les informations" />
         <CardContent sx={{ pt: 2}}>
           <Box
@@ -479,7 +484,12 @@ const NewMaterialDetails = (props) => {
       </Card>
 
       {/* Function for saving information related to bottle */}
-      <Card>
+      <Card
+        sx={{
+          border: 1.5,
+          borderColor: 'divider',
+        }}
+      >
         <CardActions
           sx={{ justifyContent: 'flex-end' }}
         >
@@ -499,7 +509,7 @@ const NewMaterialDetails = (props) => {
               backgroundColor: 'rgb(1, 50, 32)',
               color: 'white',
                 '&:hover': {
-                  backgroundColor: 'rgb(1, 50, 32)',
+                  backgroundColor: '#004d00',
                 },
               gap: 1,
               borderColor: 'rgb(1, 50, 32)'

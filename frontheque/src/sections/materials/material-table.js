@@ -299,7 +299,11 @@ export const MaterialTable = (props) => {
       </Box> */}
 
       <TableContainer component={Paper} 
-        sx={{ mt: 2 }}
+        sx={{ 
+          mt: 2,
+          border: 1.5,
+          borderColor: 'divider'
+        }}
       >
         <Table>
           <TableHead>

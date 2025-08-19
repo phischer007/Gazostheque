@@ -73,7 +73,16 @@ export const AccountProfile = (user_data) => {
   }, [selectedImage, auth, user_data.user_id]);
 
   return (
-    <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', width: '100%'}}>
+    <Card 
+      sx={{ 
+        height: '100%', 
+        display: 'flex', 
+        flexDirection: 'column', 
+        width: '100%',
+        border: 1.5,
+        borderColor: 'divider'
+      }}
+    >
       <CardContent sx={{ flexGrow: 1 }}>
         <Box
           sx={{
@@ -160,7 +169,7 @@ export const AccountProfile = (user_data) => {
             backgroundColor: 'rgb(1, 50, 32)',
             color: 'white',
             '&:hover': {
-              backgroundColor: 'rgb(1, 50, 32)',
+              backgroundColor: '#004d00',
             },
             gap: 1,
             borderColor: 'rgb(1, 50, 32)',
