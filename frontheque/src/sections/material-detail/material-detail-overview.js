@@ -30,11 +30,17 @@ export const MaterialDetailOverview = (props) => {
               body { font-family: Arial, sans-serif; text-align: center; }
               img { margin-top: 10px; }
               h5 { margin-top: -50px; }
+              h6 { margin-top: 1px}
             </style>
           </head>
           <body>
             <img src="data:image/png;base64,${data.qrcode}" alt="QRCode" style="width: 250px; height: 250px; object-fit: cover;"/>
             <h5> ${material_number} </h5>
+            <p style="font-size: 10px; margin-top: -15px;">Responsable: <strong>${data.owner_details.first_name} ${data.owner_details.last_name}</strong></p>
+            <p style="font-size: 10px; margin-top: -5px;"><em>N'oubliez pas de mettre à jour lors d'un</em> 
+              <strong>CHANGEMENT DE SALLE<strong>
+            </p>
+            <h6>En cas de retour, contactez JEAN BERNARD (Bureau 105)</h6>
           </body>
         </html>
       `);
@@ -103,6 +109,12 @@ export const MaterialDetailOverview = (props) => {
           >
             Numéro de la bouteille : {material_number}
           </Typography>
+          {/* <Typography
+            color="text.secondary"
+            variant="body2"
+          >
+            Salle de stockage : {data.origin}
+          </Typography> */}
         </Box>
       </CardContent>
       {!props.mode && <>

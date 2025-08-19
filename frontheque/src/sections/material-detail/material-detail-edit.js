@@ -28,9 +28,7 @@ import {
 } from '@mui/material';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 
-/*
-  * Modify existing record of gas bottle
-*/
+/* ------------------------------------------------------------------------------ */
 
 export const MaterialDetailEdit = (props) => {
   const { user } = useAuth();
@@ -47,6 +45,18 @@ export const MaterialDetailEdit = (props) => {
   });
   const [materialID, setMaterialID] = useState(null);
   const [openDialog, setOpenDialog] = useState(false);
+  
+  // Permission checks
+  const isAdmin = props.userRole === 'admin' || props.userRole === 'Admin';
+  const isOwner = props.data && user && props.data.owner_details?.user_id === user.user_id;
+
+  // Field-level permission check -  if consigned, no fields can be edited
+  const canEditField = (fieldName) => {
+    if (props.isConsigned) return false; // Override all permissions if consigned
+    if (isAdmin) return true;
+    if (isOwner && fieldName === 'origin') return true;
+    return false;
+  };
 
   const equipe = [ 
     { value: 'BIOP', label: 'BIOP' }, 
@@ -161,9 +171,12 @@ export const MaterialDetailEdit = (props) => {
           sx={{ my: 3, py: 2 }}
         >
           <CardHeader 
-            subheader={props.canEdit ? 
-              "Les informations peuvent être modifiées" : 
-              "Seul l'administrateur ou le propriétaire peut modifier ces informations"}
+            subheader={props.isConsigned ? 
+              "Cette bouteille est consignée et ne peut pas être modifiée" :
+              isAdmin ? 
+                "Tous les champs peuvent être modifiés" : 
+                isOwner ? "Seul le champ 'Salle de stockage' peut être modifié" :
+                "Aucun champ ne peut être modifié"}
             title="Détails sur la bouteille"
           />
           <CardContent sx={{ pt: 0 }}>
@@ -177,7 +190,7 @@ export const MaterialDetailEdit = (props) => {
                   <TextField 
                     fullWidth
                     label="Composition du gaz"
-                    disabled={!props.canEdit}
+                    disabled={!canEditField('material_title')}
                     name='material_title'
                     onChange={handleChange}
                     value={formData.material_title || ''}
@@ -203,7 +216,7 @@ export const MaterialDetailEdit = (props) => {
                     fullWidth
                     label="Equipe"
                     name="team"
-                    disabled={!props.canEdit}
+                    disabled={!canEditField('team')}
                     onChange={handleChange}
                     value={formData.team || ''}
                     displayEmpty
@@ -236,7 +249,7 @@ export const MaterialDetailEdit = (props) => {
                     fullWidth
                     label="Salle de stockage"
                     name='origin'
-                    disabled={!props.canEdit}
+                    disabled={!canEditField('origin')}
                     onChange={handleChange}
                     value={formData.origin || ''}
                   />
@@ -248,7 +261,7 @@ export const MaterialDetailEdit = (props) => {
                     fullWidth
                     label="Code barres Air Liquide"
                     name='codeCommande'
-                    disabled={!props.canEdit}
+                    disabled={!canEditField('codeCommande')}
                     onChange={handleChange}
                     value={formData.codeCommande || ''}
                   />
@@ -260,7 +273,7 @@ export const MaterialDetailEdit = (props) => {
                     fullWidth
                     label="Code commande Air Liquide"
                     name='codeBarres'
-                    disabled={!props.canEdit}
+                    disabled={!canEditField('codeBarres')}
                     onChange={handleChange}
                     value={formData.codeBarres || ''}
                   />
@@ -272,7 +285,7 @@ export const MaterialDetailEdit = (props) => {
                     fullWidth
                     label="Taille de la bouteille"
                     name="size"
-                    disabled={!props.canEdit}
+                    disabled={!canEditField('size')}
                     onChange={handleChange}
                     value={formData.size || ''}
                     displayEmpty
@@ -305,7 +318,7 @@ export const MaterialDetailEdit = (props) => {
                     fullWidth
                     label="Risque associé à la bouteille"
                     name="levRisk"
-                    disabled={!props.canEdit}
+                    disabled={!canEditField('levRisk')}
                     onChange={handleChange}
                     value={formData.levRisk || ''}
                     displayEmpty
@@ -340,7 +353,7 @@ export const MaterialDetailEdit = (props) => {
                     <DatePicker 
                       label="Date d'arrivée"
                       format="dd/MM/yyyy"
-                      disabled={!props.canEdit}
+                      disabled={!canEditField('date_arrivee')}
                       value={formData.date_arrivee}
                       onChange={(date) => {
                         setFormData((prevState) => ({
@@ -368,7 +381,7 @@ export const MaterialDetailEdit = (props) => {
                       format="dd/MM/yyyy"
                       value={formData.date_depart}
                       onChange={handleDateChange}
-                      disabled={!props.canEdit}
+                      disabled={!canEditField('date_depart')}
                       slotProps={{
                         textField: {
                           helperText: 'DD/MM/YYYY',
@@ -383,7 +396,9 @@ export const MaterialDetailEdit = (props) => {
           </CardContent>
             
           <Divider />
-          {props.canEdit && (
+
+          {/* Only show update button if not consigned and user has edit permissions */}
+          {(isAdmin || isOwner) && !props.isConsigned && (
             <Grid xs={12}>
               <CardActions sx={{ justifyContent: 'flex-end' }}>
                 <Button
@@ -417,37 +432,41 @@ export const MaterialDetailEdit = (props) => {
         </Card>           
       </form>
 
-      <Dialog open={openDialog}
-        onClose={() => setOpenDialog(false)}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          Confirmer la mise à jour
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            Êtes-vous sûr de vouloir mettre à jour les détails de cette bouteille?
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={() => setOpenDialog(false)} 
-            color="primary"
-          >
-            Annuler
-          </Button>
-          <Button 
-            onClick={(e) => {
-              setOpenDialog(false);
-              handleSubmit(e);
-            }} 
-            color="success" 
-            autoFocus
-          >
-            Confirmer
-          </Button>
-        </DialogActions>
-      </Dialog>
+      {/* Dialog for update confirmation - only show if not consigned */}
+      {!props.isConsigned && (
+        <Dialog open={openDialog}
+          onClose={() => setOpenDialog(false)}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">
+            Confirmer la mise à jour
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              Êtes-vous sûr de vouloir mettre à jour les détails de cette bouteille?
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={() => setOpenDialog(false)} 
+              color="primary"
+            >
+              Annuler
+            </Button>
+            <Button 
+              onClick={(e) => {
+                setOpenDialog(false);
+                handleSubmit(e);
+              }} 
+              color="success" 
+              autoFocus
+            >
+              Confirmer
+            </Button>
+          </DialogActions>
+        </Dialog>
+      )}
+
     </>
   ) : <p>Chargement en cours...</p>;
 };

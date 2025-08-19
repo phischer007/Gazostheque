@@ -91,7 +91,7 @@ const Page = () => {
                     Détails sur la bouteille
                   </Typography>
                   <Divider />
-                  <Typography><strong>Salle de stockage:</strong> { materialData.origin } </Typography>
+                  {/* <Typography><strong>Salle de stockage:</strong> { materialData.origin } </Typography> */}
                   <Typography><strong>Code Commande:</strong> { materialData.codeCommande } </Typography>
                   <Typography><strong>Code Barres:</strong> { materialData.codeBarres } </Typography>
                   <Typography><strong>Date d&apos;arrivée:</strong> { materialData.date_arrivee } </Typography>
