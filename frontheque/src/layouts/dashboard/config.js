@@ -44,4 +44,13 @@ export const items = [
       </SvgIcon>
     )
   },
+  // {
+  //   title: 'Tags',
+  //   path: '/tags',
+  //   icon: (
+  //     <SvgIcon fontSize="small">
+  //       <SquaresPlusIcon />
+  //     </SvgIcon>
+  //   )
+  // },
 ];

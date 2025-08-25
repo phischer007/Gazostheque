@@ -240,7 +240,7 @@ const NewMaterialDetails = (props) => {
         </CardContent> */}
 
         {/* Tags Section */}
-        <CardContent>
+        {/* <CardContent>
           <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
             <Typography variant="overline">Tags</Typography>
           </Box>
@@ -257,6 +257,42 @@ const NewMaterialDetails = (props) => {
                 onChange={(e) => setTagInput(e.target.value)}
                 onKeyDown={handleTagKeyDown}
                 helperText="Appuyez sur Entrée pour ajouter un tag"
+              />
+              <Box sx={{ mt: 2, display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+                {tags.map((tag, index) => (
+                  <Chip
+                    key={index}
+                    label={tag}
+                    onDelete={() => handleDeleteTag(tag)}
+                    sx={{ 
+                      backgroundColor: theme.palette.primary.light, 
+                      color: 'white',
+                      '& .MuiChip-deleteIcon': {
+                        color: 'white',
+                      }
+                    }}
+                  />
+                ))}
+              </Box>
+            </Grid>
+          </Grid>
+        </CardContent> */}
+        {/* Remove the individual state for tagInput and use the handler's functionality
+        Remove this line: const [tagInput, setTagInput] = useState('');
+        Update the tags section in your JSX: */}
+        <CardContent>
+          <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+            <Typography variant="overline">Tags (ajoutés automatiquement)</Typography>
+          </Box>
+          <Grid container spacing={3}>
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                label="Ajouter des tags manuellement"
+                value={tagInput}
+                onChange={(e) => setTagInput(e.target.value)}
+                onKeyDown={handleTagKeyDown}
+                helperText="Appuyez sur Entrée pour ajouter un tag manuellement. En plus, les champs Équipe, Taille et Risque sont automatiquement ajoutés comme tags."
               />
               <Box sx={{ mt: 2, display: 'flex', flexWrap: 'wrap', gap: 1 }}>
                 {tags.map((tag, index) => (

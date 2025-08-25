@@ -69,7 +69,7 @@ const Page = () => {
                 <Grid
                   xs={12}
                   md={6}
-                  lg={10}
+                  lg={16}
                 >
                   <MaterialTable data={materialList}/>
                 </Grid>

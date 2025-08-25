@@ -38,33 +38,46 @@ export const MaterialTable = (props) => {
   const [rowsPerPage, setRowsPerPage] = useState(25);
   const [filteredMaterials, setFilteredMaterials] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
-  const [allTags, setAllTags] = useState([]); // State to store all available tags
-
-  const [tags, setTags] = useState([]);
-
-  const [selectedTags, setSelectedTags] = useState([]); // State to store selected tags
+  const [allTags, setAllTags] = useState([]);
+  const [selectedTags, setSelectedTags] = useState([]);
   const [isCheckedInformation, setCheckedInformation] = useState(false);
 
-
-  // Fetch all materials
+  // Fetch all materials and tags
   useEffect(() => {
-    const fetchMaterials = async () => {
+    const fetchData = async () => {
       try {
-        const response = await fetch(`${config.apiUrl}/materials/`);
-        if (!response.ok) {
+        setLoading(true);
+        
+        // Fetch materials
+        const materialsResponse = await fetch(`${config.apiUrl}/materials/`);
+        if (!materialsResponse.ok) {
           throw new Error('Failed to fetch materials');
         }
-        const data = await response.json();
-        setMaterials(data);
-        setFilteredMaterials(data); // Initialize filtered materials with all materials
-        setTotalCount(data.length);
-
-        const allTags = data.flatMap(material => material.tags || []);
-        const uniqueTags = [...new Set(allTags)];
+        const materialsData = await materialsResponse.json();
+        setMaterials(materialsData);
+        setFilteredMaterials(materialsData);
+        setTotalCount(materialsData.length);
         
-        setTags(uniqueTags);
-        setLoading(false);
-
+        // Try to fetch tags from dedicated endpoint
+        try {
+          const tagsResponse = await fetch(`${config.apiUrl}/materials/tags/`);
+          if (tagsResponse.ok) {
+            const tagsData = await tagsResponse.json();
+            setAllTags(tagsData.tags || []);
+          } else {
+            // Fallback: extract tags from materials
+            const tagsFromMaterials = materialsData.flatMap(material => material.tags || []);
+            const uniqueTags = [...new Set(tagsFromMaterials)];
+            setAllTags(uniqueTags);
+          }
+        } catch (tagsErr) {
+          console.error('Error fetching tags:', tagsErr);
+          // Fallback: extract tags from materials
+          const tagsFromMaterials = materialsData.flatMap(material => material.tags || []);
+          const uniqueTags = [...new Set(tagsFromMaterials)];
+          setAllTags(uniqueTags);
+        }
+        
       } catch (err) {
         setError(err.message);
       } finally {
@@ -72,48 +85,25 @@ export const MaterialTable = (props) => {
       }
     };
 
-    fetchMaterials();
+    fetchData();
   }, []);
 
+  // Handle tag selection
+  const handleTagClick = (tag) => {
+    if (selectedTags.includes(tag)) {
+      setSelectedTags(selectedTags.filter(t => t !== tag));
+    } else {
+      setSelectedTags([...selectedTags, tag]);
+    }
+  };
 
-  // useEffect(() => {
-  //   if (selectedTags.length === 0) return;
+  // Clear all filters
+  const clearFilters = () => {
+    setSelectedTags([]);
+    setSearchTerm('');
+  };
 
-  //   const fetchMaterialsByTags = async () => {
-  //     try {
-  //       const tagsQuery = selectedTags.join(',');
-  //       const response = await fetch(`${config.apiUrl}/materials/tags/?tags=${encodeURIComponent(tagsQuery)}`);
-        
-  //       if (!response.ok) {
-  //         throw new Error('Failed to fetch materials by tags');
-  //       }
-        
-  //       const data = await response.json();
-  //       setMaterials(data.results);
-  //     } catch (err) {
-  //       setError(err.message);
-  //     }
-  //   };
-
-  //   fetchMaterialsByTags();
-  // }, [selectedTags]);
-
-
-  // const handleTagClick = (tag) => {
-  //   setSelectedTags(prev => {
-  //     if (prev.includes(tag)) {
-  //       return prev.filter(t => t !== tag);
-  //     } else {
-  //       return [...prev, tag];
-  //     }
-  //   });
-  // };
-
-  // const clearFilters = () => {
-  //   setSelectedTags([]);
-  //   setMaterials([]);
-  // };
-
+  // Apply filters when search term or selected tags change
   useEffect(() => {
     let filtered = materials;
     
@@ -129,6 +119,13 @@ export const MaterialTable = (props) => {
           (material.codeBarres && material.codeBarres.toLowerCase().includes(searchLower))
         );
       });
+    }
+    
+    // Apply tag filter - must match ALL selected tags
+    if (selectedTags.length > 0) {
+      filtered = filtered.filter(material => 
+        selectedTags.every(tag => material.tags && material.tags.includes(tag))
+      );
     }
         
     setFilteredMaterials(filtered);
@@ -182,6 +179,22 @@ export const MaterialTable = (props) => {
     page * rowsPerPage + rowsPerPage
   );
 
+  // Function to get tag color
+  const getTagColor = (tag) => {
+    const tagColors = {
+      fragile: 'error',
+      electronic: 'primary',
+      chemical: 'warning',
+      heavy: 'secondary',
+      urgent: 'error',
+      storage: 'info',
+      equipment: 'success',
+      tool: 'success',
+    };
+    
+    return tagColors[tag.toLowerCase()] || 'default';
+  };
+
   return (
     <>
       <Card sx={{ p: 2, maxWidth: 800 }}>
@@ -194,7 +207,7 @@ export const MaterialTable = (props) => {
             value={searchTerm}
             onChange={handleSearchChange}
             fullWidth
-            placeholder='Nom de bouteille ou Equipe ou Nom du responsable ou Code Barres'
+            placeholder='Composition du gaz ou Equipe ou Nom du responsable ou Code Barres'
             startAdornment={(
               <InputAdornment position='start'>
                 <SvgIcon
@@ -234,75 +247,102 @@ export const MaterialTable = (props) => {
               color="neutral.500"
               variant="caption"
             >
-              Recherche par Nom de bouteille, Equipe ou Nom du responsable ou Code Barres (ex. Marmottant, BIOP, 0000468286)
+              Recherche par Composition du Gaz, Equipe ou Nom du responsable ou Code Barres (ex. Marmottant, BIOP, 0000468286)
             </Typography>
           </Stack>
         )}
       </Card>
 
       {/* Tags filter section */}
-      {/* <Box sx={{ mt: 2, mb: 2, p: 2, backgroundColor: '#f5f5f5', borderRadius: 1 }}>
-        <Typography variant="subtitle2" 
-          sx={{ mb: 1 }}
+      <Box sx={{ mt: 2, mb: 2, p: 2, backgroundColor: '#f9f9f9', borderRadius: 1, border: '1px solid #e0e0e0' }}>
+        <Typography variant="subtitle1" 
+          sx={{ mb: 1, fontWeight: 'bold' }}
         >
           Filtrer par mots-clés :  
         </Typography>
 
-        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1}}>
-          {tags.map(tag => (
-            <Button
+        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, mb: 2 }}>
+          {allTags.map(tag => (
+            <Chip
               key={tag}
+              label={tag}
               onClick={() => handleTagClick(tag)}
-              className={`tag ${selectedTags.includes(tag) ? 'active' : ''}`}
-              sx={{
-                backgroundColor: 'rgb(1, 50, 32)', 
-                color: 'white',
-                '&:hover': {
-                  backgroundColor: '#004d00', // darker green on hover
-                },
-                '&.active': {
-                  backgroundColor: '#003300', 
-                  border: '2px solid #001a00'
-                }
+              color={getTagColor(tag)}
+              variant={selectedTags.includes(tag) ? "filled" : "outlined"}
+              clickable
+              sx={{ 
+                fontWeight: selectedTags.includes(tag) ? 'bold' : 'normal',
+                borderWidth: selectedTags.includes(tag) ? 2 : 1
               }}
-            >
-              {tag}
-            </Button>
+            />
           ))}
-        </Box>
-        {selectedTags.length > 0 && (
-          <div className="selected-tags">
-            <p>Selected tags: {selectedTags.join(', ')}</p>
-            <Button onClick={clearFilters}>
-              Clear filters
-            </Button>
-          </div>
-        )}
-
-        {(selectedTags.length > 0 || searchTerm) && (
-          <Box sx={{ mt: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
-            <Typography variant="body2">
-              {selectedTags.length > 0 && `Tags sélectionnés: ${selectedTags.join(', ')}`}
-              {selectedTags.length > 0 && searchTerm && ' • '}
-              {searchTerm && `Recherche: "${searchTerm}"`}
+          {allTags.length === 0 && (
+            <Typography variant="body2" color="text.secondary">
+              Aucun mot-clé disponible
             </Typography>
+          )}
+        </Box>
+        
+        {(selectedTags.length > 0 || searchTerm) && (
+          <Box sx={{ 
+            mt: 2, 
+            display: 'flex', 
+            alignItems: 'center', 
+            gap: 1, 
+            flexWrap: 'wrap' 
+            }}
+          >
+            {selectedTags.length > 0 && (
+              <Box sx={{ 
+                display: 'flex', 
+                alignItems: 'center', 
+                gap: 0.5, 
+                flexWrap: 'wrap' 
+                }}
+              >
+                <Typography variant="body2">
+                  Mots-clés:
+                </Typography>
+                {selectedTags.map(tag => (
+                  <Chip
+                    key={tag}
+                    label={tag}
+                    size="small"
+                    color={getTagColor(tag)}
+                    onDelete={() => handleTagClick(tag)}
+                    sx={{ ml: 0.5 }}
+                  />
+                ))}
+              </Box>
+            )}
+            
             <Button 
               onClick={clearFilters}
               size="small"
               variant="outlined"
               sx={{ ml: 1 }}
             >
-              Réinitialiser les filtres
+              Réinitialiser tous les filtres
             </Button>
           </Box>
         )}
-      </Box> */}
+      </Box>
+
+      {/* Results summary */}
+      <Box sx={{ mb: 2 }}>
+        <Typography variant="body2" color="text.secondary">
+          {filteredMaterials.length} bouteille(s) trouvé(s) sur {materials.length}
+          {selectedTags.length > 0 && ` avec le(s) mot(s)-clé(s): ${selectedTags.join(', ')}`}
+        </Typography>
+      </Box>
 
       <TableContainer component={Paper} 
-        sx={{ 
+        // sx={{ mt: 2 }}
+        sx={{
           mt: 2,
           border: 1.5,
-          borderColor: 'divider'
+          borderColor: 'divider',
+          boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)'
         }}
       >
         <Table>
@@ -365,6 +405,10 @@ export const MaterialTable = (props) => {
           page={page}
           rowsPerPage={rowsPerPage}
           rowsPerPageOptions={[25, 50, 100, 150, 200, 250]}
+          labelRowsPerPage="Lignes par page:"
+          labelDisplayedRows={({ from, to, count }) => 
+            `${from}-${to} sur ${count !== -1 ? count : `plus que ${to}`}`
+          }
         />
       </TableContainer>
     </>

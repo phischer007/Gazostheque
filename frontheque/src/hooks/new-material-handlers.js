@@ -39,14 +39,36 @@ export const useNewMaterialHandlers = (data) => {
     lab_destination: false
   });
 
+  // const handleChange = useCallback(
+  //   (event) => {
+  //     setFormData((prevState) => ({
+  //       ...prevState,
+  //       [event.target.name]: event.target.value 
+  //     }));
+  //   }, 
+  //   []
+  // );
+
   const handleChange = useCallback(
     (event) => {
+      const { name, value } = event.target;
+      
       setFormData((prevState) => ({
         ...prevState,
-        [event.target.name]: event.target.value 
+        [name]: value 
       }));
+      
+      // Automatically add specific form fields as tags
+      const fieldsToAutoTag = ['team', 'size', 'levRisk', 'lab_destination'];
+      if (fieldsToAutoTag.includes(name) && value && value.trim()) {
+        // Check if the tag already exists to avoid duplicates
+        const tagValue = value.trim();
+        if (!tags.includes(tagValue)) {
+          setTags(prevTags => [...prevTags, tagValue]);
+        }
+      }
     }, 
-    []
+    [tags]
   );
   
   const onSelectChange = useCallback(
