@@ -67,21 +67,21 @@ export const AccountProfileDetails = (user) => {
           // Handle different types of errors
           if (decodeResponse.error === "Session expired") {
             // Handle session expired error
-            toast.error("Your session has expired. Please log in again.", { autoClose: false });
+            toast.error("Votre session a expiré. Veuillez vous reconnecter.", { autoClose: false });
             // Clear session token
             setTimeout(() => {
               auth.signOut();
             }, 3000);
 
-          } else if (decodeResponse.message === "User not found") {
+          } else if (decodeResponse.message === "Utilisateur introuvable ") {
             // Handle user not found error
-            toast.error("User not found. Please try again.", { autoClose: false });
+            toast.error("Utilisateur introuvable . Veuillez réessayer.", { autoClose: false });
           } else if (decodeResponse.message === "Session token not found") {
             // Handle session token not found error
-            toast.error("Session token not found. Please try again.", { autoClose: false });
+            toast.error("Session token not found. Veuillez réessayer.", { autoClose: false });
           } else {
             // Handle other errors
-            toast.error("An error occurred. Please try again later.", { autoClose: false });
+            toast.error("An error occurred. Veuillez réessayer.", { autoClose: false });
           }
 
         } else {
@@ -89,14 +89,14 @@ export const AccountProfileDetails = (user) => {
 
           await auth.updateUser(updatedUserData.user_id);
 
-          toast.success("Your information was successfully updated!");
+          toast.success("Vos informations ont été mises à jour avec succès!");
           window.location.reload();
         }
 
       } catch (error) {
          // Handle unexpected errors
         console.error("An unexpected error occurred:", error);
-        toast.error("An unexpected error occurred. Please try again later.", { autoClose: false });
+        toast.error("An unexpected error occurred. Veuillez réessayer.", { autoClose: false });
       }
 
   },[formData, isChecked, user, auth, sessionToken]);
